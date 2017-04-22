@@ -1,0 +1,5 @@
+{
+  "components/App/hello": "こんにちは",
+  "components/App/world": "世界",
+  "components/Greeting/welcome": "ようこそ {name}。{formattedLastLoginTime}から新しく{formattedUnreadCount}件のメッセージがあります"
+}

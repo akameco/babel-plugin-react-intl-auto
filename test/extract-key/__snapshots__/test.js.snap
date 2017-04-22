@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    defaultMessage: 'hello',
+    'id': 'test/extract-key/hello'
+  },
+  world: {
+    defaultMessage: 'hello world',
+    'id': 'test/extract-key/world'
+  }
+});"
+`;

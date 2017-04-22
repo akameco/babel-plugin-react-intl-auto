@@ -1,0 +1,33 @@
+{
+  "name": "tiny-react-app-example",
+  "version": "0.0.1",
+  "scripts": {
+    "postinstall": "flow-typed install",
+    "start": "webpack-dev-server --hot",
+    "build": "webpack",
+    "i18n": "babel-node ./scripts/i18n-gen.js"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-intl": "^2.2.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-react-intl": "^2.3.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "extract-react-intl": "^0.1.0",
+    "flow-bin": "^0.44.2",
+    "glob": "^7.1.1",
+    "listr": "^0.11.0",
+    "lodash.merge": "^4.6.0",
+    "mkdirp": "^0.5.1",
+    "pify": "^2.3.0",
+    "read-babelrc-up": "^0.1.0",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
