@@ -4,7 +4,7 @@ import plugin from '../src'
 
 const testPlugin = (filePath, opts = {}) => {
   const { code } = transformFileSync(filePath, {
-    plugins: [[plugin, opts]],
+    plugins: [[plugin, opts]]
   })
   return code
 }

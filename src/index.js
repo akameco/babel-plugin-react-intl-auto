@@ -5,12 +5,6 @@ import * as t from 'babel-types'
 const PKG_NAME = 'react-intl'
 const FUNC_NAME = 'defineMessages'
 
-const getPrefix = (filename: string, removePrefix: string) => {
-  const relativePath = p.dirname(p.join(p.relative(process.cwd(), filename)))
-  const prefix = relativePath.replace(new RegExp(`^${removePrefix}`), '')
-  return prefix
-}
-
 const isImportLocalName = (name: string, { file }: Object) => {
   const imports = file.metadata.modules.imports
   const intlImports = imports.find(x => x.source === PKG_NAME)
@@ -24,27 +18,20 @@ const isImportLocalName = (name: string, { file }: Object) => {
   return false
 }
 
-function isObjectExpression(node: Object) {
-  return node && node.isObjectExpression()
+const getPrefix = (filename: string, removePrefix: string) => {
+  const relativePath = p.dirname(p.join(p.relative(process.cwd(), filename)))
+  const prefix = relativePath.replace(new RegExp(`^${removePrefix}`), '')
+  return prefix
 }
 
-function isDefaultMessage(path: Object): boolean {
-  const key = path.get('key')
-  if (!t.isIdentifier(key)) {
-    return false
-  }
-  return key.node.name === 'defaultMessage'
-}
-
-function insertIdToMessageObj(path: Object, prefix: string) {
-  const parentPath = path.findParent(p => p.isObjectProperty())
-  const parentKey = parentPath.get('key')
-  if (!(parentKey.isIdentifier() && parentKey.node.name)) {
+const getId = (path, prefix) => {
+  if (!(path.isIdentifier() && path.node.name)) {
     return
   }
-  const id = p.join(prefix, parentKey.node.name)
-  path.insertAfter(t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)))
+  return p.join(prefix, path.node.name)
 }
+
+const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
 
 export default function({ types: t }: Object) {
   return {
@@ -52,15 +39,14 @@ export default function({ types: t }: Object) {
       CallExpression(path: Object, state: Object) {
         const callee = path.get('callee')
         if (
-          !callee.isIdentifier() &&
-          !isImportLocalName(callee.node.name, state)
+          !callee.isIdentifier() && !isImportLocalName(callee.node.name, state)
         ) {
           return
         }
 
         const messagesObj = path.get('arguments')[0]
 
-        if (!isObjectExpression(messagesObj)) {
+        if (!(messagesObj && messagesObj.isObjectExpression())) {
           return
         }
 
@@ -70,14 +56,24 @@ export default function({ types: t }: Object) {
         )
 
         const properties = messagesObj.get('properties')
-        properties.forEach(prop => {
-          prop
-            .get('value')
-            .get('properties')
-            .filter(isDefaultMessage)
-            .forEach(prop => insertIdToMessageObj(prop, prefix))
-        })
-      },
-    },
+
+        for (const prop of properties) {
+          const v = prop.get('value')
+
+          if (!isLiteral(v)) {
+            continue
+          }
+
+          const id = getId(prop.get('key'), prefix)
+
+          v.replaceWith(
+            t.objectExpression([
+              t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
+              t.objectProperty(t.stringLiteral('defaultMessage'), v.node)
+            ])
+          )
+        }
+      }
+    }
   }
 }

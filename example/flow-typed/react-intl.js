@@ -7,7 +7,7 @@ type LocaleData = {
   locale: string,
 }
 
-type MessageDescriptor = {|
+type MessageDescriptor = string || {|
   defaultMessage: string,
   description?: string,
 |}

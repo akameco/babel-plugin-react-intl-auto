@@ -8,6 +8,15 @@
     "format": "prettier --single-quote --trailing-comma es5  --semi=false --write \"src/**/*.js,test/index.js\"",
     "test": "ava"
   },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "parser": "babel-eslint",
+    "rules": {
+      "object-curly-spacing": 0,
+      "space-before-function-paren": 0
+    }
+  },
   "ava": {
     "files": [
       "**/test.js"
@@ -25,10 +34,12 @@
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
+    "babel-eslint": "6",
     "babel-preset-env": "^1.4.0",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.24.1",
     "flow-bin": "^0.44.2",
-    "prettier": "^1.1.0"
+    "prettier": "^1.1.0",
+    "xo": "^0.18.1"
   }
 }
