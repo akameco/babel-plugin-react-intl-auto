@@ -38,9 +38,11 @@ export default function({ types: t }: Object) {
     visitor: {
       CallExpression(path: Object, state: Object) {
         const callee = path.get('callee')
-        if (
-          !callee.isIdentifier() && !isImportLocalName(callee.node.name, state)
-        ) {
+        if (!callee.isIdentifier()) {
+          return
+        }
+
+        if (!isImportLocalName(callee.node.name, state)) {
           return
         }
 
