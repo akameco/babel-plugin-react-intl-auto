@@ -340,15 +340,14 @@ babel-core@^6.17.0, babel-core@^6.24.1:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-eslint@6:
-  version "6.1.2"
-  resolved babel-eslint-6.1.2.tgz#5293419fe3672d66598d327da9694567ba6a5f2f
+babel-eslint@^7.2.3:
+  version "7.2.3"
+  resolved babel-eslint-7.2.3.tgz#b2fe2d80126470f5c19442dc757253a897710827
   dependencies:
-    babel-traverse "^6.0.20"
-    babel-types "^6.0.19"
-    babylon "^6.0.18"
-    lodash.assign "^4.0.0"
-    lodash.pickby "^4.0.0"
+    babel-code-frame "^6.22.0"
+    babel-traverse "^6.23.1"
+    babel-types "^6.23.0"
+    babylon "^6.17.0"
 
 babel-generator@^6.1.0, babel-generator@^6.24.1:
   version "6.24.1"
@@ -785,7 +784,7 @@ babel-template@^6.24.1:
     babylon "^6.11.0"
     lodash "^4.2.0"
 
-babel-traverse@^6.0.20, babel-traverse@^6.24.1:
+babel-traverse@^6.23.1, babel-traverse@^6.24.1:
   version "6.24.1"
   resolved babel-traverse-6.24.1.tgz#ab36673fd356f9a0948659e7b338d5feadb31695
   dependencies:
@@ -799,7 +798,7 @@ babel-traverse@^6.0.20, babel-traverse@^6.24.1:
     invariant "^2.2.0"
     lodash "^4.2.0"
 
-babel-types@^6.0.19, babel-types@^6.19.0, babel-types@^6.24.1:
+babel-types@^6.19.0, babel-types@^6.23.0, babel-types@^6.24.1:
   version "6.24.1"
   resolved babel-types-6.24.1.tgz#a136879dc15b3606bda0d90c1fc74304c2ff0975
   dependencies:
@@ -816,9 +815,13 @@ babylon@7.0.0-beta.8:
   version "7.0.0-beta.8"
   resolved babylon-7.0.0-beta.8.tgz#2bdc5ae366041442c27e068cce6f0d7c06ea9949
 
-babylon@^6.0.18, babylon@^6.1.0, babylon@^6.11.0, babylon@^6.15.0:
+babylon@^6.1.0, babylon@^6.11.0, babylon@^6.15.0:
   version "6.16.1"
   resolved babylon-6.16.1.tgz#30c5a22f481978a9e7f8cdfdf496b11d94b404d3
+
+babylon@^6.17.0:
+  version "6.17.0"
+  resolved babylon-6.17.0.tgz#37da948878488b9c4e3c4038893fa3314b3fc932
 
 balanced-match@^0.4.1:
   version "0.4.2"
@@ -2465,10 +2468,6 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash.assign@^4.0.0:
-  version "4.2.0"
-  resolved lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7
-
 lodash.camelcase@^4.1.1:
   version "4.3.0"
   resolved lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6
@@ -2512,10 +2511,6 @@ lodash.kebabcase@^4.0.1:
 lodash.merge@^4.6.0:
   version "4.6.0"
   resolved lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5
-
-lodash.pickby@^4.0.0:
-  version "4.6.0"
-  resolved lodash.pickby-4.6.0.tgz#7dea21d8c18d7703a27c704c15d3b84a67e33aff
 
 lodash.snakecase@^4.0.1:
   version "4.1.1"
@@ -3013,9 +3008,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b
 
-prettier@^1.1.0:
-  version "1.1.0"
-  resolved prettier-1.1.0.tgz#9d6ad005703efefa66b6999b8916bfc6afeaf9f8
+prettier@^1.2.2:
+  version "1.2.2"
+  resolved prettier-1.2.2.tgz#22d17c1132faaaea1f1d4faea31f19f7a1959f3e
   dependencies:
     ast-types "0.9.8"
     babel-code-frame "6.22.0"
