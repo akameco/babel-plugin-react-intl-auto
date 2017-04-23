@@ -8,6 +8,9 @@
     "format": "prettier --single-quote --trailing-comma es5  --semi=false --write \"src/**/*.js,test/index.js\"",
     "test": "ava"
   },
+  "files": [
+    "lib/index.js"
+  ],
   "xo": {
     "space": true,
     "semicolon": false,
