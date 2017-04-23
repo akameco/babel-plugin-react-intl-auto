@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d lib",
+    "prepublish": "npm run build",
     "format": "prettier --single-quote --trailing-comma es5  --semi=false --write \"src/**/*.js,test/index.js\"",
     "test": "ava"
   },
