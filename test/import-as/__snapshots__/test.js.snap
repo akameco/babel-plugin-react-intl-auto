@@ -7,11 +7,11 @@ var _reactIntl = require('react-intl');
 
 (0, _reactIntl.defineMessages)({
   hello: {
-    'id': 'test/import-as/hello',
+    'id': 'test.import-as.hello',
     'defaultMessage': 'hello'
   },
   world: {
-    'id': 'test/import-as/world',
+    'id': 'test.import-as.world',
     'defaultMessage': 'hello world'
   }
 });"

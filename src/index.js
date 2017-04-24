@@ -28,7 +28,7 @@ const getId = (path, prefix) => {
   if (!(path.isIdentifier() && path.node.name)) {
     return
   }
-  return p.join(prefix, path.node.name)
+  return p.join(prefix, path.node.name).replace(/\//g, '.')
 }
 
 const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
