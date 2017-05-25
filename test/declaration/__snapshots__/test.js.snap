@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`declaration 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+const messages = {
+  hello: {
+    'id': 'test.declaration.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'test.declaration.world',
+    'defaultMessage': 'hello world'
+  }
+};
+
+(0, _reactIntl.defineMessages)(messages);"
+`;

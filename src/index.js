@@ -46,9 +46,29 @@ export default function({ types: t }: Object) {
           return
         }
 
-        const messagesObj = path.get('arguments')[0]
+        let messagesObj = path.get('arguments')[0]
+        if (!messagesObj) {
+          return false
+        }
 
-        if (!(messagesObj && messagesObj.isObjectExpression())) {
+        if (!(messagesObj.isObjectExpression() || messagesObj.isIdentifier())) {
+          return false
+        }
+
+        let properties
+
+        if (messagesObj.isObjectExpression()) {
+          properties = messagesObj.get('properties')
+        } else if (messagesObj.isIdentifier()) {
+          const name = messagesObj.node.name
+          const obj = messagesObj.scope.getBinding(name)
+          if (!obj) {
+            return false
+          }
+          properties = obj.path.get('init').get('properties')
+        }
+
+        if (!properties) {
           return
         }
 
@@ -56,8 +76,6 @@ export default function({ types: t }: Object) {
           state.file.opts.filename,
           state.opts.removePrefix || ''
         )
-
-        const properties = messagesObj.get('properties')
 
         for (const prop of properties) {
           const v = prop.get('value')
@@ -71,11 +89,11 @@ export default function({ types: t }: Object) {
           v.replaceWith(
             t.objectExpression([
               t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-              t.objectProperty(t.stringLiteral('defaultMessage'), v.node)
+              t.objectProperty(t.stringLiteral('defaultMessage'), v.node),
             ])
           )
         }
-      }
-    }
+      },
+    },
   }
 }
