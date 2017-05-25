@@ -2,10 +2,30 @@
 import p from 'path'
 import * as t from 'babel-types'
 
+type File = {
+  opts: {
+    filename: string,
+  },
+  metadata: {
+    modules: {
+      imports: {
+        find: Function,
+      },
+    },
+  },
+}
+
+type State = {
+  file: File,
+  opts: {
+    removePrefix?: string,
+  },
+}
+
 const PKG_NAME = 'react-intl'
 const FUNC_NAME = 'defineMessages'
 
-const isImportLocalName = (name: string, { file }: Object) => {
+const isImportLocalName = (name: string, { file }: State) => {
   const imports = file.metadata.modules.imports
   const intlImports = imports.find(x => x.source === PKG_NAME)
   if (intlImports) {
@@ -18,7 +38,10 @@ const isImportLocalName = (name: string, { file }: Object) => {
   return false
 }
 
-const getPrefix = (filename: string, removePrefix: string) => {
+const getPrefix = ({
+  file: { opts: { filename } },
+  opts: { removePrefix = '' },
+}: State) => {
   const relativePath = p.dirname(p.join(p.relative(process.cwd(), filename)))
   const prefix = relativePath.replace(new RegExp(`^${removePrefix}`), '')
   return prefix
@@ -26,7 +49,7 @@ const getPrefix = (filename: string, removePrefix: string) => {
 
 const getId = (path, prefix) => {
   if (!(path.isIdentifier() && path.node.name)) {
-    return
+    return false
   }
   return p.join(prefix, path.node.name).replace(/\//g, '.')
 }
@@ -36,7 +59,7 @@ const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
 export default function({ types: t }: Object) {
   return {
     visitor: {
-      CallExpression(path: Object, state: Object) {
+      CallExpression(path: Object, state: State) {
         const callee = path.get('callee')
         if (!callee.isIdentifier()) {
           return
@@ -46,13 +69,13 @@ export default function({ types: t }: Object) {
           return
         }
 
-        let messagesObj = path.get('arguments')[0]
+        const messagesObj = path.get('arguments')[0]
         if (!messagesObj) {
-          return false
+          return
         }
 
         if (!(messagesObj.isObjectExpression() || messagesObj.isIdentifier())) {
-          return false
+          return
         }
 
         let properties
@@ -63,7 +86,7 @@ export default function({ types: t }: Object) {
           const name = messagesObj.node.name
           const obj = messagesObj.scope.getBinding(name)
           if (!obj) {
-            return false
+            return
           }
           properties = obj.path.get('init').get('properties')
         }
@@ -72,10 +95,7 @@ export default function({ types: t }: Object) {
           return
         }
 
-        const prefix = getPrefix(
-          state.file.opts.filename,
-          state.opts.removePrefix || ''
-        )
+        const prefix = getPrefix(state)
 
         for (const prop of properties) {
           const v = prop.get('value')
