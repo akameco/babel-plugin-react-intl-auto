@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-intl-auto",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "lib/index.js",
   "license": "MIT",
   "repository": "akameco/babel-plugin-react-intl-auto",
@@ -16,7 +16,7 @@
     "lint": "eslint src/",
     "test": "npm run lint && ava"
   },
- "keywords": [
+  "keywords": [
     "react",
     "react-components",
     "react-intl",
