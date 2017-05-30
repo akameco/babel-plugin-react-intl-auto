@@ -2,6 +2,7 @@
   "name": "babel-plugin-react-intl-auto",
   "version": "0.5.1",
   "main": "lib/index.js",
+  "description": "i18n for the component age. Auto management react-intl ID",
   "license": "MIT",
   "repository": "akameco/babel-plugin-react-intl-auto",
   "author": {
