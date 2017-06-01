@@ -47,6 +47,21 @@ export default defineMessages({
 
 See [examples](https://github.com/akameco/babel-plugin-react-intl-auto/tree/master/example).
 
+with [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
+
+```
+$ extract-messages -l=en -o translations 'src/**/*.js'
+```
+
+en.json
+
+```json
+{
+  "components.App.hello": "hello {name}",
+  "components.App.welcome": "Welcome"
+}
+```
+
 ## Install
 
 ```
