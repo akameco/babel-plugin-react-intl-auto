@@ -2,6 +2,7 @@
 import p from 'path'
 import * as t from 'babel-types'
 
+/* ::
 type File = {
   opts: {
     filename: string,
@@ -21,6 +22,7 @@ type State = {
     removePrefix?: string,
   },
 }
+*/
 
 const PKG_NAME = 'react-intl'
 const FUNC_NAME = 'defineMessages'

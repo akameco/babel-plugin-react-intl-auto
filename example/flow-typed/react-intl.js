@@ -7,10 +7,12 @@ type LocaleData = {
   locale: string,
 }
 
-type MessageDescriptor = string || {|
-  defaultMessage: string,
-  description?: string,
-|}
+type MessageDescriptor =
+  | string
+  | {|
+      defaultMessage: string,
+      description?: string,
+    |}
 
 type MessageDescriptorMap = { [key: string]: MessageDescriptor }
 
