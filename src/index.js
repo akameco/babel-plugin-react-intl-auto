@@ -43,7 +43,7 @@ const getPrefix = ({
   opts: { removePrefix = '' },
 }: State) => {
   const relativePath = p.dirname(p.join(p.relative(process.cwd(), filename)))
-  const prefix = relativePath.replace(new RegExp(`^${removePrefix}`), '')
+  const prefix = relativePath.replace(new RegExp(`^${removePrefix}/?`), '')
   return prefix
 }
 

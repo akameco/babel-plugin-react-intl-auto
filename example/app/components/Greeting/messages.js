@@ -8,5 +8,5 @@ export default defineMessages({
       one {{formattedUnreadCount} new message}
       other {{formattedUnreadCount} new messages}
     } since {formattedLastLoginTime}.
-    `
+    `,
 })
