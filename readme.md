@@ -13,7 +13,7 @@ Based on the file path, this automatically generate a prefixed id.
 Also, we strongly encourage you to use [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
 You can generate json automatically.
 
-Goodbye to the global ID!!
+Goodbye, global ID!!
 
 ### Before
 
