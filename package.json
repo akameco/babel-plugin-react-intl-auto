@@ -11,7 +11,7 @@
     "url": "akameco.github.io"
   },
   "scripts": {
-    "build": "babel src -d lib --ignore __tests__",
+    "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepublishOnly": "npm run build",
     "format": "prettier --single-quote --trailing-comma es5  --semi=false --write \"src/**/*.js,test/index.js\"",
     "lint": "eslint src/index.js",
@@ -32,7 +32,7 @@
     "defineMessages"
   ],
   "files": [
-    "lib/index.js"
+    "lib"
   ],
   "dependencies": {
     "babel-types": "^6.25.0"
