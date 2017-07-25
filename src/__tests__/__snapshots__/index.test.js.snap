@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot removePrefix -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot removePrefix -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot removePrefix -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot removePrefix -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;
+
+exports[`snapshot removePrefix:no-slash -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot removePrefix:no-slash -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot removePrefix:no-slash -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot removePrefix:no-slash -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;
+
+exports[`snapshot snapshot -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot snapshot -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot snapshot -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot snapshot -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;

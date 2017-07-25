@@ -11,12 +11,12 @@
     "url": "akameco.github.io"
   },
   "scripts": {
-    "build": "babel src -d lib",
-    "prepublish": "npm run build",
+    "build": "babel src -d lib --ignore __tests__",
+    "prepublishOnly": "npm run build",
     "format": "prettier --single-quote --trailing-comma es5  --semi=false --write \"src/**/*.js,test/index.js\"",
-    "lint": "eslint src/",
-    "test": "npm run lint && ava",
-    "test:watch": "ava --watch"
+    "lint": "eslint src/index.js",
+    "test": "npm run lint && jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [
     "react",
@@ -34,29 +34,21 @@
   "files": [
     "lib/index.js"
   ],
-  "ava": {
-    "files": [
-      "**/test.js"
-    ],
-    "require": [
-      "babel-register"
-    ],
-    "babel": "inherit"
-  },
   "dependencies": {
     "babel-types": "^6.25.0"
   },
   "devDependencies": {
-    "ava": "^0.21.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.24.1",
     "eslint": "^4.3.0",
     "eslint-config-precure": "^0.7.1",
     "flow-bin": "^0.51.0",
+    "jest": "^20.0.4",
     "prettier": "^1.5.3"
   }
 }
