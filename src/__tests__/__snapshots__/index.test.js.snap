@@ -34,6 +34,34 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot removePrefix -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': '__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': '__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});"
+`;
+
 exports[`snapshot removePrefix -- string.js 1`] = `
 "'use strict';
 
@@ -106,6 +134,34 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot removePrefix:no-slash -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': '__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': '__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});"
+`;
+
 exports[`snapshot removePrefix:no-slash -- string.js 1`] = `
 "'use strict';
 
@@ -174,6 +230,34 @@ var _reactIntl = require('react-intl');
   world: {
     'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot snapshot -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': 'src.__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
   }
 });"
 `;

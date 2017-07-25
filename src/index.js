@@ -1,26 +1,7 @@
 // @flow
 import p from 'path'
 import * as t from 'babel-types'
-
-type File = {
-  opts: {
-    filename: string,
-  },
-  metadata: {
-    modules: {
-      imports: {
-        find: Function,
-      },
-    },
-  },
-}
-
-type State = {
-  file: File,
-  opts: {
-    removePrefix?: string,
-  },
-}
+import type { State } from './types'
 
 const PKG_NAME = 'react-intl'
 const FUNC_NAME = 'defineMessages'
@@ -100,18 +81,39 @@ export default function({ types: t }: Object) {
         for (const prop of properties) {
           const v = prop.get('value')
 
-          if (!isLiteral(v)) {
-            continue
+          // { defaultMessage: 'hello', description: 'this is hello' }
+          if (v.isObjectExpression()) {
+            const objProps = v.get('properties')
+
+            // { id: 'already has id', defaultMessage: 'hello' }
+            const isNotHaveId = objProps.every(
+              v => v.get('key').node.name !== 'id'
+            )
+            if (!isNotHaveId) {
+              continue
+            }
+
+            const id = getId(prop.get('key'), prefix)
+
+            v.replaceWith(
+              t.objectExpression([
+                t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
+                ...objProps.map(v => v.node),
+              ])
+            )
           }
 
-          const id = getId(prop.get('key'), prefix)
+          // { hello: 'hello'}
+          if (isLiteral(v)) {
+            const id = getId(prop.get('key'), prefix)
 
-          v.replaceWith(
-            t.objectExpression([
-              t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-              t.objectProperty(t.stringLiteral('defaultMessage'), v.node),
-            ])
-          )
+            v.replaceWith(
+              t.objectExpression([
+                t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
+                t.objectProperty(t.stringLiteral('defaultMessage'), v.node),
+              ])
+            )
+          }
         }
       },
     },
