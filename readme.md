@@ -89,11 +89,11 @@ $ yarn add --dev babel-plugin-react-intl-auto
 
 remove prefix.
 
-Type: `string`
-Default: ``
+Type: `string` <br>
+Default: `''`
 
 #### filebase
-Type: `boolean`
+Type: `boolean` <br>
 Default: `false`
 
 if fileBase `true`, Generate id with filename.
