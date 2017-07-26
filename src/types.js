@@ -16,5 +16,6 @@ export type State = {
   file: File,
   opts: {
     removePrefix?: string,
+    filebase?: boolean,
   },
 }
