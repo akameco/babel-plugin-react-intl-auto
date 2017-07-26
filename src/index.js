@@ -103,7 +103,7 @@ export default function({ types: t }: Object) {
             )
           }
 
-          // { hello: 'hello'}
+          // 'hello' or `hello ${user}`
           if (isLiteral(v)) {
             const id = getId(prop.get('key'), prefix)
 
