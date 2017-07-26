@@ -1,5 +1,205 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`snapshot filebase = false -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot filebase = false -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot filebase = false -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': 'src.__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});"
+`;
+
+exports[`snapshot filebase = false -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot filebase = false -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;
+
+exports[`snapshot filebase = true -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.basic.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.basic.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot filebase = true -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.import-as.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.import-as.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot filebase = true -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.object.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': 'src.__fixtures__.object.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': 'src.__fixtures__.object.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});"
+`;
+
+exports[`snapshot filebase = true -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.string.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.string.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot filebase = true -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.with-other-func.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.with-other-func.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;
+
 exports[`snapshot removePrefix -- basic.js 1`] = `
 "'use strict';
 

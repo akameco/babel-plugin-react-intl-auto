@@ -21,11 +21,12 @@ const isImportLocalName = (name: string, { file }: State) => {
 
 const getPrefix = ({
   file: { opts: { filename } },
-  opts: { removePrefix = '' },
+  opts: { removePrefix = '', filebase = false },
 }: State) => {
-  const relativePath = p.dirname(p.join(p.relative(process.cwd(), filename)))
-  const prefix = relativePath.replace(new RegExp(`^${removePrefix}/?`), '')
-  return prefix
+  const file = p.relative(process.cwd(), filename)
+  const fomatted = filebase ? file.replace(/\..+$/, '') : p.dirname(file)
+  const result = fomatted.replace(new RegExp(`^${removePrefix}/?`), '')
+  return result
 }
 
 const getId = (path, prefix) => {

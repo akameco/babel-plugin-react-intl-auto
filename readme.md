@@ -76,11 +76,27 @@ $ yarn add --dev babel-plugin-react-intl-auto
 {
   "plugins": [
     ["react-intl-auto", {
-      "removePrefix": "app/"
+      "removePrefix": "app/",
+      "filebase": false
     }]
   ]
 }
 ```
+
+### Options
+
+#### removePrefix
+
+remove prefix.
+
+Type: `string`
+Default: ``
+
+#### filebase
+Type: `boolean`
+Default: `false`
+
+if fileBase `true`, Generate id with filename.
 
 ## License
 

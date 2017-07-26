@@ -35,5 +35,19 @@ describe('snapshot', () => {
       })
       expect(result).toMatchSnapshot()
     })
+
+    test(`filebase = true -- ${file}`, () => {
+      const result = testPlugin(path.join(rootPath, file), {
+        filebase: true,
+      })
+      expect(result).toMatchSnapshot()
+    })
+
+    test(`filebase = false -- ${file}`, () => {
+      const result = testPlugin(path.join(rootPath, file), {
+        filebase: false,
+      })
+      expect(result).toMatchSnapshot()
+    })
   }
 })
