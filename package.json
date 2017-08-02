@@ -13,9 +13,9 @@
   "scripts": {
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepublishOnly": "npm run build",
-    "format": "prettier --single-quote --trailing-comma es5  --semi=false --write \"src/**/*.js,test/index.js\"",
+    "format": "prettier --single-quote --trailing-comma es5 --semi=false --write 'src/**/*.js'",
     "lint": "eslint src/index.js",
-    "test": "npm run lint && jest",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "keywords": [
@@ -31,9 +31,7 @@
     "generate",
     "defineMessages"
   ],
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "dependencies": {
     "babel-types": "^6.25.0"
   },
