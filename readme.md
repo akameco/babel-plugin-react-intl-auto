@@ -64,6 +64,14 @@ en.json
 
 ## Install
 
+npm
+
+```
+$ npm install --save-dev babel-plugin-react-intl-auto
+```
+
+yarn
+
 ```
 $ yarn add --dev babel-plugin-react-intl-auto
 ```
