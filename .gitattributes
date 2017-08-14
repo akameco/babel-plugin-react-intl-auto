@@ -2,3 +2,4 @@
 *.js text eol=lf
 flowtyped/npm binary
 package-lock.json binary
+*.lock binary
