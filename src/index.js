@@ -101,6 +101,7 @@ const replaceProperties = (properties: Object[], state) => {
 
 export default function() {
   return {
+    name: 'react-intl-auto',
     visitor: {
       CallExpression(path: Object, state: State) {
         if (!isValidate(path, state)) {
