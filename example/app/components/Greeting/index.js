@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import {
   FormattedMessage,
   FormattedNumber,
@@ -15,9 +15,7 @@ type User = {
 
 type Props = { user: User }
 
-export default class Greeting extends Component {
-  props: Props
-
+export default class Greeting extends React.Component<Props> {
   render() {
     const { user } = this.props
 
@@ -26,7 +24,11 @@ export default class Greeting extends Component {
         <FormattedMessage
           {...messages.welcome}
           values={{
-            name: <b>{user.name}</b>,
+            name: (
+              <b>
+                {user.name}
+              </b>
+            ),
             unreadCount: user.unreadCount,
             formattedUnreadCount: (
               <b>

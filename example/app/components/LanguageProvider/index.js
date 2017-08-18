@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import * as React from 'react'
 import { addLocaleData, IntlProvider } from 'react-intl'
 import enLocaleData from 'react-intl/locale-data/en'
 import jaLocaleData from 'react-intl/locale-data/ja'
@@ -15,8 +15,10 @@ const messages = {
   ja: jaMessages,
 }
 
-export default class LanguageProvider extends Component {
-  props: { children?: React$Element<*> }
+export default class LanguageProvider extends React.Component<
+  { children?: React.Node },
+  { locale: string }
+> {
   state: { locale: string } = { locale: 'en' }
 
   render() {
@@ -26,7 +28,6 @@ export default class LanguageProvider extends Component {
         <IntlProvider locale={locale} messages={messages[locale]}>
           {this.props.children}
         </IntlProvider>
-
         <a onClick={() => this.setState({ locale: 'en' })}>English</a>
         /
         <a onClick={() => this.setState({ locale: 'ja' })}>日本語</a>

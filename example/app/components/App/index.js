@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import Greeting from '../Greeting'
 import messages from './messages'
 
-export default class App extends Component {
+export default class App extends Component<{}> {
   render() {
     const user = {
       name: 'Eric',
