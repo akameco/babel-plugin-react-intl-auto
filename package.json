@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-intl-auto",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "main": "lib/index.js",
   "description": "i18n for the component age. Auto management react-intl ID",
   "license": "MIT",
