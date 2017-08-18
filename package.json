@@ -35,19 +35,19 @@
     "lib"
   ],
   "dependencies": {
-    "babel-types": "^6.25.0"
+    "babel-types": "^6.26.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
-    "babel-register": "^6.24.1",
+    "babel-register": "^6.26.0",
     "eslint": "^4.3.0",
     "eslint-config-precure": "^0.7.1",
-    "flow-bin": "^0.52.0",
+    "flow-bin": "^0.53.1",
     "jest": "^20.0.4",
     "prettier": "^1.5.3"
   }
