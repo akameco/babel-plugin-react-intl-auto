@@ -13,7 +13,7 @@
   "scripts": {
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepublishOnly": "npm run build",
-    "format": "prettier --single-quote --trailing-comma es5 --semi=false --write 'src/**/*.js'",
+    "format": "prettier --write 'src/**/*.js'",
     "lint": "eslint src/index.js",
     "test": "jest",
     "test:watch": "jest --watch"
