@@ -34,7 +34,7 @@ const getId = (path, prefix) => {
   
   if (path.isStringLiteral()) {
     name = path.node.value
-  } else if (path.isLiteral()) {
+  } else if (path.isIdentifier()) {
     name = path.node.name
   } 
   
