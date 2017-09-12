@@ -24,11 +24,7 @@ export default class Greeting extends React.Component<Props> {
         <FormattedMessage
           {...messages.welcome}
           values={{
-            name: (
-              <b>
-                {user.name}
-              </b>
-            ),
+            name: <b>{user.name}</b>,
             unreadCount: user.unreadCount,
             formattedUnreadCount: (
               <b>
