@@ -11,12 +11,16 @@
     "url": "akameco.github.io"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepublishOnly": "npm run build",
-    "format": "prettier --write 'src/**/*.js'",
+    "prettier": "prettier --write 'src/**/*.js'",
     "lint": "eslint src/index.js",
     "test": "jest",
     "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "src/**/*.js": ["prettier", "lint", "test", "git add"]
   },
   "keywords": [
     "react",
@@ -31,11 +35,11 @@
     "generate",
     "defineMessages"
   ],
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "dependencies": {
-    "babel-types": "^6.26.0"
+    "babel-types": "^6.26.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.1.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
