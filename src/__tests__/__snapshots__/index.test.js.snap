@@ -79,6 +79,23 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot filebase = false -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
+});"
+`;
+
 exports[`snapshot filebase = false -- with-other-func.js 1`] = `
 "'use strict';
 
@@ -176,6 +193,23 @@ var _reactIntl = require('react-intl');
     'id': 'src.__fixtures__.string.world',
     'defaultMessage': \`hello world \${1}\`
   }
+});"
+`;
+
+exports[`snapshot filebase = true -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': 'src.__fixtures__.string-literal.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': 'src.__fixtures__.string-literal.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
 });"
 `;
 
@@ -279,6 +313,23 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot removePrefix -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
+});"
+`;
+
 exports[`snapshot removePrefix -- with-other-func.js 1`] = `
 "'use strict';
 
@@ -379,6 +430,23 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot removePrefix:no-slash -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
+});"
+`;
+
 exports[`snapshot removePrefix:no-slash -- with-other-func.js 1`] = `
 "'use strict';
 
@@ -476,6 +544,23 @@ var _reactIntl = require('react-intl');
     'id': 'src.__fixtures__.world',
     'defaultMessage': \`hello world \${1}\`
   }
+});"
+`;
+
+exports[`snapshot snapshot -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
 });"
 `;
 
