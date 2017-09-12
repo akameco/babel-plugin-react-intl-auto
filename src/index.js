@@ -30,14 +30,14 @@ const getPrefix = ({
 }
 
 const getId = (path, prefix) => {
-  let name;
-  
+  let name
+
   if (path.isStringLiteral()) {
     name = path.node.value
   } else if (path.isIdentifier()) {
     name = path.node.name
-  } 
-  
+  }
+
   if (!name) {
     throw new Error(`requires Object key or string literal`)
   }
