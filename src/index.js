@@ -30,10 +30,19 @@ const getPrefix = ({
 }
 
 const getId = (path, prefix) => {
-  if (!(path.isIdentifier() && path.node.name)) {
-    throw new Error(`require Object key`)
+  let name;
+  
+  if (path.isStringLiteral()) {
+    name = path.node.value
+  } else if (path.isIdentifier()) {
+    name = path.node.name
+  } 
+  
+  if (!name) {
+    throw new Error(`requires Object key or string literal`)
   }
-  return p.join(prefix, path.node.name).replace(/\//g, '.')
+
+  return p.join(prefix, name).replace(/\//g, '.')
 }
 
 const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
