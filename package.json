@@ -13,7 +13,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
-    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "prettier": "prettier --write 'src/**/*.js'",
     "lint": "eslint src/index.js",
     "test": "jest",
