@@ -1,4 +1,5 @@
 // @flow
+
 import p from 'path'
 import * as t from 'babel-types'
 import type { State } from './types'
@@ -19,13 +20,17 @@ const isImportLocalName = (name: string, { file }: State) => {
   return false
 }
 
-const getPrefix = ({
-  file: { opts: { filename } },
-  opts: { removePrefix = '', filebase = false },
-}: State) => {
+const getPrefix = (
+  {
+    file: { opts: { filename } },
+    opts: { removePrefix = '', filebase = false },
+  }: State,
+  exportName: string | null
+) => {
   const file = p.relative(process.cwd(), filename)
   const fomatted = filebase ? file.replace(/\..+$/, '') : p.dirname(file)
-  const result = fomatted.replace(new RegExp(`^${removePrefix}/?`), '')
+  const fixed = fomatted.replace(new RegExp(`^${removePrefix}/?`), '')
+  const result = exportName === null ? fixed : `${fixed}.${exportName}`
   return result
 }
 
@@ -69,8 +74,12 @@ const isValidate = (path: Object, state: State): boolean => {
   return true
 }
 
-const replaceProperties = (properties: Object[], state) => {
-  const prefix = getPrefix(state)
+const replaceProperties = (
+  properties: Object[],
+  state,
+  exportName: string | null
+) => {
+  const prefix = getPrefix(state, exportName)
 
   for (const prop of properties) {
     const v = prop.get('value')
@@ -108,6 +117,26 @@ const replaceProperties = (properties: Object[], state) => {
   }
 }
 
+const getExportName = (
+  namedExport,
+  defaultExport,
+  includeExportName
+): string | null => {
+  if (includeExportName && namedExport) {
+    return namedExport
+      .get('declaration')
+      .get('declarations')[0]
+      .get('id')
+      .get('name').node
+  }
+
+  if (includeExportName === 'all' && defaultExport) {
+    return 'default'
+  }
+
+  return null
+}
+
 export default function() {
   return {
     name: 'react-intl-auto',
@@ -117,6 +146,15 @@ export default function() {
           return
         }
 
+        const namedExport = path.findParent(p => p.isExportNamedDeclaration())
+        const defaultExport = path.findParent(p =>
+          p.isExportDefaultDeclaration()
+        )
+        const exportName = getExportName(
+          namedExport,
+          defaultExport,
+          state.opts.includeExportName || false
+        )
         const messagesObj = path.get('arguments')[0]
 
         let properties
@@ -133,7 +171,7 @@ export default function() {
         }
 
         if (properties) {
-          replaceProperties(properties, state)
+          replaceProperties(properties, state, exportName)
         }
       },
     },

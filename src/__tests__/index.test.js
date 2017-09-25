@@ -49,5 +49,19 @@ describe('snapshot', () => {
       })
       expect(result).toMatchSnapshot()
     })
+
+    test(`includeExportName = true -- ${file}`, () => {
+      const result = testPlugin(path.join(rootPath, file), {
+        includeExportName: true,
+      })
+      expect(result).toMatchSnapshot()
+    })
+
+    test(`includeExportName = all -- ${file}`, () => {
+      const result = testPlugin(path.join(rootPath, file), {
+        includeExportName: 'all',
+      })
+      expect(result).toMatchSnapshot()
+    })
   }
 })
