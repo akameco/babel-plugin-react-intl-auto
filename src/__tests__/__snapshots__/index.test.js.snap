@@ -34,6 +34,39 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot filebase = false -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
 exports[`snapshot filebase = false -- object.js 1`] = `
 "'use strict';
 
@@ -151,6 +184,39 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot filebase = true -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.multi-export.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.multi-export.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.multi-export.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.multi-export.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
 exports[`snapshot filebase = true -- object.js 1`] = `
 "'use strict';
 
@@ -234,6 +300,306 @@ hello({
 });"
 `;
 
+exports[`snapshot includeExportName = all -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = all -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = all -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.extra.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.extra.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.default.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.default.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = all -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': 'src.__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = all -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = all -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
+});"
+`;
+
+exports[`snapshot includeExportName = all -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;
+
+exports[`snapshot includeExportName = true -- basic.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = true -- import-as.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = true -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.extra.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.extra.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = true -- object.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': 'src.__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = true -- string.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});"
+`;
+
+exports[`snapshot includeExportName = true -- string-literal.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  'hello': {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  }, // prettier-ignore
+  'world': {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  } // prettier-ignore
+});"
+`;
+
+exports[`snapshot includeExportName = true -- with-other-func.js 1`] = `
+"'use strict';
+
+var _reactIntl = require('react-intl');
+
+(0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});"
+`;
+
 exports[`snapshot removePrefix -- basic.js 1`] = `
 "'use strict';
 
@@ -257,6 +623,39 @@ exports[`snapshot removePrefix -- import-as.js 1`] = `
 var _reactIntl = require('react-intl');
 
 (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot removePrefix -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
   hello: {
     'id': '__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -385,6 +784,39 @@ var _reactIntl = require('react-intl');
 });"
 `;
 
+exports[`snapshot removePrefix:no-slash -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
 exports[`snapshot removePrefix:no-slash -- object.js 1`] = `
 "'use strict';
 
@@ -491,6 +923,39 @@ exports[`snapshot snapshot -- import-as.js 1`] = `
 var _reactIntl = require('react-intl');
 
 (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});"
+`;
+
+exports[`snapshot snapshot -- multi-export.js 1`] = `
+"'use strict';
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
+exports.extra = undefined;
+
+var _reactIntl = require('react-intl');
+
+const extra = exports.extra = (0, _reactIntl.defineMessages)({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+exports.default = (0, _reactIntl.defineMessages)({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'

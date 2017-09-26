@@ -17,5 +17,6 @@ export type State = {
   opts: {
     removePrefix?: string,
     filebase?: boolean,
+    includeExportName?: boolean | 'all',
   },
 }
