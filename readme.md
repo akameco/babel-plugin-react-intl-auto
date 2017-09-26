@@ -106,6 +106,30 @@ Default: `false`
 
 if fileBase `true`, Generate id with filename.
 
+#### includeExportName
+Type: `boolean | 'all'` <br>
+Default: `false`
+
+if includeExportName is `true`, adds named exports as part of the id. Example:
+
+```js
+// before
+export const test = defineMessages({
+  hello: 'hello {name}',
+})
+
+// after
+export const test = defineMessages({
+  hello: {
+    id: 'path.to.file.test.hello',
+    defaultMessage: 'hello {name}',
+  },
+})
+```
+
+If includeExportName is `'all'`, it will also add `default` to the id on default
+exports.
+
 ## License
 
 MIT © [akameco](http://akameco.github.io)
