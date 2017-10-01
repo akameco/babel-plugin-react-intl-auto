@@ -14,18 +14,14 @@
     "precommit": "lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepare": "npm run build",
-    "prettier": "prettier --write 'src/**/*.js'",
+    "fmt": "prettier --write '{src/**/*.js,*.json}'",
     "lint": "eslint src/index.js",
     "test": "jest",
     "test:watch": "jest --watch"
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "prettier",
-      "lint",
-      "test",
-      "git add"
-    ]
+    "src/**/*.js": ["fmt", "lint", "test", "git add"],
+    "*.json": ["fmt", "git add"]
   },
   "keywords": [
     "react",
@@ -40,9 +36,7 @@
     "generate",
     "defineMessages"
   ],
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "dependencies": {
     "babel-types": "^6.26.0"
   },
