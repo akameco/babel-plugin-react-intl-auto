@@ -131,10 +131,6 @@ export const test = defineMessages({
 If includeExportName is `'all'`, it will also add `default` to the id on default
 exports.
 
-## License
-
-MIT © [akameco](http://akameco.github.io)
-
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
@@ -145,3 +141,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
+
+## License
+
+MIT © [akameco](http://akameco.github.io)
