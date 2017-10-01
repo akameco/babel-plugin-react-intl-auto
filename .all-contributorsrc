@@ -1,0 +1,42 @@
+{
+  "projectName": "babel-plugin-react-intl-auto",
+  "projectOwner": "akameco",
+  "files": [
+    "readme.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "akameco",
+      "name": "akameco",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4002137?v=4",
+      "profile": "http://akameco.github.io",
+      "contributions": [
+        "code",
+        "test",
+        "review",
+        "doc"
+      ]
+    },
+    {
+      "login": "Alxandr",
+      "name": "Aleksander Heintz",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/112334?v=4",
+      "profile": "http://alxandr.me",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "mehcode",
+      "name": "Ryan Leckey",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/753919?v=4",
+      "profile": "https://github.com/mehcode",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
