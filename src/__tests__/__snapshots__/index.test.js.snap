@@ -1,82 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot filebase = false -- basic.js 1`] = `
-"'use strict';
+exports[`Object 1`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
   },
   world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot filebase = false -- import-as.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
+    defaultMessage: 'world',
   },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot filebase = false -- multi-export.js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.extra = undefined;
-
-var _reactIntl = require('react-intl');
-
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello extra'
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
   },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world extra'
-  }
-});
+})
 
-exports.default = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-exports[`snapshot filebase = false -- object.js 1`] = `
-"'use strict';
+import { defineMessages } from 'react-intl';
 
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
+defineMessages({
   new: {
     id: 'this is id',
     defaultMessage: 'id'
@@ -92,220 +38,150 @@ var _reactIntl = require('react-intl');
     defaultMessage: 'Welcome to dashboard {name}!',
     description: 'Message to greet the user.'
   }
-});"
-`;
-
-exports[`snapshot filebase = false -- string.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
-
-exports[`snapshot filebase = false -- string-literal.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  'hello': {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  }, // prettier-ignore
-  'world': {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
-`;
-
-exports[`snapshot filebase = false -- with-other-func.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
 });
-
-hello({
-  id: 'hoge'
-});"
+"
 `;
 
-exports[`snapshot filebase = true -- basic.js 1`] = `
-"'use strict';
+exports[`Object 2`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.basic.hello',
-    'defaultMessage': 'hello'
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
   },
   world: {
-    'id': 'src.__fixtures__.basic.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot filebase = true -- import-as.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.import-as.hello',
-    'defaultMessage': 'hello'
+    defaultMessage: 'world',
   },
-  world: {
-    'id': 'src.__fixtures__.import-as.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot filebase = true -- multi-export.js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.extra = undefined;
-
-var _reactIntl = require('react-intl');
-
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.multi-export.hello',
-    'defaultMessage': 'hello extra'
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
   },
-  world: {
-    'id': 'src.__fixtures__.multi-export.world',
-    'defaultMessage': 'hello world extra'
-  }
-});
+})
 
-exports.default = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.multi-export.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.multi-export.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-exports[`snapshot filebase = true -- object.js 1`] = `
-"'use strict';
+import { defineMessages } from 'react-intl';
 
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.object.hello',
-    'defaultMessage': 'hello'
-  },
+defineMessages({
   new: {
     id: 'this is id',
     defaultMessage: 'id'
   },
   world: {
-    'id': 'src.__fixtures__.object.world',
+    'id': '__fixtures__.world',
 
     defaultMessage: 'world'
   },
   headerTitle: {
-    'id': 'src.__fixtures__.object.headerTitle',
+    'id': '__fixtures__.headerTitle',
 
     defaultMessage: 'Welcome to dashboard {name}!',
     description: 'Message to greet the user.'
   }
-});"
+});
+"
 `;
 
-exports[`snapshot filebase = true -- string.js 1`] = `
-"'use strict';
+exports[`Object 3`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.string.hello',
-    'defaultMessage': 'hello'
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
   },
   world: {
-    'id': 'src.__fixtures__.string.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
+    defaultMessage: 'world',
+  },
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
+  },
+})
 
-exports[`snapshot filebase = true -- string-literal.js 1`] = `
-"'use strict';
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-var _reactIntl = require('react-intl');
+import { defineMessages } from 'react-intl';
 
-(0, _reactIntl.defineMessages)({
-  'hello': {
-    'id': 'src.__fixtures__.string-literal.hello',
-    'defaultMessage': 'hello'
-  }, // prettier-ignore
-  'world': {
-    'id': 'src.__fixtures__.string-literal.world',
-    'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
-`;
-
-exports[`snapshot filebase = true -- with-other-func.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.with-other-func.hello',
-    'defaultMessage': 'hello'
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
   },
   world: {
-    'id': 'src.__fixtures__.with-other-func.world',
-    'defaultMessage': \`hello world \${1}\`
+    'id': '__fixtures__.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': '__fixtures__.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
   }
 });
-
-hello({
-  id: 'hoge'
-});"
+"
 `;
 
-exports[`snapshot includeExportName = all -- basic.js 1`] = `
-"'use strict';
+exports[`Object 4`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
+  },
+  world: {
+    defaultMessage: 'world',
+  },
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
+  },
+})
 
-(0, _reactIntl.defineMessages)({
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+
+    defaultMessage: 'world'
+  },
+  headerTitle: {
+    'id': 'src.__fixtures__.messages.headerTitle',
+
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.'
+  }
+});
+"
+`;
+
+exports[`basic 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -314,15 +190,102 @@ var _reactIntl = require('react-intl');
     'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
-});"
+});
+"
 `;
 
-exports[`snapshot includeExportName = all -- import-as.js 1`] = `
-"'use strict';
+exports[`basic 2`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
 
-(0, _reactIntl.defineMessages)({
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`basic 3`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`basic 4`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`basic 5`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -331,31 +294,24 @@ var _reactIntl = require('react-intl');
     'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
-});"
+});
+"
 `;
 
-exports[`snapshot includeExportName = all -- multi-export.js 1`] = `
-"'use strict';
+exports[`basic 6`] = `
+"
+import { defineMessages } from 'react-intl'
 
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.extra = undefined;
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
 
-var _reactIntl = require('react-intl');
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.extra.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'src.__fixtures__.extra.world',
-    'defaultMessage': 'hello world extra'
-  }
-});
+import { defineMessages } from 'react-intl';
 
-exports.default = (0, _reactIntl.defineMessages)({
+export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.default.hello',
     'defaultMessage': 'hello'
@@ -364,98 +320,144 @@ exports.default = (0, _reactIntl.defineMessages)({
     'id': 'src.__fixtures__.default.world',
     'defaultMessage': 'hello world'
   }
-});"
+});
+"
 `;
 
-exports[`snapshot includeExportName = all -- object.js 1`] = `
-"'use strict';
+exports[`import as 1`] = `
+"
+import { defineMessages as m } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+m({
+  hello: 'hello',
+  world: 'hello world',
+})
 
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  new: {
-    id: 'this is id',
-    defaultMessage: 'id'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-    defaultMessage: 'world'
-  },
-  headerTitle: {
-    'id': 'src.__fixtures__.headerTitle',
+import { defineMessages as m } from 'react-intl';
 
-    defaultMessage: 'Welcome to dashboard {name}!',
-    description: 'Message to greet the user.'
-  }
-});"
-`;
-
-exports[`snapshot includeExportName = all -- string.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
+m({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
   },
   world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
-
-exports[`snapshot includeExportName = all -- string-literal.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  'hello': {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  }, // prettier-ignore
-  'world': {
     'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
+  }
+});
+"
 `;
 
-exports[`snapshot includeExportName = all -- with-other-func.js 1`] = `
-"'use strict';
+exports[`import as 2`] = `
+"
+import { defineMessages as m } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+m({
+  hello: 'hello',
+  world: 'hello world',
+})
 
-(0, _reactIntl.defineMessages)({
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages as m } from 'react-intl';
+
+m({
   hello: {
-    'id': 'src.__fixtures__.hello',
+    'id': '__fixtures__.hello',
     'defaultMessage': 'hello'
   },
   world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`import as 3`] = `
+"
+import { defineMessages as m } from 'react-intl'
+
+m({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages as m } from 'react-intl';
+
+m({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`import as 4`] = `
+"
+import { defineMessages as m } from 'react-intl'
+
+m({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages as m } from 'react-intl';
+
+m({
+  hello: {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`multi export 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
     'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
+    'defaultMessage': 'hello world extra'
   }
 });
 
-hello({
-  id: 'hoge'
-});"
-`;
-
-exports[`snapshot includeExportName = true -- basic.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
+export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -464,37 +466,155 @@ var _reactIntl = require('react-intl');
     'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
-});"
-`;
-
-exports[`snapshot includeExportName = true -- import-as.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot includeExportName = true -- multi-export.js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
 });
-exports.extra = undefined;
+"
+`;
 
-var _reactIntl = require('react-intl');
+exports[`multi export 2`] = `
+"
+import { defineMessages } from 'react-intl'
 
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+export default defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`multi export 3`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+export default defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`multi export 4`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`multi export 5`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
   hello: {
     'id': 'src.__fixtures__.extra.hello',
     'defaultMessage': 'hello extra'
@@ -505,7 +625,7 @@ const extra = exports.extra = (0, _reactIntl.defineMessages)({
   }
 });
 
-exports.default = (0, _reactIntl.defineMessages)({
+export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -513,228 +633,197 @@ exports.default = (0, _reactIntl.defineMessages)({
   world: {
     'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot includeExportName = true -- object.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  new: {
-    id: 'this is id',
-    defaultMessage: 'id'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-
-    defaultMessage: 'world'
-  },
-  headerTitle: {
-    'id': 'src.__fixtures__.headerTitle',
-
-    defaultMessage: 'Welcome to dashboard {name}!',
-    description: 'Message to greet the user.'
-  }
-});"
-`;
-
-exports[`snapshot includeExportName = true -- string.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
-
-exports[`snapshot includeExportName = true -- string-literal.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  'hello': {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  }, // prettier-ignore
-  'world': {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
-`;
-
-exports[`snapshot includeExportName = true -- with-other-func.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
   }
 });
-
-hello({
-  id: 'hoge'
-});"
+"
 `;
 
-exports[`snapshot removePrefix -- basic.js 1`] = `
-"'use strict';
+exports[`multi export 6`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
 
-(0, _reactIntl.defineMessages)({
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
   hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot removePrefix -- import-as.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot removePrefix -- multi-export.js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.extra = undefined;
-
-var _reactIntl = require('react-intl');
-
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
+    'id': 'src.__fixtures__.extra.hello',
     'defaultMessage': 'hello extra'
   },
   world: {
-    'id': '__fixtures__.world',
+    'id': 'src.__fixtures__.extra.world',
     'defaultMessage': 'hello world extra'
   }
 });
 
-exports.default = (0, _reactIntl.defineMessages)({
+export default defineMessages({
   hello: {
-    'id': '__fixtures__.hello',
+    'id': 'src.__fixtures__.default.hello',
     'defaultMessage': 'hello'
   },
   world: {
-    'id': '__fixtures__.world',
+    'id': 'src.__fixtures__.default.world',
     'defaultMessage': 'hello world'
   }
-});"
+});
+"
 `;
 
-exports[`snapshot removePrefix -- object.js 1`] = `
-"'use strict';
+exports[`string literal 1`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+defineMessages({
+  'hello': 'hello',
+  'world': 'hello world',
+})
 
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  'hello': {
+    'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
   },
-  new: {
-    id: 'this is id',
-    defaultMessage: 'id'
-  },
-  world: {
-    'id': '__fixtures__.world',
-
-    defaultMessage: 'world'
-  },
-  headerTitle: {
-    'id': '__fixtures__.headerTitle',
-
-    defaultMessage: 'Welcome to dashboard {name}!',
-    description: 'Message to greet the user.'
+  'world': {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
   }
-});"
+});
+"
 `;
 
-exports[`snapshot removePrefix -- string.js 1`] = `
-"'use strict';
+exports[`string literal 2`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+defineMessages({
+  'hello': 'hello',
+  'world': 'hello world',
+})
 
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-exports[`snapshot removePrefix -- string-literal.js 1`] = `
-"'use strict';
+import { defineMessages } from 'react-intl';
 
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
+defineMessages({
   'hello': {
     'id': '__fixtures__.hello',
     'defaultMessage': 'hello'
-  }, // prettier-ignore
+  },
   'world': {
     'id': '__fixtures__.world',
     'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
+  }
+});
+"
 `;
 
-exports[`snapshot removePrefix -- with-other-func.js 1`] = `
-"'use strict';
+exports[`string literal 3`] = `
+"
+import { defineMessages } from 'react-intl'
 
-var _reactIntl = require('react-intl');
+defineMessages({
+  'hello': 'hello',
+  'world': 'hello world',
+})
 
-(0, _reactIntl.defineMessages)({
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  'hello': {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  'world': {
+    'id': '__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`string literal 4`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  'hello': 'hello',
+  'world': 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  'hello': {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello'
+  },
+  'world': {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`with include value 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+"
+`;
+
+exports[`with include value 2`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
   hello: {
     'id': '__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -744,297 +833,79 @@ var _reactIntl = require('react-intl');
     'defaultMessage': \`hello world \${1}\`
   }
 });
+"
+`;
+
+exports[`with include value 3`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+"
+`;
+
+exports[`with include value 4`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+"
+`;
+
+exports[`with other func 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
 
 hello({
-  id: 'hoge'
-});"
-`;
+  id: 'hoge',
+})
 
-exports[`snapshot removePrefix:no-slash -- basic.js 1`] = `
-"'use strict';
+      ↓ ↓ ↓ ↓ ↓ ↓
 
-var _reactIntl = require('react-intl');
+import { defineMessages } from 'react-intl';
 
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot removePrefix:no-slash -- import-as.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot removePrefix:no-slash -- multi-export.js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.extra = undefined;
-
-var _reactIntl = require('react-intl');
-
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world extra'
-  }
-});
-
-exports.default = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot removePrefix:no-slash -- object.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  new: {
-    id: 'this is id',
-    defaultMessage: 'id'
-  },
-  world: {
-    'id': '__fixtures__.world',
-
-    defaultMessage: 'world'
-  },
-  headerTitle: {
-    'id': '__fixtures__.headerTitle',
-
-    defaultMessage: 'Welcome to dashboard {name}!',
-    description: 'Message to greet the user.'
-  }
-});"
-`;
-
-exports[`snapshot removePrefix:no-slash -- string.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
-
-exports[`snapshot removePrefix:no-slash -- string-literal.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  'hello': {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  }, // prettier-ignore
-  'world': {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
-`;
-
-exports[`snapshot removePrefix:no-slash -- with-other-func.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': '__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});
-
-hello({
-  id: 'hoge'
-});"
-`;
-
-exports[`snapshot snapshot -- basic.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot snapshot -- import-as.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot snapshot -- multi-export.js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, \\"__esModule\\", {
-  value: true
-});
-exports.extra = undefined;
-
-var _reactIntl = require('react-intl');
-
-const extra = exports.extra = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world extra'
-  }
-});
-
-exports.default = (0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  }
-});"
-`;
-
-exports[`snapshot snapshot -- object.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  new: {
-    id: 'this is id',
-    defaultMessage: 'id'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-
-    defaultMessage: 'world'
-  },
-  headerTitle: {
-    'id': 'src.__fixtures__.headerTitle',
-
-    defaultMessage: 'Welcome to dashboard {name}!',
-    description: 'Message to greet the user.'
-  }
-});"
-`;
-
-exports[`snapshot snapshot -- string.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  hello: {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
-  }
-});"
-`;
-
-exports[`snapshot snapshot -- string-literal.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
-  'hello': {
-    'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  }, // prettier-ignore
-  'world': {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
-  } // prettier-ignore
-});"
-`;
-
-exports[`snapshot snapshot -- with-other-func.js 1`] = `
-"'use strict';
-
-var _reactIntl = require('react-intl');
-
-(0, _reactIntl.defineMessages)({
+defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
@@ -1047,5 +918,108 @@ var _reactIntl = require('react-intl');
 
 hello({
   id: 'hoge'
-});"
+});
+"
+`;
+
+exports[`with other func 2`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+hello({
+  id: 'hoge',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});
+"
+`;
+
+exports[`with other func 3`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+hello({
+  id: 'hoge',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  hello: {
+    'id': '__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': '__fixtures__.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});
+"
+`;
+
+exports[`with other func 4`] = `
+"
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+hello({
+  id: 'hoge',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.messages.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.messages.world',
+    'defaultMessage': \`hello world \${1}\`
+  }
+});
+
+hello({
+  id: 'hoge'
+});
+"
 `;

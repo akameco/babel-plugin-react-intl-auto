@@ -1,67 +1,154 @@
 // @flow
-import path from 'path'
-import fs from 'fs'
-import { transformFileSync } from 'babel-core'
-
+import { resolve } from 'path'
+import pluginTester from 'babel-plugin-tester'
 import plugin from '../'
 
-const testPlugin = (filePath, opts = {}) => {
-  const { code } = transformFileSync(filePath, {
-    plugins: [[plugin, opts]],
-  })
-  return code
+const filename = resolve(__dirname, '../__fixtures__', 'messages.js')
+
+const basicTest = {
+  title: 'basic',
+  code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+      `,
 }
 
-describe('snapshot', () => {
-  const rootPath = path.resolve(__dirname, '../__fixtures__')
-  const files = fs.readdirSync(rootPath)
+const multiExportTest = {
+  title: 'multi export',
+  code: `
+import { defineMessages } from 'react-intl'
 
-  for (const file of files) {
-    test(`snapshot -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file))
-      expect(result).toMatchSnapshot()
-    })
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
 
-    test(`removePrefix -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file), {
-        removePrefix: 'src/',
-      })
-      expect(result).toMatchSnapshot()
-    })
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+`,
+}
 
-    test(`removePrefix:no-slash -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file), {
-        removePrefix: 'src',
-      })
-      expect(result).toMatchSnapshot()
-    })
+const tests = [
+  basicTest,
+  {
+    title: 'with include value',
+    code: `
+import { defineMessages } from 'react-intl'
 
-    test(`filebase = true -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file), {
-        filebase: true,
-      })
-      expect(result).toMatchSnapshot()
-    })
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+      `,
+  },
+  {
+    title: 'string literal',
+    code: `
+import { defineMessages } from 'react-intl'
 
-    test(`filebase = false -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file), {
-        filebase: false,
-      })
-      expect(result).toMatchSnapshot()
-    })
+defineMessages({
+  'hello': 'hello',
+  'world': 'hello world',
+})
+      `,
+  },
+  {
+    title: 'Object',
+    code: `
+import { defineMessages } from 'react-intl'
 
-    test(`includeExportName = true -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file), {
-        includeExportName: true,
-      })
-      expect(result).toMatchSnapshot()
-    })
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
+  },
+  world: {
+    defaultMessage: 'world',
+  },
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
+  },
+})
+      `,
+  },
+  {
+    title: 'import as',
+    code: `
+import { defineMessages as m } from 'react-intl'
 
-    test(`includeExportName = all -- ${file}`, () => {
-      const result = testPlugin(path.join(rootPath, file), {
-        includeExportName: 'all',
-      })
-      expect(result).toMatchSnapshot()
-    })
-  }
+m({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+`,
+  },
+  {
+    title: 'with other func',
+    code: `
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  hello: 'hello',
+  world: \`hello world \${1}\`,
+})
+
+hello({
+  id: 'hoge',
+})
+    `,
+  },
+  multiExportTest,
+]
+
+function pTest(opts: Object) {
+  pluginTester(
+    Object.assign(
+      {
+        plugin,
+        snapshot: true,
+        babelOptions: { filename },
+      },
+      opts
+    )
+  )
+}
+
+pTest({ tests })
+
+pTest({
+  title: 'removePrefix = "src"',
+  tests,
+  pluginOptions: { removePrefix: 'src' },
+})
+
+pTest({
+  title: 'removePrefix = "src/" -- with slash',
+  tests,
+  pluginOptions: { removePrefix: 'src/' },
+})
+
+pTest({
+  title: 'filebase = true',
+  tests,
+  pluginOptions: { filebase: true },
+})
+
+pTest({
+  title: 'includeExportName = true',
+  tests: [basicTest, multiExportTest],
+  pluginOptions: { includeExportName: true },
+})
+
+pTest({
+  title: 'includeExportName = all',
+  tests: [basicTest, multiExportTest],
+  pluginOptions: { includeExportName: 'all' },
 })
