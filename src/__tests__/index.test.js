@@ -3,8 +3,7 @@ import { resolve } from 'path'
 import pluginTester from 'babel-plugin-tester'
 import plugin from '../'
 
-const rootPath = resolve(__dirname, '../__fixtures__')
-const filename = resolve(rootPath, 'messages.js')
+const filename = resolve(__dirname, '../__fixtures__', 'messages.js')
 
 const basicTest = {
   title: 'basic',
@@ -109,47 +108,46 @@ hello({
   multiExportTest,
 ]
 
-const defaultOpts = {
-  plugin,
-  snapshot: true,
-  babelOptions: { filename },
+function pTest(opts: Object) {
+  pluginTester(
+    Object.assign(
+      {
+        plugin,
+        snapshot: true,
+        babelOptions: { filename },
+      },
+      opts
+    )
+  )
 }
 
-pluginTester({
-  ...defaultOpts,
-  tests,
-})
+pTest({ tests })
 
-pluginTester({
-  ...defaultOpts,
+pTest({
   title: 'removePrefix = "src"',
   tests,
   pluginOptions: { removePrefix: 'src' },
 })
 
-pluginTester({
-  ...defaultOpts,
+pTest({
   title: 'removePrefix = "src/" -- with slash',
   tests,
   pluginOptions: { removePrefix: 'src/' },
 })
 
-pluginTester({
-  ...defaultOpts,
+pTest({
   title: 'filebase = true',
   tests,
   pluginOptions: { filebase: true },
 })
 
-pluginTester({
-  ...defaultOpts,
+pTest({
   title: 'includeExportName = true',
   tests: [basicTest, multiExportTest],
   pluginOptions: { includeExportName: true },
 })
 
-pluginTester({
-  ...defaultOpts,
+pTest({
   title: 'includeExportName = all',
   tests: [basicTest, multiExportTest],
   pluginOptions: { includeExportName: 'all' },
