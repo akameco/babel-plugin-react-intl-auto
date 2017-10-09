@@ -20,6 +20,10 @@ const isImportLocalName = (name: string, { file }: State) => {
   return false
 }
 
+const REG = new RegExp(`\\${p.sep}`, 'g')
+
+const dotPath = (str: string) => str.replace(REG, '.')
+
 const getPrefix = (
   {
     file: { opts: { filename } },
@@ -29,7 +33,10 @@ const getPrefix = (
 ) => {
   const file = p.relative(process.cwd(), filename)
   const fomatted = filebase ? file.replace(/\..+$/, '') : p.dirname(file)
-  const fixed = fomatted.replace(new RegExp(`^${removePrefix}/?`), '')
+  const fixed = dotPath(fomatted).replace(
+    new RegExp(`^${removePrefix.replace(/\//g, '')}\\${dotPath(p.sep)}?`),
+    ''
+  )
   const result = exportName === null ? fixed : `${fixed}.${exportName}`
   return result
 }
@@ -47,7 +54,7 @@ const getId = (path, prefix) => {
     throw new Error(`requires Object key or string literal`)
   }
 
-  return p.join(prefix, name).replace(/\//g, '.')
+  return dotPath(p.join(prefix, name))
 }
 
 const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
