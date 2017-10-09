@@ -1,5 +1,7 @@
 # babel-plugin-react-intl-auto
-[![Build Status](https://travis-ci.org/akameco/babel-plugin-react-intl-auto.svg?branch=master)](https://travis-ci.org/akameco/babel-plugin-react-intl-auto) [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![Build Status](https://travis-ci.org/akameco/babel-plugin-react-intl-auto.svg?branch=master)](https://travis-ci.org/akameco/babel-plugin-react-intl-auto)
+[![Build status](https://ci.appveyor.com/api/projects/status/5smedgke2ia9fpa0/branch/master?svg=true)](https://ci.appveyor.com/project/akameco/babel-plugin-react-intl-auto/branch/master)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 
 > i18n for the component age. Auto management react-intl ID.
 
