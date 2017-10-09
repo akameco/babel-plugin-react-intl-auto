@@ -1,9 +1,15 @@
 // @flow
-import { resolve } from 'path'
+import path from 'path'
+import slash from 'slash'
 import pluginTester from 'babel-plugin-tester'
 import plugin from '../'
 
-const filename = resolve(__dirname, '../__fixtures__', 'messages.js')
+const filename = path.resolve(
+  slash(__dirname),
+  '..',
+  '__fixtures__',
+  'messages.js'
+)
 
 const basicTest = {
   title: 'basic',
@@ -14,7 +20,7 @@ export default defineMessages({
   hello: 'hello',
   world: 'hello world',
 })
-      `,
+`,
 }
 
 const multiExportTest = {
