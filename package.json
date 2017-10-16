@@ -49,13 +49,13 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.26.0",
-    "eslint": "^4.8.0",
+    "eslint": "^4.9.0",
     "eslint-config-precure": "^0.8.1",
-    "flow-bin": "^0.56.0",
+    "flow-bin": "^0.57.2",
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "lint-staged": "^4.2.3",
-    "prettier": "^1.7.3",
+    "prettier": "^1.7.4",
     "slash": "^1.0.0"
   }
 }
