@@ -31,6 +31,9 @@ const getPrefix = (
   }: State,
   exportName: string | null
 ) => {
+  if (removePrefix === true) {
+    return exportName === null ? '' : exportName
+  }
   const file = p.relative(process.cwd(), filename)
   const fomatted = filebase ? file.replace(/\..+$/, '') : p.dirname(file)
   const fixed = dotPath(fomatted).replace(
