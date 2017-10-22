@@ -164,3 +164,15 @@ pTest({
   tests: [basicTest, multiExportTest],
   pluginOptions: { removePrefix: true, includeExportName: true },
 })
+
+pTest({
+  title: 'removePrefix = false',
+  tests: [basicTest, multiExportTest],
+  pluginOptions: { removePrefix: false },
+})
+
+pTest({
+  title: 'removePrefix = true, includeExportName = all',
+  tests: [basicTest, multiExportTest],
+  pluginOptions: { removePrefix: true, includeExportName: 'all' },
+})

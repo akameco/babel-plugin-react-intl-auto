@@ -350,6 +350,58 @@ export default defineMessages({
 "
 `;
 
+exports[`basic 8`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`basic 9`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': 'default.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'default.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
 exports[`import as 1`] = `
 "
 import { defineMessages as m } from 'react-intl'
@@ -742,6 +794,90 @@ export default defineMessages({
   },
   world: {
     'id': 'world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`multi export 8`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`multi export 9`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello extra',
+  world: 'hello world extra',
+})
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export const extra = defineMessages({
+  hello: {
+    'id': 'extra.hello',
+    'defaultMessage': 'hello extra'
+  },
+  world: {
+    'id': 'extra.world',
+    'defaultMessage': 'hello world extra'
+  }
+});
+
+export default defineMessages({
+  hello: {
+    'id': 'default.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'default.world',
     'defaultMessage': 'hello world'
   }
 });
