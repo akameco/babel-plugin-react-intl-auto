@@ -114,20 +114,26 @@ hello({
   multiExportTest,
 ]
 
-function pTest(opts: Object) {
-  pluginTester(
-    Object.assign(
-      {
-        plugin,
-        snapshot: true,
-        babelOptions: { filename },
-      },
-      opts
-    )
-  )
+type PTestOpts = {
+  title: string,
+  tests: Array<{ title: string, code: string }>,
 }
 
-pTest({ tests })
+function pTest(opts: PTestOpts) {
+  const defaultOpts = {
+    title: '',
+    plugin,
+    snapshot: true,
+    babelOptions: { filename },
+    tests: [],
+  }
+  opts.tests = opts.tests.map(t => {
+    return { ...t, title: `${opts.title} - ${t.title}` }
+  })
+  pluginTester({ ...defaultOpts, ...opts })
+}
+
+pTest({ title: 'basic', tests })
 
 pTest({
   title: 'removePrefix = "src"',
