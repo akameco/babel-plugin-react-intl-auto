@@ -116,7 +116,7 @@ hello({
 
 type PTestOpts = {
   title: string,
-  tests: Array<{ title: string, code: string }>,
+  tests: $ReadOnlyArray<{ title: string, code: string }>,
 }
 
 function pTest(opts: PTestOpts) {
