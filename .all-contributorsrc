@@ -37,6 +37,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "adam-26",
+      "name": "Adam",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2652619?v=4",
+      "profile": "https://github.com/adam-26",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ]
 }
