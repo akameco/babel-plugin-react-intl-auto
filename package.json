@@ -14,13 +14,15 @@
     "precommit": "lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepare": "npm run build",
+    "flow": "flow",
     "fmt": "prettier --write '{src/**/*.js,*.json}'",
     "lint": "eslint src/index.js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "validate": "npm run lint && npm run flow && npm run test"
   },
   "lint-staged": {
-    "src/**/*.js": ["fmt", "lint", "test", "git add"],
+    "src/**/*.js": ["fmt", "validate", "git add"],
     "*.json": ["fmt", "git add"]
   },
   "keywords": [
