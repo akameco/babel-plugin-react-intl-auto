@@ -16,6 +16,8 @@ Based on the file path, this automatically generate a prefixed id.
 Also, we strongly encourage you to use [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
 You can generate json automatically.
 
+If you want short consistent hash values for the ID, you can use [react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash) in addition to this plugin to help reduce your applications bundle size.
+
 Goodbye, global ID!!
 
 ### Before
