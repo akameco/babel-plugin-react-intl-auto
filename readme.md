@@ -100,8 +100,10 @@ $ yarn add --dev babel-plugin-react-intl-auto
 
 remove prefix.
 
-Type: `string` <br>
+Type: `string | boolean` <br>
 Default: `''`
+
+if removePrefix `true`, no file path prefix is included in the id.
 
 #### filebase
 Type: `boolean` <br>
