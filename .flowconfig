@@ -1,5 +1,5 @@
 [ignore]
-.*/example/.*
+.*/examples/.*
 .*/lib/.*
 
 [include]
