@@ -103,19 +103,19 @@ remove prefix.
 Type: `string | boolean` <br>
 Default: `''`
 
-if removePrefix `true`, no file path prefix is included in the id.
+if `removePrefix` is `true`, no file path prefix is included in the id.
 
 #### filebase
 Type: `boolean` <br>
 Default: `false`
 
-if fileBase `true`, Generate id with filename.
+if `filebase` is `true`, generate id with filename.
 
 #### includeExportName
 Type: `boolean | 'all'` <br>
 Default: `false`
 
-if includeExportName is `true`, adds named exports as part of the id. Example:
+if `includeExportName` is `true`, adds named exports as part of the id. Example:
 
 ```js
 // before
