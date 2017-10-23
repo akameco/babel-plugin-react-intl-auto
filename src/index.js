@@ -1,5 +1,4 @@
 // @flow
-
 import p from 'path'
 import * as t from 'babel-types'
 import type { State } from './types'
@@ -93,21 +92,21 @@ const replaceProperties = (
   const prefix = getPrefix(state, exportName)
 
   for (const prop of properties) {
-    const v = prop.get('value')
+    const objProp = prop.get('value')
 
     // { defaultMessage: 'hello', description: 'this is hello' }
-    if (v.isObjectExpression()) {
-      const objProps = v.get('properties')
+    if (objProp.isObjectExpression()) {
+      const objProps = objProp.get('properties')
 
       // { id: 'already has id', defaultMessage: 'hello' }
       const isNotHaveId = objProps.every(v => v.get('key').node.name !== 'id')
       if (!isNotHaveId) {
-        continue
+        continue // eslint-disable-line
       }
 
       const id = getId(prop.get('key'), prefix)
 
-      v.replaceWith(
+      objProp.replaceWith(
         t.objectExpression([
           t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
           ...objProps.map(v => v.node),
@@ -115,13 +114,13 @@ const replaceProperties = (
       )
 
       // 'hello' or `hello ${user}`
-    } else if (isLiteral(v)) {
+    } else if (isLiteral(objProp)) {
       const id = getId(prop.get('key'), prefix)
 
-      v.replaceWith(
+      objProp.replaceWith(
         t.objectExpression([
           t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-          t.objectProperty(t.stringLiteral('defaultMessage'), v.node),
+          t.objectProperty(t.stringLiteral('defaultMessage'), objProp.node),
         ])
       )
     }
@@ -157,7 +156,9 @@ export default function() {
           return
         }
 
+        // eslint-disable-next-line
         const namedExport = path.findParent(p => p.isExportNamedDeclaration())
+        // eslint-disable-next-line
         const defaultExport = path.findParent(p =>
           p.isExportDefaultDeclaration()
         )
