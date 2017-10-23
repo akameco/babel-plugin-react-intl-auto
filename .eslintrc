@@ -1,6 +1,3 @@
 {
-  "extends": "precure",
-  "env": {
-    "jest": true
-  }
+  "extends": "precure/oss"
 }

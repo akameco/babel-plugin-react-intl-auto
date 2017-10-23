@@ -85,7 +85,7 @@ const isValidate = (path: Object, state: State): boolean => {
 }
 
 const replaceProperties = (
-  properties: Object[],
+  properties: $ReadOnlyArray<Object>,
   state,
   exportName: string | null
 ) => {
