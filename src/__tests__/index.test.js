@@ -11,8 +11,8 @@ const filename = path.resolve(
   'messages.js'
 )
 
-const basicTest = {
-  title: 'basic',
+const defaultTest = {
+  title: 'default',
   code: `
 import { defineMessages } from 'react-intl'
 
@@ -41,7 +41,7 @@ export default defineMessages({
 }
 
 const tests = [
-  basicTest,
+  defaultTest,
   {
     title: 'with include value',
     code: `
@@ -133,52 +133,52 @@ function pTest(opts: PTestOpts) {
   pluginTester({ ...defaultOpts, ...opts })
 }
 
-pTest({ title: 'basic', tests })
+pTest({ title: 'default', tests })
 
 pTest({
   title: 'removePrefix = "src"',
-  tests,
+  tests: [defaultTest],
   pluginOptions: { removePrefix: 'src' },
 })
 
 pTest({
   title: 'removePrefix = "src/" -- with slash',
-  tests,
+  tests: [defaultTest],
   pluginOptions: { removePrefix: 'src/' },
 })
 
 pTest({
   title: 'filebase = true',
-  tests,
+  tests: [defaultTest],
   pluginOptions: { filebase: true },
 })
 
 pTest({
   title: 'includeExportName = true',
-  tests: [basicTest, multiExportTest],
+  tests: [defaultTest, multiExportTest],
   pluginOptions: { includeExportName: true },
 })
 
 pTest({
   title: 'includeExportName = all',
-  tests: [basicTest, multiExportTest],
+  tests: [defaultTest, multiExportTest],
   pluginOptions: { includeExportName: 'all' },
 })
 
 pTest({
   title: 'removePrefix = true, includeExportName = true',
-  tests: [basicTest, multiExportTest],
+  tests: [defaultTest, multiExportTest],
   pluginOptions: { removePrefix: true, includeExportName: true },
 })
 
 pTest({
   title: 'removePrefix = false',
-  tests: [basicTest, multiExportTest],
+  tests: [defaultTest, multiExportTest],
   pluginOptions: { removePrefix: false },
 })
 
 pTest({
   title: 'removePrefix = true, includeExportName = all',
-  tests: [basicTest, multiExportTest],
+  tests: [defaultTest, multiExportTest],
   pluginOptions: { removePrefix: true, includeExportName: 'all' },
 })
