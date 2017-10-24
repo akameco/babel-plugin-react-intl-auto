@@ -157,11 +157,9 @@ export default function() {
           return
         }
 
-        // eslint-disable-next-line
-        const namedExport = path.findParent(p => p.isExportNamedDeclaration())
-        // eslint-disable-next-line
-        const defaultExport = path.findParent(p =>
-          p.isExportDefaultDeclaration()
+        const namedExport = path.findParent(v => v.isExportNamedDeclaration())
+        const defaultExport = path.findParent(v =>
+          v.isExportDefaultDeclaration()
         )
         const exportName = getExportName(
           namedExport,
