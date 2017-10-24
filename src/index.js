@@ -93,11 +93,11 @@ const replaceProperties = (
   const prefix = getPrefix(state, exportName)
 
   for (const prop of properties) {
-    const objProp = prop.get('value')
+    const propValue = prop.get('value')
 
     // { defaultMessage: 'hello', description: 'this is hello' }
-    if (objProp.isObjectExpression()) {
-      const objProps = objProp.get('properties')
+    if (propValue.isObjectExpression()) {
+      const objProps = propValue.get('properties')
 
       // { id: 'already has id', defaultMessage: 'hello' }
       const isNotHaveId = objProps.every(v => v.get('key').node.name !== 'id')
@@ -107,7 +107,7 @@ const replaceProperties = (
 
       const id = getId(prop.get('key'), prefix)
 
-      objProp.replaceWith(
+      propValue.replaceWith(
         t.objectExpression([
           t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
           ...objProps.map(v => v.node),
@@ -115,13 +115,13 @@ const replaceProperties = (
       )
 
       // 'hello' or `hello ${user}`
-    } else if (isLiteral(objProp)) {
+    } else if (isLiteral(propValue)) {
       const id = getId(prop.get('key'), prefix)
 
-      objProp.replaceWith(
+      propValue.replaceWith(
         t.objectExpression([
           t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-          t.objectProperty(t.stringLiteral('defaultMessage'), objProp.node),
+          t.objectProperty(t.stringLiteral('defaultMessage'), propValue.node),
         ])
       )
     }
