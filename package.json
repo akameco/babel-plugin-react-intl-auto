@@ -18,9 +18,12 @@
     "flow": "flow",
     "fmt": "prettier --write '{src/**/*.js,*.json}'",
     "lint": "eslint src",
+    "add:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "jest",
     "test:watch": "jest --watch",
-    "validate": "npm run lint && npm run flow && npm run test"
+    "test:coverage": "jest --coverage --ci --runInBand",
+    "test:ci": "npm run validate && npm run add:coveralls",
+    "validate": "npm run lint && npm run flow && npm run test:coverage"
   },
   "lint-staged": {
     "src/**/*.js": ["fmt", "validate", "git add"],
@@ -54,6 +57,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.26.0",
+    "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
     "eslint-config-precure": "^0.11.1",
     "flow-bin": "^0.57.3",
