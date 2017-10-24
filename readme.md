@@ -119,7 +119,7 @@ when `removePrefix` is `"src"`
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  hello: 'hello'
+  hello: 'hello world'
 });
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -129,7 +129,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   hello: {
     id: 'components.App.hello',
-    defaultMessage: 'hello'
+    defaultMessage: 'hello world'
   }
 });
 ```
@@ -140,7 +140,7 @@ when `removePrefix` is `true`
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  hello: 'hello'
+  hello: 'hello world'
 });
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -150,7 +150,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   hello: {
     id: 'hello',
-    defaultMessage: 'hello'
+    defaultMessage: 'hello world'
   }
 });
 ```
@@ -194,7 +194,7 @@ exports.
 ##### Example
 
 ```js
-const messages = { hello: 'hello' }
+const messages = { hello: 'hello world' }
 
 export default defineMessages(messages)
 
@@ -203,7 +203,7 @@ export default defineMessages(messages)
 const messages = { 
   hello: {
     id: 'src.components.App.hello',
-    defaultMessage: 'hello'
+    defaultMessage: 'hello wolrd'
   }
 };
 
