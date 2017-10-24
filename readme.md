@@ -110,6 +110,52 @@ Default: `''`
 
 if `removePrefix` is `true`, no file path prefix is included in the id.
 
+
+##### Example (src/components/App/messages.js)
+
+when `removePrefix` is `"src"`
+
+```js
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: 'hello'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    id: 'components.App.hello',
+    defaultMessage: 'hello'
+  }
+});
+```
+
+when `removePrefix` is `true`
+
+```js
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: 'hello'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    id: 'hello',
+    defaultMessage: 'hello'
+  }
+});
+```
+
+
 #### filebase
 Type: `boolean` <br>
 Default: `false`
@@ -120,15 +166,17 @@ if `filebase` is `true`, generate id with filename.
 Type: `boolean | 'all'` <br>
 Default: `false`
 
-if `includeExportName` is `true`, adds named exports as part of the id. Example:
+if `includeExportName` is `true`, adds named exports as part of the id. 
+
+##### Example
 
 ```js
-// before
 export const test = defineMessages({
   hello: 'hello {name}',
 })
 
-// after
+      ↓ ↓ ↓ ↓ ↓ ↓
+
 export const test = defineMessages({
   hello: {
     id: 'path.to.file.test.hello',
@@ -139,6 +187,29 @@ export const test = defineMessages({
 
 If includeExportName is `'all'`, it will also add `default` to the id on default
 exports.
+
+
+### Support variable
+
+##### Example
+
+```js
+const messages = { hello: 'hello' }
+
+export default defineMessages(messages)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const messages = { 
+  hello: {
+    id: 'src.components.App.hello',
+    defaultMessage: 'hello'
+  }
+};
+
+export default defineMessages(messages);
+```
+
 
 ## Contributors
 
