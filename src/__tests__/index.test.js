@@ -112,6 +112,53 @@ hello({
     `,
   },
   multiExportTest,
+  {
+    title: 'throw error when key is NumiricLiteral',
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  1: 'hello',
+})
+`,
+    error: /requires Object key or string literal/,
+    snapshot: false,
+  },
+  {
+    title: 'not transform if defineMessages is not imported',
+    code: `
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+    `,
+  },
+  {
+    title: 'not transform when defineMessages argumens is not object',
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages(1)
+    `,
+  },
+  {
+    title: 'when using the variable',
+    code: `
+import { defineMessages } from 'react-intl'
+
+const messages = {hello: 'hello'}
+
+export default defineMessages(messages)
+    `,
+  },
+  {
+    title: 'not transfrom when the variable can not be found',
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages(messages)
+    `,
+  },
 ]
 
 type PTestOpts = {

@@ -2,6 +2,7 @@
 import p from 'path'
 import * as t from 'babel-types'
 import type { State } from './types'
+// import blog from 'babel-log'
 
 const PKG_NAME = 'react-intl'
 const FUNC_NAME = 'defineMessages'
@@ -73,11 +74,11 @@ const isValidate = (path: Object, state: State): boolean => {
   }
 
   const messagesObj = path.get('arguments')[0]
-  if (!messagesObj) {
-    return false
-  }
 
-  if (!(messagesObj.isObjectExpression() || messagesObj.isIdentifier())) {
+  if (
+    !messagesObj ||
+    !(messagesObj.isObjectExpression() || messagesObj.isIdentifier())
+  ) {
     return false
   }
 

@@ -136,6 +136,50 @@ export default defineMessages({
 "
 `;
 
+exports[`default - not transform if defineMessages is not imported 1`] = `
+"
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world'
+});
+"
+`;
+
+exports[`default - not transform when defineMessages argumens is not object 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages(1)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages(1);
+"
+`;
+
+exports[`default - not transfrom when the variable can not be found 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages(messages)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages(messages);
+"
+`;
+
 exports[`default - string literal 1`] = `
 "
 import { defineMessages } from 'react-intl'
@@ -159,6 +203,27 @@ defineMessages({
     'defaultMessage': 'hello world'
   }
 });
+"
+`;
+
+exports[`default - when using the variable 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+const messages = {hello: 'hello'}
+
+export default defineMessages(messages)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+const messages = { hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  } };
+
+export default defineMessages(messages);
 "
 `;
 
