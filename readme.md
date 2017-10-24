@@ -19,8 +19,6 @@ Based on the file path, this automatically generate a prefixed id.
 Also, we strongly encourage you to use [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
 You can generate json automatically.
 
-If you want short consistent hash values for the ID, you can use [react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash) in addition to this plugin to help reduce your applications bundle size.
-
 Goodbye, global ID!!
 
 ### Before
@@ -166,7 +164,7 @@ if `filebase` is `true`, generate id with filename.
 Type: `boolean | 'all'` <br>
 Default: `false`
 
-if `includeExportName` is `true`, adds named exports as part of the id. 
+if `includeExportName` is `true`, adds named exports as part of the id.
 
 ##### Example
 
@@ -200,7 +198,7 @@ export default defineMessages(messages)
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-const messages = { 
+const messages = {
   hello: {
     id: 'src.components.App.hello',
     defaultMessage: 'hello wolrd'
@@ -210,6 +208,13 @@ const messages = {
 export default defineMessages(messages);
 ```
 
+## Related
+
+### [babel-plugin-react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash)
+If you want short consistent hash values for the ID, you can use [react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash) in addition to this plugin to help reduce your applications bundle size.
+
+ ### [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages)
+Extract react-intl messages.
 
 ## Contributors
 
