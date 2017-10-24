@@ -213,6 +213,9 @@ export default defineMessages(messages);
 ### [babel-plugin-react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash)
 If you want short consistent hash values for the ID, you can use [react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash) in addition to this plugin to help reduce your applications bundle size.
 
+ ### [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages)
+Extract react-intl messages.
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
