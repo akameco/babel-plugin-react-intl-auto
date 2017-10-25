@@ -134,11 +134,7 @@ const getExportName = (
   includeExportName
 ): string | null => {
   if (includeExportName && namedExport) {
-    return namedExport
-      .get('declaration')
-      .get('declarations')[0]
-      .get('id')
-      .get('name').node
+    return namedExport.get('declaration.declarations.0.id.name').node
   }
 
   if (includeExportName === 'all' && defaultExport) {
