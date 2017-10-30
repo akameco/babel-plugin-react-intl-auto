@@ -130,7 +130,12 @@ const replaceProperties = (
       )
     }
 
-    if (state.opts.extractComments) {
+    const extractComments =
+      state.opts.extractComments === undefined
+        ? true
+        : state.opts.extractComments
+
+    if (extractComments) {
       const hasDescription = messageDescriptorProperties.find((v: Object) => {
         return v.key.name === 'description'
       })
@@ -149,9 +154,7 @@ const replaceProperties = (
       }
     }
 
-    if (messageDescriptorProperties.length > 0) {
-      propValue.replaceWith(t.objectExpression(messageDescriptorProperties))
-    }
+    propValue.replaceWith(t.objectExpression(messageDescriptorProperties))
   }
 }
 
