@@ -92,6 +92,11 @@ const getLeadingComment = prop => {
     : null
 }
 
+const objectProperty = (key, value) => {
+  const valueNode = typeof value === 'string' ? t.stringLiteral(value) : value
+  return t.objectProperty(t.stringLiteral(key), valueNode)
+}
+
 const replaceProperties = (
   properties: $ReadOnlyArray<Object>,
   state: State,
@@ -102,7 +107,8 @@ const replaceProperties = (
   for (const prop of properties) {
     const propValue = prop.get('value')
 
-    const messageDescriptorProperties = []
+    // eslint-disable-next-line
+    const messageDescriptorProperties: Object[] = []
 
     // { defaultMessage: 'hello', description: 'this is hello' }
     if (propValue.isObjectExpression()) {
@@ -113,9 +119,7 @@ const replaceProperties = (
       if (isNotHaveId) {
         const id = getId(prop.get('key'), prefix)
 
-        messageDescriptorProperties.push(
-          t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id))
-        )
+        messageDescriptorProperties.push(objectProperty('id', id))
       }
 
       messageDescriptorProperties.push(...objProps.map(v => v.node))
@@ -125,30 +129,24 @@ const replaceProperties = (
       const id = getId(prop.get('key'), prefix)
 
       messageDescriptorProperties.push(
-        t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-        t.objectProperty(t.stringLiteral('defaultMessage'), propValue.node)
+        objectProperty('id', id),
+        objectProperty('defaultMessage', propValue.node)
       )
     }
 
-    const extractComments =
-      state.opts.extractComments === undefined
-        ? true
-        : state.opts.extractComments
+    const { extractComments = true } = state.opts
 
     if (extractComments) {
-      const hasDescription = messageDescriptorProperties.find((v: Object) => {
-        return v.key.name === 'description'
-      })
+      const hasDescription = messageDescriptorProperties.find(
+        v => v.key.name === 'description'
+      )
 
       if (!hasDescription) {
         const description = getLeadingComment(prop)
 
         if (description) {
           messageDescriptorProperties.push(
-            t.objectProperty(
-              t.stringLiteral('description'),
-              t.stringLiteral(description)
-            )
+            objectProperty('description', description)
           )
         }
       }
@@ -199,7 +197,7 @@ export default function() {
         if (messagesObj.isObjectExpression()) {
           properties = messagesObj.get('properties')
         } else if (messagesObj.isIdentifier()) {
-          const name = messagesObj.node.name
+          const { name } = messagesObj.node
           const obj = messagesObj.scope.getBinding(name)
           if (!obj) {
             return
