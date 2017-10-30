@@ -118,14 +118,16 @@ export default defineMessages({
   // The main Hello of our app.
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
+    'defaultMessage': 'hello',
+    'description': 'The main Hello of our app.'
   },
 
   // Another Hello,
   // multiline this time
   world: {
     id: 'hello.world',
-    defaultMessage: 'hello world'
+    defaultMessage: 'hello world',
+    'description': 'Another Hello,\\\\nmultiline this time'
   }
 });
 "
@@ -354,7 +356,7 @@ hello({
 "
 `;
 
-exports[`extractComments = true - default 1`] = `
+exports[`extractComments = false - default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -380,7 +382,7 @@ export default defineMessages({
 "
 `;
 
-exports[`extractComments = true - leading comment 1`] = `
+exports[`extractComments = false - leading comment 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -404,22 +406,20 @@ export default defineMessages({
   // The main Hello of our app.
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello',
-    'description': 'The main Hello of our app.'
+    'defaultMessage': 'hello'
   },
 
   // Another Hello,
   // multiline this time
   world: {
     id: 'hello.world',
-    defaultMessage: 'hello world',
-    'description': 'Another Hello,\\\\nmultiline this time'
+    defaultMessage: 'hello world'
   }
 });
 "
 `;
 
-exports[`extractComments = true - leading comment with description 1`] = `
+exports[`extractComments = false - leading comment with description 1`] = `
 "
 import { defineMessages } from 'react-intl'
 

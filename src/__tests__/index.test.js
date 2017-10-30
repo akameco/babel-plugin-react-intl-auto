@@ -268,7 +268,7 @@ pTest({
 })
 
 pTest({
-  title: 'extractComments = true',
+  title: 'extractComments = false',
   tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
-  pluginOptions: { extractComments: true },
+  pluginOptions: { extractComments: false },
 })
