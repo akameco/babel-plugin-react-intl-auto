@@ -191,7 +191,7 @@ exports.
 Use leading comments as the message description
 
 Type: `boolean` <br>
-Default: `false`
+Default: `true`
 
 ##### Example
 
