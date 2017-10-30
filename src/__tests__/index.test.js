@@ -40,6 +40,41 @@ export default defineMessages({
 `,
 }
 
+const leadingCommentTest = {
+  title: 'leading comment',
+  code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  // The main Hello of our app.
+  hello: 'hello',
+
+  // Another Hello,
+  // multiline this time
+  world: {
+    id: 'hello.world',
+    defaultMessage: 'hello world',
+  }
+})
+`,
+}
+
+const leadingCommentWithDescriptionTest = {
+  title: 'leading comment with description',
+  code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    defaultMessage: 'hello world',
+    description: 'The hello world',
+  }
+})
+`,
+}
+
 const tests = [
   defaultTest,
   {
@@ -159,6 +194,8 @@ import { defineMessages } from 'react-intl'
 export default defineMessages(messages)
     `,
   },
+  leadingCommentTest,
+  leadingCommentWithDescriptionTest,
 ]
 
 type PTestOpts = {
@@ -228,4 +265,10 @@ pTest({
   title: 'removePrefix = true, includeExportName = all',
   tests: [defaultTest, multiExportTest],
   pluginOptions: { removePrefix: true, includeExportName: 'all' },
+})
+
+pTest({
+  title: 'extractComments = false',
+  tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
+  pluginOptions: { extractComments: false },
 })

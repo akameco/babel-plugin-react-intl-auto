@@ -18,5 +18,6 @@ export type State = {
     removePrefix?: string,
     filebase?: boolean,
     includeExportName?: boolean | 'all',
+    extractComments?: boolean,
   },
 }

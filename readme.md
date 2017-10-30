@@ -186,6 +186,31 @@ export const test = defineMessages({
 If includeExportName is `'all'`, it will also add `default` to the id on default
 exports.
 
+#### extractComments
+
+Use leading comments as the message description
+
+Type: `boolean` <br>
+Default: `true`
+
+##### Example
+
+```js
+export const test = defineMessages({
+  // Message used to greet the user
+  hello: 'hello {name}',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  hello: {
+    id: 'path.to.file.test.hello',
+    defaultMessage: 'hello {name}',
+    description: 'Message used to greet the user',
+  },
+})
+```
 
 ### Support variable
 

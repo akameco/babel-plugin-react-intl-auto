@@ -94,6 +94,75 @@ m({
 "
 `;
 
+exports[`default - leading comment 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  // The main Hello of our app.
+  hello: 'hello',
+
+  // Another Hello,
+  // multiline this time
+  world: {
+    id: 'hello.world',
+    defaultMessage: 'hello world',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  // The main Hello of our app.
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello',
+    'description': 'The main Hello of our app.'
+  },
+
+  // Another Hello,
+  // multiline this time
+  world: {
+    id: 'hello.world',
+    defaultMessage: 'hello world',
+    'description': 'Another Hello,\\\\nmultiline this time'
+  }
+});
+"
+`;
+
+exports[`default - leading comment with description 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    defaultMessage: 'hello world',
+    description: 'The hello world',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'hello world',
+    description: 'The hello world'
+  }
+});
+"
+`;
+
 exports[`default - multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
@@ -283,6 +352,99 @@ defineMessages({
 
 hello({
   id: 'hoge'
+});
+"
+`;
+
+exports[`extractComments = false - default 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
+});
+"
+`;
+
+exports[`extractComments = false - leading comment 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  // The main Hello of our app.
+  hello: 'hello',
+
+  // Another Hello,
+  // multiline this time
+  world: {
+    id: 'hello.world',
+    defaultMessage: 'hello world',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  // The main Hello of our app.
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+
+  // Another Hello,
+  // multiline this time
+  world: {
+    id: 'hello.world',
+    defaultMessage: 'hello world'
+  }
+});
+"
+`;
+
+exports[`extractComments = false - leading comment with description 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    defaultMessage: 'hello world',
+    description: 'The hello world',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'hello world',
+    description: 'The hello world'
+  }
 });
 "
 `;

@@ -85,9 +85,16 @@ const isValidate = (path: Object, state: State): boolean => {
   return true
 }
 
+const getLeadingComment = prop => {
+  const commentNodes = prop.node.leadingComments
+  return commentNodes
+    ? commentNodes.map(node => node.value.trim()).join('\n')
+    : null
+}
+
 const replaceProperties = (
   properties: $ReadOnlyArray<Object>,
-  state,
+  state: State,
   exportName: string | null
 ) => {
   const prefix = getPrefix(state, exportName)
@@ -95,36 +102,59 @@ const replaceProperties = (
   for (const prop of properties) {
     const propValue = prop.get('value')
 
+    const messageDescriptorProperties = []
+
     // { defaultMessage: 'hello', description: 'this is hello' }
     if (propValue.isObjectExpression()) {
       const objProps = propValue.get('properties')
 
       // { id: 'already has id', defaultMessage: 'hello' }
       const isNotHaveId = objProps.every(v => v.get('key').node.name !== 'id')
-      if (!isNotHaveId) {
-        continue // eslint-disable-line
+      if (isNotHaveId) {
+        const id = getId(prop.get('key'), prefix)
+
+        messageDescriptorProperties.push(
+          t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id))
+        )
       }
 
-      const id = getId(prop.get('key'), prefix)
-
-      propValue.replaceWith(
-        t.objectExpression([
-          t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-          ...objProps.map(v => v.node),
-        ])
-      )
+      messageDescriptorProperties.push(...objProps.map(v => v.node))
 
       // 'hello' or `hello ${user}`
     } else if (isLiteral(propValue)) {
       const id = getId(prop.get('key'), prefix)
 
-      propValue.replaceWith(
-        t.objectExpression([
-          t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
-          t.objectProperty(t.stringLiteral('defaultMessage'), propValue.node),
-        ])
+      messageDescriptorProperties.push(
+        t.objectProperty(t.stringLiteral('id'), t.stringLiteral(id)),
+        t.objectProperty(t.stringLiteral('defaultMessage'), propValue.node)
       )
     }
+
+    const extractComments =
+      state.opts.extractComments === undefined
+        ? true
+        : state.opts.extractComments
+
+    if (extractComments) {
+      const hasDescription = messageDescriptorProperties.find((v: Object) => {
+        return v.key.name === 'description'
+      })
+
+      if (!hasDescription) {
+        const description = getLeadingComment(prop)
+
+        if (description) {
+          messageDescriptorProperties.push(
+            t.objectProperty(
+              t.stringLiteral('description'),
+              t.stringLiteral(description)
+            )
+          )
+        }
+      }
+    }
+
+    propValue.replaceWith(t.objectExpression(messageDescriptorProperties))
   }
 }
 
