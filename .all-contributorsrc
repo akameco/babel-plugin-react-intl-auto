@@ -47,6 +47,17 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "Ephys",
+      "name": "Guylian Cox",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1280915?v=4",
+      "profile": "https://ephys.github.io",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }
