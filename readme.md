@@ -225,7 +225,7 @@ export default defineMessages(messages)
 
 const messages = {
   hello: {
-    id: 'src.components.App.hello',
+    id: 'path.to.file.hello',
     defaultMessage: 'hello wolrd'
   }
 };
