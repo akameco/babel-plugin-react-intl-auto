@@ -73,12 +73,9 @@ const isValidate = (path: Object, state: State): boolean => {
     return false
   }
 
-  const messagesObj = path.get('arguments')[0]
+  const msgPath = path.get('arguments.0')
 
-  if (
-    !messagesObj ||
-    !(messagesObj.isObjectExpression() || messagesObj.isIdentifier())
-  ) {
+  if (!msgPath || !(msgPath.isObjectExpression() || msgPath.isIdentifier())) {
     return false
   }
 
@@ -156,11 +153,10 @@ const replaceProperties = (
   }
 }
 
-const getExportName = (
-  namedExport,
-  defaultExport,
-  includeExportName
-): string | null => {
+const getExportName = (path, includeExportName): string | null => {
+  const namedExport = path.findParent(v => v.isExportNamedDeclaration())
+  const defaultExport = path.findParent(v => v.isExportDefaultDeclaration())
+
   if (includeExportName && namedExport) {
     return namedExport.get('declaration.declarations.0.id.name').node
   }
@@ -169,6 +165,20 @@ const getExportName = (
     return 'default'
   }
 
+  return null
+}
+
+function getProperties(path): $ReadOnlyArray<Object> | null {
+  if (path.isObjectExpression()) {
+    return path.get('properties')
+  } else if (path.isIdentifier()) {
+    const { name } = path.node
+    const obj = path.scope.getBinding(name)
+    if (!obj) {
+      return null
+    }
+    return obj.path.get('init.properties')
+  }
   return null
 }
 
@@ -181,31 +191,13 @@ export default function() {
           return
         }
 
-        const namedExport = path.findParent(v => v.isExportNamedDeclaration())
-        const defaultExport = path.findParent(v =>
-          v.isExportDefaultDeclaration()
-        )
-        const exportName = getExportName(
-          namedExport,
-          defaultExport,
-          state.opts.includeExportName || false
-        )
-        const messagesObj = path.get('arguments')[0]
-
-        let properties
-
-        if (messagesObj.isObjectExpression()) {
-          properties = messagesObj.get('properties')
-        } else if (messagesObj.isIdentifier()) {
-          const { name } = messagesObj.node
-          const obj = messagesObj.scope.getBinding(name)
-          if (!obj) {
-            return
-          }
-          properties = obj.path.get('init').get('properties')
-        }
+        const properties = getProperties(path.get('arguments.0'))
 
         if (properties) {
+          const exportName = getExportName(
+            path,
+            state.opts.includeExportName || false
+          )
           replaceProperties(properties, state, exportName)
         }
       },
