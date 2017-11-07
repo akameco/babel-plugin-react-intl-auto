@@ -104,7 +104,6 @@ const replaceProperties = (
   for (const prop of properties) {
     const propValue = prop.get('value')
 
-    // eslint-disable-next-line
     const messageDescriptorProperties: Object[] = []
 
     // { defaultMessage: 'hello', description: 'this is hello' }
