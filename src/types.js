@@ -10,6 +10,7 @@ type File = {
       },
     },
   },
+  path: Object,
 }
 
 export type State = {
