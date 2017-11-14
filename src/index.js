@@ -4,20 +4,27 @@ import * as t from 'babel-types'
 import type { State } from './types'
 // import blog from 'babel-log'
 
-const PKG_NAME = 'react-intl'
-const FUNC_NAME = 'defineMessages'
-
 const isImportLocalName = (name: string, { file }: State) => {
-  const imports = file.metadata.modules.imports
-  const intlImports = imports.find(x => x.source === PKG_NAME)
-  if (intlImports) {
-    const specifier = intlImports.specifiers.find(x => x.imported === FUNC_NAME)
-    if (specifier) {
-      return specifier.local === name
-    }
-  }
-
-  return false
+  let isImported = false
+  file.path.traverse({
+    ImportDeclaration: {
+      exit(path) {
+        const { node } = path
+        if (node.source.value !== 'react-intl') {
+          return
+        }
+        for (const specifier of path.get('specifiers')) {
+          if (
+            specifier.isImportSpecifier() &&
+            specifier.node.imported.name === 'defineMessages'
+          ) {
+            isImported = specifier.node.local.name === name
+          }
+        }
+      },
+    },
+  })
+  return isImported
 }
 
 const REG = new RegExp(`\\${p.sep}`, 'g')
