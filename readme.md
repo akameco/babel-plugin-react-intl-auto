@@ -51,7 +51,7 @@ export default defineMessages({
 })
 ```
 
-See [examples](https://github.com/akameco/babel-plugin-react-intl-auto/tree/master/example).
+See [examples](https://github.com/akameco/babel-plugin-react-intl-auto/tree/master/examples).
 
 with [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
 
