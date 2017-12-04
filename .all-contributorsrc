@@ -58,6 +58,16 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "carlgrundberg",
+      "name": "Carl Grundberg",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/928407?v=4",
+      "profile": "http://carlgrundberg.github.io/",
+      "contributions": [
+        "example",
+        "doc"
+      ]
     }
   ]
 }
