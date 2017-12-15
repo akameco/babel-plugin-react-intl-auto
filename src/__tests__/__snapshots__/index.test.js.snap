@@ -235,6 +235,26 @@ export default defineMessages(1);
 "
 `;
 
+exports[`default - not transform when react-intl is not imported 1`] = `
+"
+import any from 'any-module'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import any from 'any-module';
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world'
+});
+"
+`;
+
 exports[`default - not transfrom when the variable can not be found 1`] = `
 "
 import { defineMessages } from 'react-intl'

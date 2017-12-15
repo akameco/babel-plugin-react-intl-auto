@@ -194,6 +194,17 @@ import { defineMessages } from 'react-intl'
 export default defineMessages(messages)
     `,
   },
+  {
+    title: 'not transform when react-intl is not imported',
+    code: `
+import any from 'any-module'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+    `,
+  },
   leadingCommentTest,
   leadingCommentWithDescriptionTest,
 ]
