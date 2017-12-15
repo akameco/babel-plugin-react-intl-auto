@@ -80,9 +80,7 @@ const isValidate = (path: Object, state: State): boolean => {
     return false
   }
 
-  const msgPath = path.get('arguments.0')
-
-  if (!msgPath || !(msgPath.isObjectExpression() || msgPath.isIdentifier())) {
+  if (!path.get('arguments.0')) {
     return false
   }
 
@@ -126,9 +124,10 @@ const replaceProperties = (
       }
 
       messageDescriptorProperties.push(...objProps.map(v => v.node))
+    }
 
-      // 'hello' or `hello ${user}`
-    } else if (isLiteral(propValue)) {
+    // 'hello' or `hello ${user}`
+    if (isLiteral(propValue)) {
       const id = getId(prop.get('key'), prefix)
 
       messageDescriptorProperties.push(

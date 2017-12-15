@@ -162,6 +162,8 @@ export default defineMessages({
   {
     title: 'not transform if defineMessages is not imported',
     code: `
+import any from 'any-module'
+
 export default defineMessages({
   hello: 'hello',
   world: 'hello world',
@@ -192,6 +194,38 @@ export default defineMessages(messages)
 import { defineMessages } from 'react-intl'
 
 export default defineMessages(messages)
+    `,
+  },
+  {
+    title: 'not transform when defineMessages argumens is empty',
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages()
+    `,
+  },
+  {
+    title: 'not transform if callee is not identifier',
+    code: `
+import { defineMessages } from 'react-intl'
+
+const m = [defineMessages]
+
+export default m[0]({
+  hello: 'hello',
+  world: 'hello world',
+})
+    `,
+  },
+  {
+    title: 'with other specifier',
+    code: `
+import { defineMessages, FormattedMessage } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
     `,
   },
   leadingCommentTest,
