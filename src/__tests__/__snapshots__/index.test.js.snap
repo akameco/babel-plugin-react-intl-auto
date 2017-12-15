@@ -205,37 +205,31 @@ export default defineMessages({
 "
 `;
 
-exports[`default - not transform if defineMessages is not imported 1`] = `
+exports[`default - not transform if callee is not identifier 1`] = `
 "
-export default defineMessages({
+import { defineMessages } from 'react-intl'
+
+const m = [defineMessages]
+
+export default m[0]({
   hello: 'hello',
   world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
-export default defineMessages({
+import { defineMessages } from 'react-intl';
+
+const m = [defineMessages];
+
+export default m[0]({
   hello: 'hello',
   world: 'hello world'
 });
 "
 `;
 
-exports[`default - not transform when defineMessages argumens is not object 1`] = `
-"
-import { defineMessages } from 'react-intl'
-
-export default defineMessages(1)
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-import { defineMessages } from 'react-intl';
-
-export default defineMessages(1);
-"
-`;
-
-exports[`default - not transform when react-intl is not imported 1`] = `
+exports[`default - not transform if defineMessages is not imported 1`] = `
 "
 import any from 'any-module'
 
@@ -252,6 +246,34 @@ export default defineMessages({
   hello: 'hello',
   world: 'hello world'
 });
+"
+`;
+
+exports[`default - not transform when defineMessages argumens is empty 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages()
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages();
+"
+`;
+
+exports[`default - not transform when defineMessages argumens is not object 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages(1)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages(1);
 "
 `;
 
@@ -372,6 +394,32 @@ defineMessages({
 
 hello({
   id: 'hoge'
+});
+"
+`;
+
+exports[`default - with other specifier 1`] = `
+"
+import { defineMessages, FormattedMessage } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+  world: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages, FormattedMessage } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.hello',
+    'defaultMessage': 'hello'
+  },
+  world: {
+    'id': 'src.__fixtures__.world',
+    'defaultMessage': 'hello world'
+  }
 });
 "
 `;
