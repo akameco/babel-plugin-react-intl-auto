@@ -1,4 +1,5 @@
 # babel-plugin-react-intl-auto
+
 [![Build Status](https://travis-ci.org/akameco/babel-plugin-react-intl-auto.svg?branch=master)](https://travis-ci.org/akameco/babel-plugin-react-intl-auto)
 [![Build status](https://ci.appveyor.com/api/projects/status/5smedgke2ia9fpa0/branch/master?svg=true)](https://ci.appveyor.com/project/akameco/babel-plugin-react-intl-auto/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/akameco/babel-plugin-react-intl-auto/badge.svg?branch=master)](https://coveralls.io/github/akameco/babel-plugin-react-intl-auto?branch=master)
@@ -29,11 +30,11 @@ import { defineMessages } from 'react-intl'
 export default defineMessages({
   hello: {
     id: 'App.Components.Greeting.hello',
-    defaultMessage: 'hello {name}'
+    defaultMessage: 'hello {name}',
   },
   welcome: {
     id: 'App.Components.Greeting.welcome',
-    defaultMessage: 'Welcome!'
+    defaultMessage: 'Welcome!',
   },
 })
 ```
@@ -89,10 +90,13 @@ $ yarn add --dev babel-plugin-react-intl-auto
 ```json
 {
   "plugins": [
-    ["react-intl-auto", {
-      "removePrefix": "app/",
-      "filebase": false
-    }]
+    [
+      "react-intl-auto",
+      {
+        "removePrefix": "app/",
+        "filebase": false
+      }
+    ]
   ]
 }
 ```
@@ -107,7 +111,6 @@ Type: `string | boolean` <br>
 Default: `''`
 
 if `removePrefix` is `true`, no file path prefix is included in the id.
-
 
 ##### Example (src/components/App/messages.js)
 
@@ -153,14 +156,15 @@ export default defineMessages({
 });
 ```
 
-
 #### filebase
+
 Type: `boolean` <br>
 Default: `false`
 
 if `filebase` is `true`, generate id with filename.
 
 #### includeExportName
+
 Type: `boolean | 'all'` <br>
 Default: `false`
 
@@ -236,9 +240,11 @@ export default defineMessages(messages);
 ## Related
 
 ### [babel-plugin-react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash)
+
 If you want short consistent hash values for the ID, you can use [react-intl-id-hash](https://github.com/adam-26/babel-plugin-react-intl-id-hash) in addition to this plugin to help reduce your applications bundle size.
 
- ### [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages)
+### [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages)
+
 Extract react-intl messages.
 
 ## Contributors
@@ -246,8 +252,11 @@ Extract react-intl messages.
 Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
 | [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Code") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Tests") [👀](#review-akameco "Reviewed Pull Requests") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/112334?v=4" width="100px;"/><br /><sub><b>Aleksander Heintz</b></sub>](http://alxandr.me)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/753919?v=4" width="100px;"/><br /><sub><b>Ryan Leckey</b></sub>](https://github.com/mehcode)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mehcode "Code") | [<img src="https://avatars1.githubusercontent.com/u/2652619?v=4" width="100px;"/><br /><sub><b>Adam</b></sub>](https://github.com/adam-26)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26 "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26 "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/1280915?v=4" width="100px;"/><br /><sub><b>Guylian Cox</b></sub>](https://ephys.github.io)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Documentation") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Tests") | [<img src="https://avatars1.githubusercontent.com/u/928407?v=4" width="100px;"/><br /><sub><b>Carl Grundberg</b></sub>](http://carlgrundberg.github.io/)<br />[💡](#example-carlgrundberg "Examples") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=carlgrundberg "Documentation") |
 | :---: | :---: | :---: | :---: | :---: | :---: |
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!

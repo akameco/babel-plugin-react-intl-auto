@@ -16,7 +16,7 @@
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepare": "npm run build",
     "flow": "flow",
-    "fmt": "prettier --write '{src/**/*.js,*.json}'",
+    "fmt": "prettier --write '**/*.{js,json,md}'",
     "lint": "eslint src",
     "add:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "jest",
@@ -27,7 +27,7 @@
   },
   "lint-staged": {
     "src/**/*.js": ["fmt", "validate", "git add"],
-    "*.json": ["fmt", "git add"]
+    "*.{json,md}": ["fmt", "git add"]
   },
   "keywords": [
     "react",

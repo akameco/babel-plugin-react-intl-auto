@@ -6,6 +6,8 @@ const pattern = 'app/**/!(*.test).js'
 const buildDir = 'app/translations'
 const defaultLocale = 'en'
 
-extractReactIntlMessages(locales, pattern, buildDir, { defaultLocale }).then(() => {
-  console.log('finish')
-})
+extractReactIntlMessages(locales, pattern, buildDir, { defaultLocale }).then(
+  () => {
+    console.log('finish')
+  }
+)
