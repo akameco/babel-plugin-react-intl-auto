@@ -226,12 +226,61 @@ export default defineMessages({
   leadingCommentWithDescriptionTest,
 ]
 
-type PTestOpts = {
-  title: string,
-  tests: $ReadOnlyArray<{ title: string, code: string }>,
-}
+cases([
+  { title: 'default', tests },
+  {
+    title: 'removePrefix = "src"',
+    tests: [defaultTest],
+    pluginOptions: { removePrefix: 'src' },
+  },
+  {
+    title: 'removePrefix = "src/" -- with slash',
+    tests: [defaultTest],
+    pluginOptions: { removePrefix: 'src/' },
+  },
+  {
+    title: 'filebase = true',
+    tests: [defaultTest],
+    pluginOptions: { filebase: true },
+  },
+  {
+    title: 'includeExportName = true',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: { includeExportName: true },
+  },
+  {
+    title: 'includeExportName = all',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: { includeExportName: 'all' },
+  },
+  {
+    title: 'removePrefix = true, includeExportName = true',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: { removePrefix: true, includeExportName: true },
+  },
+  {
+    title: 'removePrefix = false',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: { removePrefix: false },
+  },
+  {
+    title: 'removePrefix = true, includeExportName = all',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: { removePrefix: true, includeExportName: 'all' },
+  },
+  {
+    title: 'extractComments = false',
+    tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
+    pluginOptions: { extractComments: false },
+  },
+])
 
-function pTest(opts: PTestOpts) {
+function cases(
+  testCases: {
+    title: string,
+    tests: $ReadOnlyArray<{ title: string, code: string }>,
+  }[]
+) {
   const defaultOpts = {
     title: '',
     plugin,
@@ -239,64 +288,11 @@ function pTest(opts: PTestOpts) {
     babelOptions: { filename },
     tests: [],
   }
-  opts.tests = opts.tests.map(t => {
-    return { ...t, title: `${opts.title} - ${t.title}` }
-  })
-  pluginTester({ ...defaultOpts, ...opts })
+  for (const testCase of testCases) {
+    testCase.tests = testCase.tests.map(t => ({
+      ...t,
+      title: `${testCase.title} - ${t.title}`,
+    }))
+    pluginTester({ ...defaultOpts, ...testCase })
+  }
 }
-
-pTest({ title: 'default', tests })
-
-pTest({
-  title: 'removePrefix = "src"',
-  tests: [defaultTest],
-  pluginOptions: { removePrefix: 'src' },
-})
-
-pTest({
-  title: 'removePrefix = "src/" -- with slash',
-  tests: [defaultTest],
-  pluginOptions: { removePrefix: 'src/' },
-})
-
-pTest({
-  title: 'filebase = true',
-  tests: [defaultTest],
-  pluginOptions: { filebase: true },
-})
-
-pTest({
-  title: 'includeExportName = true',
-  tests: [defaultTest, multiExportTest],
-  pluginOptions: { includeExportName: true },
-})
-
-pTest({
-  title: 'includeExportName = all',
-  tests: [defaultTest, multiExportTest],
-  pluginOptions: { includeExportName: 'all' },
-})
-
-pTest({
-  title: 'removePrefix = true, includeExportName = true',
-  tests: [defaultTest, multiExportTest],
-  pluginOptions: { removePrefix: true, includeExportName: true },
-})
-
-pTest({
-  title: 'removePrefix = false',
-  tests: [defaultTest, multiExportTest],
-  pluginOptions: { removePrefix: false },
-})
-
-pTest({
-  title: 'removePrefix = true, includeExportName = all',
-  tests: [defaultTest, multiExportTest],
-  pluginOptions: { removePrefix: true, includeExportName: 'all' },
-})
-
-pTest({
-  title: 'extractComments = false',
-  tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
-  pluginOptions: { extractComments: false },
-})
