@@ -72,15 +72,11 @@ const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
 
 const isValidate = (path: Object, state: State): boolean => {
   const callee = path.get('callee')
-  if (!callee.isIdentifier()) {
-    return false
-  }
-
-  if (!isImportLocalName(callee.node.name, state)) {
-    return false
-  }
-
-  if (!path.get('arguments.0')) {
+  if (
+    !callee.isIdentifier() ||
+    !isImportLocalName(callee.node.name, state) ||
+    !path.get('arguments.0')
+  ) {
     return false
   }
 
