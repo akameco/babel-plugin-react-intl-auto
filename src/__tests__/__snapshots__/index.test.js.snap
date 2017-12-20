@@ -48,7 +48,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -59,10 +58,6 @@ export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -73,8 +68,7 @@ exports[`default - import as 1`] = `
 import { defineMessages as m } from 'react-intl'
 
 m({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello'
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -85,10 +79,6 @@ m({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -168,13 +158,11 @@ exports[`default - multi export 1`] = `
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -184,10 +172,6 @@ import { defineMessages } from 'react-intl';
 export const extra = defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world extra'
   }
 });
@@ -195,10 +179,6 @@ export const extra = defineMessages({
 export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -212,8 +192,7 @@ import { defineMessages } from 'react-intl'
 const m = [defineMessages]
 
 export default m[0]({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world'
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -223,8 +202,7 @@ import { defineMessages } from 'react-intl';
 const m = [defineMessages];
 
 export default m[0]({
-  hello: 'hello',
-  world: 'hello world'
+  hello: 'hello world'
 });
 "
 `;
@@ -234,8 +212,7 @@ exports[`default - not transform if defineMessages is not imported 1`] = `
 import any from 'any-module'
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello'
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -243,8 +220,7 @@ export default defineMessages({
 import any from 'any-module';
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world'
+  hello: 'hello'
 });
 "
 `;
@@ -296,8 +272,7 @@ exports[`default - string literal 1`] = `
 import { defineMessages } from 'react-intl'
 
 defineMessages({
-  'hello': 'hello',
-  'world': 'hello world',
+  'hello': 'hello world'
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -307,10 +282,6 @@ import { defineMessages } from 'react-intl';
 defineMessages({
   'hello': {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  'world': {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -343,8 +314,7 @@ exports[`default - with include value 1`] = `
 import { defineMessages } from 'react-intl'
 
 defineMessages({
-  hello: 'hello',
-  world: \`hello world \${1}\`,
+  hello: \`hello world \${1}\`,
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -354,10 +324,6 @@ import { defineMessages } from 'react-intl';
 defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': \`hello world \${1}\`
   }
 });
@@ -370,7 +336,6 @@ import { defineMessages } from 'react-intl'
 
 defineMessages({
   hello: 'hello',
-  world: \`hello world \${1}\`,
 })
 
 hello({
@@ -385,10 +350,6 @@ defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': \`hello world \${1}\`
   }
 });
 
@@ -403,8 +364,7 @@ exports[`default - with other specifier 1`] = `
 import { defineMessages, FormattedMessage } from 'react-intl'
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -414,10 +374,6 @@ import { defineMessages, FormattedMessage } from 'react-intl';
 export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -430,7 +386,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -441,10 +396,6 @@ export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -523,7 +474,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -534,10 +484,6 @@ export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.messages.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.messages.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -549,7 +495,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -560,10 +505,6 @@ export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.default.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.default.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -574,13 +515,11 @@ exports[`includeExportName = all - multi export 1`] = `
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -590,10 +529,6 @@ import { defineMessages } from 'react-intl';
 export const extra = defineMessages({
   hello: {
     'id': 'src.__fixtures__.extra.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'src.__fixtures__.extra.world',
     'defaultMessage': 'hello world extra'
   }
 });
@@ -601,10 +536,6 @@ export const extra = defineMessages({
 export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.default.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.default.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -617,7 +548,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -628,10 +558,6 @@ export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -642,13 +568,11 @@ exports[`includeExportName = true - multi export 1`] = `
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -658,10 +582,6 @@ import { defineMessages } from 'react-intl';
 export const extra = defineMessages({
   hello: {
     'id': 'src.__fixtures__.extra.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'src.__fixtures__.extra.world',
     'defaultMessage': 'hello world extra'
   }
 });
@@ -669,10 +589,6 @@ export const extra = defineMessages({
 export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -685,7 +601,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -696,10 +611,6 @@ export default defineMessages({
   hello: {
     'id': '__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -711,7 +622,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -722,10 +632,6 @@ export default defineMessages({
   hello: {
     'id': '__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': '__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -737,7 +643,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -748,10 +653,6 @@ export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -762,13 +663,11 @@ exports[`removePrefix = false - multi export 1`] = `
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -778,10 +677,6 @@ import { defineMessages } from 'react-intl';
 export const extra = defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world extra'
   }
 });
@@ -789,10 +684,6 @@ export const extra = defineMessages({
 export default defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'src.__fixtures__.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -805,7 +696,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -816,10 +706,6 @@ export default defineMessages({
   hello: {
     'id': 'default.hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'default.world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -830,13 +716,11 @@ exports[`removePrefix = true, includeExportName = all - multi export 1`] = `
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -846,10 +730,6 @@ import { defineMessages } from 'react-intl';
 export const extra = defineMessages({
   hello: {
     'id': 'extra.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'extra.world',
     'defaultMessage': 'hello world extra'
   }
 });
@@ -857,10 +737,6 @@ export const extra = defineMessages({
 export default defineMessages({
   hello: {
     'id': 'default.hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'default.world',
     'defaultMessage': 'hello world'
   }
 });
@@ -873,7 +749,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -884,10 +759,6 @@ export default defineMessages({
   hello: {
     'id': 'hello',
     'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'world',
-    'defaultMessage': 'hello world'
   }
 });
 "
@@ -898,13 +769,11 @@ exports[`removePrefix = true, includeExportName = true - multi export 1`] = `
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -914,10 +783,6 @@ import { defineMessages } from 'react-intl';
 export const extra = defineMessages({
   hello: {
     'id': 'extra.hello',
-    'defaultMessage': 'hello extra'
-  },
-  world: {
-    'id': 'extra.world',
     'defaultMessage': 'hello world extra'
   }
 });
@@ -925,10 +790,6 @@ export const extra = defineMessages({
 export default defineMessages({
   hello: {
     'id': 'hello',
-    'defaultMessage': 'hello'
-  },
-  world: {
-    'id': 'world',
     'defaultMessage': 'hello world'
   }
 });
