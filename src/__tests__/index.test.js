@@ -12,7 +12,6 @@ import { defineMessages } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello',
-  world: 'hello world',
 })
 `,
 }
@@ -23,13 +22,11 @@ const multiExportTest = {
 import { defineMessages } from 'react-intl'
 
 export const extra = defineMessages({
-  hello: 'hello extra',
-  world: 'hello world extra',
+  hello: 'hello world extra'
 })
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
 `,
 }
@@ -77,8 +74,7 @@ const tests = [
 import { defineMessages } from 'react-intl'
 
 defineMessages({
-  hello: 'hello',
-  world: \`hello world \${1}\`,
+  hello: \`hello world \${1}\`,
 })
       `,
   },
@@ -88,8 +84,7 @@ defineMessages({
 import { defineMessages } from 'react-intl'
 
 defineMessages({
-  'hello': 'hello',
-  'world': 'hello world',
+  'hello': 'hello world'
 })
       `,
   },
@@ -119,8 +114,7 @@ defineMessages({
 import { defineMessages as m } from 'react-intl'
 
 m({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello'
 })
 
 `,
@@ -132,7 +126,6 @@ import { defineMessages } from 'react-intl'
 
 defineMessages({
   hello: 'hello',
-  world: \`hello world \${1}\`,
 })
 
 hello({
@@ -159,8 +152,7 @@ export default defineMessages({
 import any from 'any-module'
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello'
 })
     `,
   },
@@ -206,8 +198,7 @@ import { defineMessages } from 'react-intl'
 const m = [defineMessages]
 
 export default m[0]({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world'
 })
     `,
   },
@@ -217,8 +208,7 @@ export default m[0]({
 import { defineMessages, FormattedMessage } from 'react-intl'
 
 export default defineMessages({
-  hello: 'hello',
-  world: 'hello world',
+  hello: 'hello world',
 })
     `,
   },
