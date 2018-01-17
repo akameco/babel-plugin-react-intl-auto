@@ -59,8 +59,8 @@
     "all-contributors-cli": "^4.10.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.1.0",
-    "babel-jest": "^22.0.4",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
     "babel-log": "^2.0.0",
     "babel-plugin-tester": "^5.0.0",
     "babel-preset-env": "^1.6.1",
@@ -71,7 +71,7 @@
     "eslint-config-precure": "^0.13.0",
     "flow-bin": "^0.63.1",
     "husky": "^0.14.3",
-    "jest": "^22.0.4",
+    "jest": "^22.1.1",
     "lint-staged": "^6.0.0",
     "prettier": "^1.10.2"
   }
