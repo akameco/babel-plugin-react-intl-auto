@@ -1,3 +1,4 @@
 **/flow-typed/**
 coverage
 lib
+package.json
