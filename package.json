@@ -26,8 +26,15 @@
     "validate": "npm run lint && npm run flow && npm run test:coverage"
   },
   "lint-staged": {
-    "src/**/*.js": ["fmt", "validate", "git add"],
-    "*.{json,md}": ["fmt", "git add"]
+    "src/**/*.js": [
+      "fmt",
+      "validate",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "fmt",
+      "git add"
+    ]
   },
   "keywords": [
     "react",
@@ -42,28 +49,30 @@
     "generate",
     "defineMessages"
   ],
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "babel-types": "^6.26.0"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.10.0",
+    "all-contributors-cli": "^4.10.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
-    "babel-jest": "^21.2.0",
+    "babel-eslint": "^8.2.1",
+    "babel-jest": "^22.1.0",
     "babel-log": "^2.0.0",
     "babel-plugin-tester": "^5.0.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.26.0",
     "coveralls": "^3.0.0",
-    "eslint": "^4.13.1",
-    "eslint-config-precure": "^0.11.3",
-    "flow-bin": "^0.61.0",
+    "eslint": "^4.15.0",
+    "eslint-config-precure": "^0.13.0",
+    "flow-bin": "^0.63.1",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
+    "jest": "^22.1.1",
     "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2"
+    "prettier": "^1.10.2"
   }
 }
