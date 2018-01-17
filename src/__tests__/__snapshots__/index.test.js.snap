@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`default - Object 1`] = `
+exports[`default Object: Object 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -42,7 +42,7 @@ defineMessages({
 "
 `;
 
-exports[`default - default 1`] = `
+exports[`default default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -63,7 +63,7 @@ export default defineMessages({
 "
 `;
 
-exports[`default - import as 1`] = `
+exports[`default import as: import as 1`] = `
 "
 import { defineMessages as m } from 'react-intl'
 
@@ -84,7 +84,37 @@ m({
 "
 `;
 
-exports[`default - leading comment 1`] = `
+exports[`default leading comment with description: leading comment with description 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    defaultMessage: 'hello world',
+    description: 'The hello world',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'hello world',
+    description: 'The hello world'
+  }
+});
+"
+`;
+
+exports[`default leading comment: leading comment 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -123,37 +153,7 @@ export default defineMessages({
 "
 `;
 
-exports[`default - leading comment with description 1`] = `
-"
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-
-  // This comment should not be used
-  world: {
-    defaultMessage: 'hello world',
-    description: 'The hello world',
-  }
-})
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-import { defineMessages } from 'react-intl';
-
-export default defineMessages({
-
-  // This comment should not be used
-  world: {
-    'id': 'src.__fixtures__.world',
-
-    defaultMessage: 'hello world',
-    description: 'The hello world'
-  }
-});
-"
-`;
-
-exports[`default - multi export 1`] = `
+exports[`default multi export: multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -185,7 +185,7 @@ export default defineMessages({
 "
 `;
 
-exports[`default - not transform if callee is not identifier 1`] = `
+exports[`default not transform if callee is not identifier: not transform if callee is not identifier 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -207,7 +207,7 @@ export default m[0]({
 "
 `;
 
-exports[`default - not transform if defineMessages is not imported 1`] = `
+exports[`default not transform if defineMessages is not imported: not transform if defineMessages is not imported 1`] = `
 "
 import any from 'any-module'
 
@@ -225,7 +225,7 @@ export default defineMessages({
 "
 `;
 
-exports[`default - not transform when defineMessages argumens is empty 1`] = `
+exports[`default not transform when defineMessages argumens is empty: not transform when defineMessages argumens is empty 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -239,7 +239,7 @@ export default defineMessages();
 "
 `;
 
-exports[`default - not transform when defineMessages argumens is not object 1`] = `
+exports[`default not transform when defineMessages argumens is not object: not transform when defineMessages argumens is not object 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -253,7 +253,7 @@ export default defineMessages(1);
 "
 `;
 
-exports[`default - not transfrom when the variable can not be found 1`] = `
+exports[`default not transfrom when the variable can not be found: not transfrom when the variable can not be found 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -267,7 +267,7 @@ export default defineMessages(messages);
 "
 `;
 
-exports[`default - string literal 1`] = `
+exports[`default string literal: string literal 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -288,7 +288,7 @@ defineMessages({
 "
 `;
 
-exports[`default - when using the variable 1`] = `
+exports[`default when using the variable: when using the variable 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -309,7 +309,7 @@ export default defineMessages(messages);
 "
 `;
 
-exports[`default - with include value 1`] = `
+exports[`default with include value: with include value 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -330,7 +330,7 @@ defineMessages({
 "
 `;
 
-exports[`default - with other func 1`] = `
+exports[`default with other func: with other func 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -359,7 +359,7 @@ hello({
 "
 `;
 
-exports[`default - with other specifier 1`] = `
+exports[`default with other specifier: with other specifier 1`] = `
 "
 import { defineMessages, FormattedMessage } from 'react-intl'
 
@@ -380,7 +380,7 @@ export default defineMessages({
 "
 `;
 
-exports[`extractComments = false - default 1`] = `
+exports[`extractComments = false default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -401,7 +401,37 @@ export default defineMessages({
 "
 `;
 
-exports[`extractComments = false - leading comment 1`] = `
+exports[`extractComments = false leading comment with description: leading comment with description 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    defaultMessage: 'hello world',
+    description: 'The hello world',
+  }
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+
+  // This comment should not be used
+  world: {
+    'id': 'src.__fixtures__.world',
+
+    defaultMessage: 'hello world',
+    description: 'The hello world'
+  }
+});
+"
+`;
+
+exports[`extractComments = false leading comment: leading comment 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -438,37 +468,7 @@ export default defineMessages({
 "
 `;
 
-exports[`extractComments = false - leading comment with description 1`] = `
-"
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-
-  // This comment should not be used
-  world: {
-    defaultMessage: 'hello world',
-    description: 'The hello world',
-  }
-})
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-import { defineMessages } from 'react-intl';
-
-export default defineMessages({
-
-  // This comment should not be used
-  world: {
-    'id': 'src.__fixtures__.world',
-
-    defaultMessage: 'hello world',
-    description: 'The hello world'
-  }
-});
-"
-`;
-
-exports[`filebase = true - default 1`] = `
+exports[`filebase = true default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -489,7 +489,7 @@ export default defineMessages({
 "
 `;
 
-exports[`includeExportName = all - default 1`] = `
+exports[`includeExportName = all default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -510,7 +510,7 @@ export default defineMessages({
 "
 `;
 
-exports[`includeExportName = all - multi export 1`] = `
+exports[`includeExportName = all multi export: multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -542,7 +542,7 @@ export default defineMessages({
 "
 `;
 
-exports[`includeExportName = true - default 1`] = `
+exports[`includeExportName = true default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -563,7 +563,7 @@ export default defineMessages({
 "
 `;
 
-exports[`includeExportName = true - multi export 1`] = `
+exports[`includeExportName = true multi export: multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -595,7 +595,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = "src" - default 1`] = `
+exports[`removePrefix = "src" default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -616,7 +616,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = "src/" -- with slash - default 1`] = `
+exports[`removePrefix = "src/" -- with slash default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -637,7 +637,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = false - default 1`] = `
+exports[`removePrefix = false default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -658,7 +658,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = false - multi export 1`] = `
+exports[`removePrefix = false multi export: multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -690,7 +690,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = true, includeExportName = all - default 1`] = `
+exports[`removePrefix = true, includeExportName = all default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -711,7 +711,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = true, includeExportName = all - multi export 1`] = `
+exports[`removePrefix = true, includeExportName = all multi export: multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -743,7 +743,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = true, includeExportName = true - default 1`] = `
+exports[`removePrefix = true, includeExportName = true default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
@@ -764,7 +764,7 @@ export default defineMessages({
 "
 `;
 
-exports[`removePrefix = true, includeExportName = true - multi export 1`] = `
+exports[`removePrefix = true, includeExportName = true multi export: multi export 1`] = `
 "
 import { defineMessages } from 'react-intl'
 
