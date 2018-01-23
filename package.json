@@ -12,9 +12,9 @@
   },
   "scripts": {
     "add-contributor": "add-contributor add",
-    "precommit": "lint-staged",
+    "precommit": "yarn flow && lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
-    "prepare": "npm run build",
+    "prepare": "yarn build",
     "flow": "flow",
     "fmt": "prettier --write '**/*.{js,json,md}'",
     "lint": "eslint src",
@@ -22,17 +22,16 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --ci --runInBand",
-    "test:ci": "npm run validate && npm run add:coveralls",
-    "validate": "npm run lint && npm run flow && npm run test:coverage"
+    "test:ci": "yarn flow && yarn lint && yarn test:coverage"
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "fmt",
-      "validate",
+    "*.js": [
+      "prettier --write",
+      "eslint",
       "git add"
     ],
     "*.{json,md}": [
-      "fmt",
+      "prettier --write",
       "git add"
     ]
   },
