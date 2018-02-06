@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`default multiple uses: multiple uses 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+<FormattedMessage defaultMessage=\\"another\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+<FormattedMessage id=\\"src.__fixtures__.1418522856\\" defaultMessage=\\"another\\" />;
+"
+`;
+
+exports[`default with FormattedMessage imported as something else: with FormattedMessage imported as something else 1`] = `
+"
+import { FormattedMessage as T } from 'react-intl';
+
+<T defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage as T } from 'react-intl';
+
+<T id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`default with FormattedMessage nested in other JSX: with FormattedMessage nested in other JSX 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<div>
+  <FormattedMessage defaultMessage=\\"hello\\" />
+</div>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<div>
+  <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />
+</div>;
+"
+`;
+
+exports[`default with a value interpolated in the message: with a value interpolated in the message 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage={\`hello world 2\`} />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.3540954520\\" defaultMessage={\`hello world 2\`} />;
+"
+`;
+
+exports[`default with a variable as the defaultMessage: with a variable as the defaultMessage 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+const message = \\"variable message\\";
+
+<FormattedMessage defaultMessage={message} />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+const message = \\"variable message\\";
+
+<FormattedMessage id=\\"src.__fixtures__.3082794952\\" defaultMessage={message} />;
+"
+`;
+
+exports[`extractComments = false default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`filebase = true default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.messages.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`includeExportName = all default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`includeExportName = true default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`removePrefix = "src" default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`removePrefix = "src/" -- with slash default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`removePrefix = false default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`removePrefix = true, includeExportName = all default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
+exports[`removePrefix = true, includeExportName = true default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage id=\\"613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;

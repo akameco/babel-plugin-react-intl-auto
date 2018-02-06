@@ -52,7 +52,8 @@
     "lib"
   ],
   "dependencies": {
-    "babel-types": "^6.26.0"
+    "babel-types": "^6.26.0",
+    "murmurhash3js": "^3.0.1"
   },
   "devDependencies": {
     "all-contributors-cli": "^4.10.1",

@@ -68,6 +68,17 @@
         "example",
         "doc"
       ]
+    },
+    {
+      "login": "bradbarrow",
+      "name": "bradbarrow",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1264276?v=4",
+      "profile": "http://bradbarrow.com",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
     }
   ]
 }
