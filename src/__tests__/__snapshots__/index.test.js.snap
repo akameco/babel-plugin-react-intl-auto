@@ -314,7 +314,7 @@ exports[`default with include value: with include value 1`] = `
 import { defineMessages } from 'react-intl'
 
 defineMessages({
-  hello: \`hello world \${1+1}\`,
+  hello: \`hello world \${1}\`,
 })
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -324,7 +324,7 @@ import { defineMessages } from 'react-intl';
 defineMessages({
   hello: {
     'id': 'src.__fixtures__.hello',
-    'defaultMessage': \`hello world \${1 + 1}\`
+    'defaultMessage': \`hello world \${1}\`
   }
 });
 "

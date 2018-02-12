@@ -74,7 +74,7 @@ const tests = [
 import { defineMessages } from 'react-intl'
 
 defineMessages({
-  hello: \`hello world \${1+1}\`,
+  hello: \`hello world \${1}\`,
 })
       `,
   },
