@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/akameco/babel-plugin-react-intl-auto/badge.svg?branch=master)](https://coveralls.io/github/akameco/babel-plugin-react-intl-auto?branch=master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
 
 > i18n for the component age. Auto management react-intl ID.
 
@@ -22,10 +22,10 @@ You can generate json automatically.
 
 Goodbye, global ID!!
 
-### Before
+#### Before
 
 ```js
-import { defineMessages } from 'react-intl'
+import { defineMessages, FormattedMessage } from 'react-intl'
 
 export default defineMessages({
   hello: {
@@ -37,9 +37,16 @@ export default defineMessages({
     defaultMessage: 'Welcome!',
   },
 })
+
+const MyComponent = () => (
+  <FormattedMessage
+    id="App.Components.Greeting.goodbye"
+    defaultMessage="goodbye {name}"
+  />
+)
 ```
 
-### After
+#### After
 
 With babel-plugin-react-intl-auto.
 
@@ -50,11 +57,15 @@ export default defineMessages({
   hello: 'hello {name}',
   welcome: 'Welcome!',
 })
+
+const MyComponent = () => <FormattedMessage defaultMessage="goodbye {name}" />
 ```
 
 See [examples](https://github.com/akameco/babel-plugin-react-intl-auto/tree/master/examples).
 
-with [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
+### With `extract-react-intl-messages`
+
+Example usage with [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
 
 ```
 $ extract-messages -l=en -o translations 'src/**/*.js'
@@ -66,6 +77,7 @@ en.json
 {
   "components.App.hello": "hello {name}",
   "components.App.welcome": "Welcome"
+  "components.App.189751785": "goodbye {name}" // unique hash of defaultMessage
 }
 ```
 
@@ -170,6 +182,8 @@ Default: `false`
 
 if `includeExportName` is `true`, adds named exports as part of the id.
 
+Only works with `defineMessages`.
+
 ##### Example
 
 ```js
@@ -192,7 +206,9 @@ exports.
 
 #### extractComments
 
-Use leading comments as the message description
+Use leading comments as the message description.
+
+Only works with `defineMessages`
 
 Type: `boolean` <br>
 Default: `true`
@@ -254,8 +270,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Code") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Tests") [👀](#review-akameco "Reviewed Pull Requests") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/112334?v=4" width="100px;"/><br /><sub><b>Aleksander Heintz</b></sub>](http://alxandr.me)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/753919?v=4" width="100px;"/><br /><sub><b>Ryan Leckey</b></sub>](https://github.com/mehcode)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mehcode "Code") | [<img src="https://avatars1.githubusercontent.com/u/2652619?v=4" width="100px;"/><br /><sub><b>Adam</b></sub>](https://github.com/adam-26)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26 "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26 "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/1280915?v=4" width="100px;"/><br /><sub><b>Guylian Cox</b></sub>](https://ephys.github.io)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Documentation") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Tests") | [<img src="https://avatars1.githubusercontent.com/u/928407?v=4" width="100px;"/><br /><sub><b>Carl Grundberg</b></sub>](http://carlgrundberg.github.io/)<br />[💡](#example-carlgrundberg "Examples") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=carlgrundberg "Documentation") |
-| :---: | :---: | :---: | :---: | :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;"/><br /><sub><b>akameco</b></sub>](http://akameco.github.io)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Code") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Tests") [👀](#review-akameco "Reviewed Pull Requests") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/112334?v=4" width="100px;"/><br /><sub><b>Aleksander Heintz</b></sub>](http://alxandr.me)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr "Documentation") | [<img src="https://avatars1.githubusercontent.com/u/753919?v=4" width="100px;"/><br /><sub><b>Ryan Leckey</b></sub>](https://github.com/mehcode)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mehcode "Code") | [<img src="https://avatars1.githubusercontent.com/u/2652619?v=4" width="100px;"/><br /><sub><b>Adam</b></sub>](https://github.com/adam-26)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26 "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26 "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/1280915?v=4" width="100px;"/><br /><sub><b>Guylian Cox</b></sub>](https://ephys.github.io)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Documentation") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys "Tests") | [<img src="https://avatars1.githubusercontent.com/u/928407?v=4" width="100px;"/><br /><sub><b>Carl Grundberg</b></sub>](http://carlgrundberg.github.io/)<br />[💡](#example-carlgrundberg "Examples") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=carlgrundberg "Documentation") | [<img src="https://avatars3.githubusercontent.com/u/1264276?v=4" width="100px;"/><br /><sub><b>bradbarrow</b></sub>](http://bradbarrow.com)<br />[💻](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow "Code") [📖](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow "Documentation") [⚠️](https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow "Tests") |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
