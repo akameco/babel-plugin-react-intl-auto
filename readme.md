@@ -76,7 +76,7 @@ en.json
 ```json
 {
   "components.App.hello": "hello {name}",
-  "components.App.welcome": "Welcome"
+  "components.App.welcome": "Welcome",
   "components.App.189751785": "goodbye {name}" // unique hash of defaultMessage
 }
 ```
