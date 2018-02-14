@@ -51,7 +51,7 @@ const MyComponent = () => (
 With babel-plugin-react-intl-auto.
 
 ```js
-import { defineMessages } from 'react-intl'
+import { defineMessages, FormattedMessage } from 'react-intl'
 
 export default defineMessages({
   hello: 'hello {name}',
