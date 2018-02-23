@@ -1,7 +1,7 @@
 // @flow
 import path from 'path'
 import pluginTester from 'babel-plugin-tester'
-import plugin from '../'
+import plugin from '..'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
 
