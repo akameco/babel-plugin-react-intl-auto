@@ -38,7 +38,9 @@ const dotPath = (str: string) => str.replace(REG, '.')
 
 const getPrefix = (
   {
-    file: { opts: { filename } },
+    file: {
+      opts: { filename },
+    },
     opts: { removePrefix = '', filebase = false },
   }: State,
   exportName: string | null
