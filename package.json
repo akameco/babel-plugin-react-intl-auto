@@ -58,21 +58,21 @@
   "devDependencies": {
     "all-contributors-cli": "^4.11.1",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-jest": "^22.4.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.0.1",
     "babel-log": "^2.0.0",
     "babel-plugin-tester": "^5.0.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.26.0",
-    "coveralls": "^3.0.0",
-    "eslint": "^4.19.0",
-    "eslint-config-precure": "^2.6.0",
-    "flow-bin": "^0.68.0",
+    "coveralls": "^3.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-precure": "^2.7.0",
+    "flow-bin": "^0.73.0",
     "husky": "^0.14.3",
-    "jest": "^22.4.2",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1"
+    "jest": "^23.0.1",
+    "lint-staged": "^7.1.2",
+    "prettier": "^1.13.2"
   }
 }
