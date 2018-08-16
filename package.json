@@ -11,7 +11,7 @@
     "url": "akameco.github.io"
   },
   "scripts": {
-    "add-contributor": "add-contributor add",
+    "add-contributor": "all-contributors add",
     "precommit": "yarn flow && lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
     "prepare": "yarn build",
