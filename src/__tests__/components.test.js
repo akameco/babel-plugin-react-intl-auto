@@ -24,6 +24,16 @@ import { FormattedMessage } from 'react-intl';
 `,
 }
 
+const allSupportedComponentsTest = {
+  title: 'import all supported components',
+  code: `
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+
+<FormattedHTMLMessage defaultMessage="<span>hello</span>" />;
+<FormattedMessage defaultMessage="hello" />;
+`,
+}
+
 const withValueInMessageTest = {
   title: 'with a value interpolated in the message',
   code: `
@@ -102,6 +112,7 @@ const props = { defaultMessage: 'hello' };
 const tests = [
   defaultTest,
   multiUseTest,
+  allSupportedComponentsTest,
   withValueInMessageTest,
   withVariableMessageTest,
   importAsTest,
