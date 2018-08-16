@@ -14,6 +14,22 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`default import all supported components: import all supported components 1`] = `
+"
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+
+<FormattedHTMLMessage defaultMessage=\\"<span>hello</span>\\" />;
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+
+<FormattedHTMLMessage id=\\"src.__fixtures__.205247277\\" defaultMessage=\\"<span>hello</span>\\" />;
+<FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
 exports[`default multiple uses: multiple uses 1`] = `
 "
 import { FormattedMessage } from 'react-intl';

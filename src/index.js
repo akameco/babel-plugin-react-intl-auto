@@ -10,25 +10,27 @@ const isImportLocalName = (
   allowedNames: $ReadOnlyArray<string>,
   { file }: State
 ) => {
+  const isSearchedImportSpecifier = specifier =>
+    specifier.isImportSpecifier() &&
+    allowedNames.includes(specifier.node.imported.name) &&
+    specifier.node.local.name === name
+
   let isImported = false
+
   file.path.traverse({
     ImportDeclaration: {
       exit(path) {
-        const { node } = path
-        if (node.source.value !== 'react-intl') {
-          return
-        }
-        for (const specifier of path.get('specifiers')) {
-          if (
-            specifier.isImportSpecifier() &&
-            allowedNames.includes(specifier.node.imported.name)
-          ) {
-            isImported = specifier.node.local.name === name
-          }
+        isImported =
+          path.node.source.value === 'react-intl' &&
+          path.get('specifiers').some(isSearchedImportSpecifier)
+
+        if (isImported) {
+          path.stop()
         }
       },
     },
   })
+
   return isImported
 }
 
@@ -77,17 +79,14 @@ const getId = (path, prefix) => {
 
 const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
 
-const isValidate = (path: Object, state: State): boolean => {
+const isDefineMessagesCall = (path: Object, state: State): boolean => {
   const callee = path.get('callee')
-  if (
-    !callee.isIdentifier() ||
-    !isImportLocalName(callee.node.name, ['defineMessages'], state) ||
-    !path.get('arguments.0')
-  ) {
-    return false
-  }
 
-  return true
+  return (
+    callee.isIdentifier() &&
+    isImportLocalName(callee.node.name, ['defineMessages'], state) &&
+    Boolean(path.get('arguments.0'))
+  )
 }
 
 const getLeadingComment = prop => {
@@ -269,7 +268,7 @@ export default function() {
     visitor: {
       JSXElement: visitJSXElement,
       CallExpression(path: Object, state: State) {
-        if (!isValidate(path, state)) {
+        if (!isDefineMessagesCall(path, state)) {
           return
         }
 
