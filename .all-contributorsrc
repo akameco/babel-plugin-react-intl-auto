@@ -79,6 +79,17 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "mgtitimoli",
+      "name": "Mauro Gabriel Titimoli",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4404683?v=4",
+      "profile": "https://github.com/mgtitimoli",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
-  ]
+  ],
+  "repoType": "github"
 }
