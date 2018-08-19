@@ -56,23 +56,23 @@
     "murmurhash3js": "^3.0.1"
   },
   "devDependencies": {
-    "all-contributors-cli": "^4.11.1",
+    "all-contributors-cli": "^5.4.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-jest": "^23.0.1",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.2",
     "babel-log": "^2.0.0",
-    "babel-plugin-tester": "^5.0.0",
+    "babel-plugin-tester": "^5.5.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
     "babel-register": "^6.26.0",
-    "coveralls": "^3.0.1",
+    "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-config-precure": "^2.7.0",
-    "flow-bin": "^0.73.0",
+    "flow-bin": "^0.79.1",
     "husky": "^0.14.3",
-    "jest": "^23.0.1",
-    "lint-staged": "^7.1.2",
-    "prettier": "^1.13.2"
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
+    "prettier": "^1.14.2"
   }
 }

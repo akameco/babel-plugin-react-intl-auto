@@ -28,8 +28,7 @@ export default class LanguageProvider extends React.Component<
         <IntlProvider locale={locale} messages={messages[locale]}>
           {this.props.children}
         </IntlProvider>
-        <a onClick={() => this.setState({ locale: 'en' })}>English</a>
-        /
+        <a onClick={() => this.setState({ locale: 'en' })}>English</a>/
         <a onClick={() => this.setState({ locale: 'ja' })}>日本語</a>
       </div>
     )

@@ -1,5 +1,4 @@
 {
   "components.App.hello": "こんにちは",
-  "components.Greeting.welcome":
-    "ようこそ {name}, {formattedLastLoginTime}から {unreadCount, plural, =0 {メッセージはありません} other {{formattedUnreadCount} 件のメッセージがあります}}"
+  "components.Greeting.welcome": "ようこそ {name}, {formattedLastLoginTime}から {unreadCount, plural, =0 {メッセージはありません} other {{formattedUnreadCount} 件のメッセージがあります}}"
 }

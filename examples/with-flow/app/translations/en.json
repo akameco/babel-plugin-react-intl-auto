@@ -1,5 +1,4 @@
 {
   "components.App.hello": "hello",
-  "components.Greeting.welcome":
-    "Welcome {name}, you have received {unreadCount, plural, =0 {no new messages} one {{formattedUnreadCount} new message} other {{formattedUnreadCount} new messages}} since {formattedLastLoginTime}."
+  "components.Greeting.welcome": "Welcome {name}, you have received {unreadCount, plural, =0 {no new messages} one {{formattedUnreadCount} new message} other {{formattedUnreadCount} new messages}} since {formattedLastLoginTime}."
 }
