@@ -14,6 +14,7 @@ export default class App extends Component<{}> {
 
     return (
       <div>
+        <FormattedMessage defaultMessage="hello" />
         <FormattedMessage {...messages.hello} />
         <Greeting user={user} />
       </div>

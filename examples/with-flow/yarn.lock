@@ -382,11 +382,12 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-react-intl-auto@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-0.9.0.tgz#b3c9466fea672df9a53d2d8742bf2c686ff83dd7"
+babel-plugin-react-intl-auto@*:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-intl-auto/-/babel-plugin-react-intl-auto-1.1.1.tgz#d162c1562bb56e68d4caf4269a898d5107a434e1"
   dependencies:
     babel-types "^6.26.0"
+    murmurhash3js "^3.0.1"
 
 babel-plugin-react-intl@^2.3.1:
   version "2.3.1"
@@ -2556,6 +2557,10 @@ multicast-dns@^6.0.1:
   dependencies:
     dns-packet "^1.0.1"
     thunky "^0.1.0"
+
+murmurhash3js@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/murmurhash3js/-/murmurhash3js-3.0.1.tgz#3e983e5b47c2a06f43a713174e7e435ca044b998"
 
 nan@^2.3.0:
   version "2.7.0"
