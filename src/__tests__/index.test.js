@@ -214,6 +214,17 @@ export default defineMessages({
   },
   leadingCommentTest,
   leadingCommentWithDescriptionTest,
+  {
+    title: 'eval string',
+    // only: true,
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello' + 'world',
+})
+    `,
+  },
 ]
 
 cases([

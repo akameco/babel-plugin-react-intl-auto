@@ -126,16 +126,24 @@ const replaceProperties = (
       }
 
       messageDescriptorProperties.push(...objProps.map(v => v.node))
-    }
-
-    // 'hello' or `hello ${user}`
-    if (isLiteral(propValue)) {
+    } else if (isLiteral(propValue)) {
+      // 'hello' or `hello ${user}`
       const id = getId(prop.get('key'), prefix)
 
       messageDescriptorProperties.push(
         objectProperty('id', id),
         objectProperty('defaultMessage', propValue.node)
       )
+    } else {
+      const evaluated = prop.get('value').evaluate()
+      if (evaluated.confident && typeof evaluated.value === 'string') {
+        const id = dotPath(p.join(prefix, evaluated.value))
+
+        messageDescriptorProperties.push(
+          objectProperty('id', id),
+          objectProperty('defaultMessage', propValue.node)
+        )
+      }
     }
 
     const { extractComments = true } = state.opts
