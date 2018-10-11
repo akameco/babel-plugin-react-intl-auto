@@ -63,6 +63,27 @@ export default defineMessages({
 "
 `;
 
+exports[`default eval string: eval string 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello' + 'world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': 'src.__fixtures__.helloworld',
+    'defaultMessage': 'hello' + 'world'
+  }
+});
+"
+`;
+
 exports[`default import as: import as 1`] = `
 "
 import { defineMessages as m } from 'react-intl'
