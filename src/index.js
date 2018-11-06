@@ -1,6 +1,6 @@
 // @flow
 import p from 'path'
-import * as t from 'babel-types'
+import * as t from '@babel/types'
 import murmur from 'murmurhash3js'
 import type { State } from './types'
 // import blog from 'babel-log'
