@@ -1,5 +1,6 @@
 // @flow
 import p from 'path'
+// $FlowFixMe: flow doesn't handle @namespaced imports well yet
 import * as t from '@babel/types'
 import murmur from 'murmurhash3js'
 import type { State } from './types'
