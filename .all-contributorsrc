@@ -89,6 +89,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "stanislav-ermakov",
+      "name": "Stanislav Ermakov",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15980086?v=4",
+      "profile": "https://github.com/stanislav-ermakov",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
