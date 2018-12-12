@@ -274,6 +274,11 @@ cases([
     tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
     pluginOptions: { extractComments: false },
   },
+  {
+    title: 'removePrefix = /__fixtures__/',
+    tests: [defaultTest],
+    pluginOptions: { removePrefix: /src\/__f.+?_/, includeExportName: true },
+  },
 ])
 
 function cases(

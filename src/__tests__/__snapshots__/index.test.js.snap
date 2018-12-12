@@ -658,6 +658,27 @@ export default defineMessages({
 "
 `;
 
+exports[`removePrefix = /__fixtures__/ default: default 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    'id': '_.hello',
+    'defaultMessage': 'hello'
+  }
+});
+"
+`;
+
 exports[`removePrefix = false default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'

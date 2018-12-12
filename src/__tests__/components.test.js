@@ -169,6 +169,11 @@ cases([
     tests: [defaultTest],
     pluginOptions: { extractComments: false },
   },
+  {
+    title: 'removePrefix = /__fixtures__/',
+    tests: [defaultTest],
+    pluginOptions: { removePrefix: /\/__fixtures__/ },
+  },
 ])
 
 function cases(
