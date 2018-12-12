@@ -276,6 +276,7 @@ cases([
   },
   {
     title: 'removePrefix = /__fixtures__/',
+    skip: process.platform === 'win32',
     tests: [defaultTest],
     pluginOptions: { removePrefix: /src\/__f.+?_/, includeExportName: true },
   },
