@@ -53,10 +53,13 @@ const getPrefix = (
   const file = p.relative(process.cwd(), filename)
   const fomatted = filebase ? file.replace(/\..+$/, '') : p.dirname(file)
   removePrefix = removePrefix === false ? '' : removePrefix
-  const fixed = dotPath(fomatted).replace(
-    new RegExp(`^${removePrefix.replace(/\//g, '')}\\${dotPath(p.sep)}?`),
-    ''
-  )
+  const fixed =
+    removePrefix instanceof RegExp
+      ? dotPath(fomatted.replace(removePrefix, ''))
+      : dotPath(fomatted).replace(
+          new RegExp(`^${removePrefix.replace(/\//g, '')}\\${dotPath(p.sep)}?`),
+          ''
+        )
   const result = exportName === null ? fixed : `${fixed}.${exportName}`
   return result
 }

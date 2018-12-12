@@ -274,6 +274,12 @@ cases([
     tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
     pluginOptions: { extractComments: false },
   },
+  {
+    title: 'removePrefix = /__fixtures__/',
+    skip: process.platform === 'win32',
+    tests: [defaultTest],
+    pluginOptions: { removePrefix: /src\/__f.+?_/, includeExportName: true },
+  },
 ])
 
 function cases(
