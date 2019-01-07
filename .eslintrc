@@ -4,7 +4,10 @@
     {
       "files": ["src/*.ts"],
       "parser": "typescript-eslint-parser",
-      "plugins": ["typescript"]
+      "plugins": ["typescript"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
     }
   ]
 }
