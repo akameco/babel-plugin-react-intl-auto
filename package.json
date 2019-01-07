@@ -18,7 +18,7 @@
     "prepack": "yarn build",
     "flow": "flow",
     "fmt": "prettier --write '**/*.{js,json,ts,md}'",
-    "lint": "eslint src",
+    "lint": "eslint src --ext js,ts",
     "add:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "jest",
     "test:watch": "jest --watch",
