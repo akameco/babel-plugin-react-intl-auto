@@ -14,8 +14,8 @@
   "scripts": {
     "add-contributor": "all-contributors add",
     "precommit": "yarn flow && lint-staged",
-    "build": "babel src -d lib --ignore __tests__,__fixtures__ && cp src/*.d.ts lib",
-    "prepack": "yarn build",
+    "build": "babel src -d lib --ignore __tests__,__fixtures__",
+    "prepack": "yarn build && cp src/*.d.ts lib",
     "flow": "flow",
     "fmt": "prettier --write '**/*.{js,json,ts,md}'",
     "lint": "eslint src --ext js,ts",
