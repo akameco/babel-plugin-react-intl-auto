@@ -1,3 +1,5 @@
 {
-  "extends": "precure/oss"
+  "extends": "precure/oss",
+  "parser": "typescript-eslint-parser",
+  "plugins": ["typescript"]
 }
