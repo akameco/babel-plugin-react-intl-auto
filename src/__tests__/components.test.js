@@ -171,9 +171,8 @@ cases([
   },
   {
     title: 'removePrefix = /__fixtures__/',
-    skip: process.platform === 'win32',
     tests: [defaultTest],
-    pluginOptions: { removePrefix: /\/__fixtures__/ },
+    pluginOptions: { removePrefix: /[\\/]__fixtures__/ },
   },
 ])
 
