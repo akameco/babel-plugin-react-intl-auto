@@ -1,3 +1,13 @@
 {
-  "extends": "precure/oss"
+  "extends": "precure/oss",
+  "overrides": [
+    {
+      "files": ["src/*.ts"],
+      "parser": "typescript-eslint-parser",
+      "plugins": ["typescript"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
 }

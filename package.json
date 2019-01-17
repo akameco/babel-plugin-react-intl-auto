@@ -2,6 +2,7 @@
   "name": "babel-plugin-react-intl-auto",
   "version": "1.4.0",
   "main": "lib/index.js",
+  "types": "lib/types.d.ts",
   "description": "i18n for the component age. Auto management react-intl ID",
   "license": "MIT",
   "repository": "akameco/babel-plugin-react-intl-auto",
@@ -14,10 +15,10 @@
     "add-contributor": "all-contributors add",
     "precommit": "yarn flow && lint-staged",
     "build": "babel src -d lib --ignore __tests__,__fixtures__",
-    "prepack": "yarn build",
+    "prepack": "yarn build && cp src/*.d.ts lib",
     "flow": "flow",
-    "fmt": "prettier --write '**/*.{js,json,md}'",
-    "lint": "eslint src",
+    "fmt": "prettier --write '**/*.{js,json,ts,md}'",
+    "lint": "eslint src --ext js,ts",
     "add:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -25,7 +26,7 @@
     "test:ci": "yarn flow && yarn lint && yarn test:coverage"
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,ts}": [
       "prettier --write",
       "eslint",
       "git add"
@@ -56,6 +57,7 @@
     "murmurhash3js": "^3.0.1"
   },
   "devDependencies": {
+    "@types/react-intl": "^2.3.15",
     "all-contributors-cli": "^5.4.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -69,10 +71,14 @@
     "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-config-precure": "^2.7.0",
+    "eslint-plugin-typescript": "^0.14.0",
     "flow-bin": "^0.79.1",
     "husky": "^0.14.3",
     "jest": "^23.5.0",
     "lint-staged": "^7.2.2",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "react-intl": "^2.7.2",
+    "typescript": "~3.1.1",
+    "typescript-eslint-parser": "^21.0.2"
   }
 }
