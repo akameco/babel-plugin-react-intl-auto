@@ -98,6 +98,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "chitoku-k",
+      "name": "Chitoku",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6535425?v=4",
+      "profile": "https://chitoku.jp/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
