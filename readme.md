@@ -267,6 +267,13 @@ Default: `false`
 
 if `filebase` is `true`, generate id with filename.
 
+#### moduleSourceName
+
+Type: `string` <br>
+Default: `react-intl`
+
+if set, enables to use custom module as a source for _defineMessages_ etc.
+
 #### includeExportName
 
 Type: `boolean | 'all'` <br>
