@@ -7,23 +7,26 @@
     "i18n": "node ./scripts/extract-intl-messages.js"
   },
   "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-intl": "^2.4.0"
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-intl": "^2.8.0",
+    "webpack-cli": "^3.2.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-react-intl": "^2.3.1",
-    "babel-plugin-react-intl-auto": "*",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "extract-react-intl": "^0.3.1",
-    "extract-react-intl-messages": "^0.6.0",
-    "flow-bin": "^0.54.1",
-    "webpack": "^3.5.6",
-    "webpack-dev-server": "^2.7.1",
-    "write-json-file": "^2.2.0"
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-react-intl": "^3.0.1",
+    "babel-plugin-react-intl-auto": "1.5.0",
+    "extract-react-intl": "^0.7.0",
+    "extract-react-intl-messages": "^0.11.2",
+    "flow-bin": "^0.91.0",
+    "webpack": "^4.29.0",
+    "webpack-dev-server": "^3.1.14",
+    "write-json-file": "^3.0.2"
   }
 }

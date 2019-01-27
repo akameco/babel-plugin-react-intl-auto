@@ -1,17 +1,26 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"]
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        }
       }
-    }],
-    "react"
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ],
   "plugins": [
-    "transform-class-properties",
-    ["react-intl-auto", {
-      "removePrefix": "app/"
-    }]
+    "@babel/plugin-proposal-class-properties",
+    [
+      "react-intl-auto",
+      {
+        "removePrefix": "app/"
+      }
+    ]
   ]
 }
-

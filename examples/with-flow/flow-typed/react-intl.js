@@ -14,7 +14,7 @@ type MessageDescriptor =
       description?: string,
     |}
 
-type MessageDescriptorMap = { [key: string]: MessageDescriptor }
+type MessageDescriptorMap = { [key: string]: any }
 
 type IntlConfig = {
   locale: string,
@@ -103,12 +103,12 @@ declare module 'react-intl' {
     messageDescriptors: MessageDescriptorMap
   ): MessageDescriptorMap
   declare function injectIntl(
-    WrappedComponent: ReactClass<*>,
+    WrappedComponent: React.ComponentType<*>,
     options?: {
       intlPropName: string,
       withRef: boolean,
     }
-  ): ReactClass<*>
+  ): React.ComponentType<*>
   declare function formatMessage(
     messageDescriptor: MessageDescriptor,
     values?: Object
