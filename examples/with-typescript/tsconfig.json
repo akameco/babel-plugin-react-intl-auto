@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "jsx": "react",
+    "sourceMap": true,
+    "strict": true
+  },
+  "include": [
+    "app/**/*.ts",
+    "node_modules/babel-plugin-react-intl-auto/**/*.d.ts"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["@babel/preset-react"]
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-typescript"],
+    ["react-intl-auto", {
+      "removePrefix": "app/"
+    }]
+  ]
+}
