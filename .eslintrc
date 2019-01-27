@@ -1,12 +1,20 @@
 {
   "extends": "precure/oss",
+  "rules": {
+    "flowtype/require-compound-type-alias": "off"
+  },
   "overrides": [
     {
-      "files": ["src/*.ts"],
+      "files": [
+        "src/*.ts"
+      ],
       "parser": "typescript-eslint-parser",
-      "plugins": ["typescript"],
+      "plugins": [
+        "typescript"
+      ],
       "rules": {
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "flowtype/require-valid-file-annotation": "off"
       }
     }
   ]

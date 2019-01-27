@@ -9,7 +9,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -24,7 +23,6 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
-
 <FormattedHTMLMessage id=\\"src.__fixtures__.205247277\\" defaultMessage=\\"<span>hello</span>\\" />;
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
@@ -40,7 +38,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 <FormattedMessage id=\\"src.__fixtures__.1418522856\\" defaultMessage=\\"another\\" />;
 "
@@ -55,7 +52,6 @@ import { FormattedMessage as T } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage as T } from 'react-intl';
-
 <T id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -71,7 +67,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <div>
   <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />
 </div>;
@@ -87,7 +82,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.3540954520\\" defaultMessage={\`hello world 2\`} />;
 "
 `;
@@ -103,9 +97,7 @@ const message = \\"variable message\\";
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 const message = \\"variable message\\";
-
 <FormattedMessage id=\\"src.__fixtures__.3082794952\\" defaultMessage={message} />;
 "
 `;
@@ -119,7 +111,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -133,7 +124,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.messages.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -147,7 +137,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -161,7 +150,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -175,7 +163,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -189,7 +176,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -203,7 +189,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -217,7 +202,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"src.__fixtures__.613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -231,7 +215,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;
@@ -245,7 +228,6 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-
 <FormattedMessage id=\\"613153351\\" defaultMessage=\\"hello\\" />;
 "
 `;

@@ -83,7 +83,7 @@ const getMsg = () => 'hello';
 
 <FormattedMessage defaultMessage={getMsg()} />;
 `,
-  error: /\[React Intl Auto\] Messages must be statically evaluate-able for extraction/,
+  error: /\[React Intl Auto\] Messages must be statically evaluate-able for extraction/u,
   snapshot: false,
 }
 
@@ -92,7 +92,6 @@ const notTransformIfNotImportedTest = {
   snapshot: false,
   code: `
 import any from 'any-module';
-
 <FormattedMessage defaultMessage={getMsg()} />;
 `,
 }
@@ -102,9 +101,9 @@ const notTransformIfSpreadAttributeTest = {
   snapshot: false,
   code: `
 import { FormattedMessage } from 'react-intl';
-
-const props = { defaultMessage: 'hello' };
-
+const props = {
+  defaultMessage: 'hello'
+};
 <FormattedMessage {...props} />;
 `,
 }
@@ -172,15 +171,15 @@ cases([
   {
     title: 'removePrefix = /__fixtures__/',
     tests: [defaultTest],
-    pluginOptions: { removePrefix: /[\\/]__fixtures__/ },
+    pluginOptions: { removePrefix: /[\\/]__fixtures__/u },
   },
 ])
 
 function cases(
-  testCases: {
+  testCases: Array<{
     title: string,
     tests: $ReadOnlyArray<{ title: string, code: string }>,
-  }[]
+  }>
 ) {
   const defaultOpts = {
     title: '',
