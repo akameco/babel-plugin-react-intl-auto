@@ -143,7 +143,7 @@ export default defineMessages({
   1: 'hello',
 })
 `,
-    error: /requires Object key or string literal/,
+    error: /requires Object key or string literal/u,
     snapshot: false,
   },
   {
@@ -278,17 +278,17 @@ cases([
     title: 'removePrefix = /__fixtures__/',
     tests: [defaultTest],
     pluginOptions: {
-      removePrefix: /src[\\/]__f.+?_/,
+      removePrefix: /src[\\/]__f.+?_/u,
       includeExportName: true,
     },
   },
 ])
 
 function cases(
-  testCases: {
+  testCases: Array<{
     title: string,
     tests: $ReadOnlyArray<{ title: string, code: string }>,
-  }[]
+  }>
 ) {
   const defaultOpts = {
     title: '',

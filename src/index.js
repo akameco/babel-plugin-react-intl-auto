@@ -1,6 +1,6 @@
 // @flow
 import p from 'path'
-import * as t from 'babel-types'
+import * as t from '@babel/types'
 import murmur from 'murmurhash3js'
 import type { State } from './types'
 // import blog from 'babel-log'
@@ -34,7 +34,7 @@ const isImportLocalName = (
   return isImported
 }
 
-const REG = new RegExp(`\\${p.sep}`, 'g')
+const REG = new RegExp(`\\${p.sep}`, 'gu')
 
 const dotPath = (str: string) => str.replace(REG, '.')
 
@@ -51,13 +51,16 @@ const getPrefix = (
     return exportName === null ? '' : exportName
   }
   const file = p.relative(process.cwd(), filename)
-  const fomatted = filebase ? file.replace(/\..+$/, '') : p.dirname(file)
+  const fomatted = filebase ? file.replace(/\..+$/u, '') : p.dirname(file)
   removePrefix = removePrefix === false ? '' : removePrefix
   const fixed =
     removePrefix instanceof RegExp
       ? dotPath(fomatted.replace(removePrefix, ''))
       : dotPath(fomatted).replace(
-          new RegExp(`^${removePrefix.replace(/\//g, '')}\\${dotPath(p.sep)}?`),
+          new RegExp(
+            `^${removePrefix.replace(/\//gu, '')}\\${dotPath(p.sep)}?`,
+            'u'
+          ),
           ''
         )
   const result = exportName === null ? fixed : `${fixed}.${exportName}`
@@ -104,6 +107,7 @@ const objectProperty = (key, value) => {
   return t.objectProperty(t.stringLiteral(key), valueNode)
 }
 
+// eslint-disable-next-line max-lines-per-function
 const replaceProperties = (
   properties: $ReadOnlyArray<Object>,
   state: State,
@@ -114,7 +118,7 @@ const replaceProperties = (
   for (const prop of properties) {
     const propValue = prop.get('value')
 
-    const messageDescriptorProperties: Object[] = []
+    const messageDescriptorProperties: Array<Object> = []
 
     // { defaultMessage: 'hello', description: 'this is hello' }
     if (propValue.isObjectExpression()) {
