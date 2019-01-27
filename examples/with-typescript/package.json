@@ -1,0 +1,35 @@
+{
+  "name": "tiny-react-app-example-typescript",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "webpack-dev-server --hot",
+    "build": "webpack",
+    "i18n": "node ./scripts/extract-intl-messages.js"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-intl": "^2.4.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-typescript": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.7.21",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-intl": "^2.3.15",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "~8.0.5",
+    "babel-plugin-react-intl": "^2.3.1",
+    "babel-plugin-react-intl-auto": "*",
+    "extract-react-intl": "^0.3.1",
+    "extract-react-intl-messages": "^0.11.2",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.4",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
