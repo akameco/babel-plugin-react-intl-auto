@@ -15,7 +15,7 @@ Many projects, like [react-boilerplate](https://github.com/react-boilerplate/rea
 But it is redundant and troublesome.
 
 This babel-plugin releases you from cumbersome ID management.
-Based on the file path, this automatically generate a prefixed id.
+Based on the file path, this automatically generates a prefixed id.
 
 Also, we strongly encourage you to use [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
 You can generate json automatically.
@@ -85,14 +85,20 @@ en.json
 
 npm
 
-```
+```shell
 $ npm install --save-dev babel-plugin-react-intl-auto
+
+# Optional: TypeScript support
+$ npm install --save-dev @babel/plugin-transform-typescript
 ```
 
 yarn
 
-```
+```shell
 $ yarn add --dev babel-plugin-react-intl-auto
+
+# Optional: TypeScript support
+$ yarn add --dev @babel/plugin-transform-typescript
 ```
 
 ## Usage
@@ -251,6 +257,58 @@ const messages = {
 };
 
 export default defineMessages(messages);
+```
+
+## TypeScript
+
+TypeScript support is bundled with this package. Be sure to include our type
+definition and run `@babel/plugin-transform-typescript` beforehand. This way,
+you can also be empowered by [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).
+
+### tsconfig.json
+
+```json
+{
+  "include": [
+    "node_modules/babel-plugin-react-intl-auto/**/*.d.ts"
+  ]
+}
+```
+
+### .babelrc
+
+```json
+{
+  "plugins": [
+    ["@babel/plugin-transform-typescript"],
+    ["react-intl-auto"]
+  ]
+}
+```
+
+### webpack.config.js
+
+Use `babel-loader` along with `ts-loader` when using webpack as well.
+
+```js
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'ts-loader',
+          },
+        ],
+      },
+    ],
+  },
+}
 ```
 
 ## Related
