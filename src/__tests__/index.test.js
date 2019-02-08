@@ -282,6 +282,21 @@ cases([
       includeExportName: true,
     },
   },
+  {
+    title: 'removePrefix = "src.__fixtures__"',
+    tests: [defaultTest],
+    pluginOptions: {
+      removePrefix: 'src.__fixtures__',
+    },
+  },
+  {
+    title: 'removePrefix = "src.__fixtures__", includeExportName = true',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: {
+      removePrefix: 'src.__fixtures__',
+      includeExportName: true,
+    },
+  },
 ])
 
 function cases(

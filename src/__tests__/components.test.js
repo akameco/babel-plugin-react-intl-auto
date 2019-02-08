@@ -173,6 +173,11 @@ cases([
     tests: [defaultTest],
     pluginOptions: { removePrefix: /[\\/]__fixtures__/u },
   },
+  {
+    title: 'removePrefix = "src.__fixtures__"',
+    tests: [defaultTest],
+    pluginOptions: { removePrefix: 'src.__fixtures__' },
+  },
 ])
 
 function cases(

@@ -167,6 +167,19 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`removePrefix = "src.__fixtures__" default: default 1`] = `
+"
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage=\\"hello\\" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+<FormattedMessage id=\\"613153351\\" defaultMessage=\\"hello\\" />;
+"
+`;
+
 exports[`removePrefix = "src/" -- with slash default: default 1`] = `
 "
 import { FormattedMessage } from 'react-intl';
