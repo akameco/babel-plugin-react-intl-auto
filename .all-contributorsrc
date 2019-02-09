@@ -107,6 +107,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "kuma-kuma",
+      "name": "Kouta Kumagai",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12218082?v=4",
+      "profile": "https://github.com/kuma-kuma",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "repoType": "github"
