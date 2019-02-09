@@ -153,6 +153,27 @@ export default defineMessages({
 });
 ```
 
+when `removePrefix` is `"src.components"`
+
+```js
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: 'hello world'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  hello: {
+    id: 'App.hello',
+    defaultMessage: 'hello world'
+  }
+});
+```
+
 when `removePrefix` is `true`
 
 ```js
