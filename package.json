@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-intl-auto",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "main": "lib/index.js",
   "types": "lib/types.d.ts",
   "description": "i18n for the component age. Auto management react-intl ID",
