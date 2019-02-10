@@ -63,8 +63,16 @@ const getPrefix = (
           ),
           ''
         )
-  const result = exportName === null ? fixed : `${fixed}.${exportName}`
-  return result
+
+  if (exportName === null) {
+    return fixed
+  }
+
+  if (fixed === '') {
+    return exportName
+  }
+
+  return `${fixed}.${exportName}`
 }
 
 const getId = (path, prefix) => {

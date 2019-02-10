@@ -599,6 +599,76 @@ export default defineMessages({
 "
 `;
 
+exports[`removePrefix = "src.__fixtures__" default: default 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    \\"id\\": \\"hello\\",
+    \\"defaultMessage\\": 'hello'
+  }
+});
+"
+`;
+
+exports[`removePrefix = "src.__fixtures__", includeExportName = true default: default 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    \\"id\\": \\"hello\\",
+    \\"defaultMessage\\": 'hello'
+  }
+});
+"
+`;
+
+exports[`removePrefix = "src.__fixtures__", includeExportName = true multi export: multi export 1`] = `
+"
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello world extra'
+})
+
+export default defineMessages({
+  hello: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export const extra = defineMessages({
+  hello: {
+    \\"id\\": \\"extra.hello\\",
+    \\"defaultMessage\\": 'hello world extra'
+  }
+});
+export default defineMessages({
+  hello: {
+    \\"id\\": \\"hello\\",
+    \\"defaultMessage\\": 'hello world'
+  }
+});
+"
+`;
+
 exports[`removePrefix = "src/" -- with slash default: default 1`] = `
 "
 import { defineMessages } from 'react-intl'
