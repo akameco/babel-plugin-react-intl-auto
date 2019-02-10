@@ -2,9 +2,6 @@
 import path from 'path'
 import pluginTester from 'babel-plugin-tester'
 import plugin from '..'
-import { getSnapshotSerializer } from '../serializer'
-
-expect.addSnapshotSerializer(getSnapshotSerializer())
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
 

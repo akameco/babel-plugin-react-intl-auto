@@ -5237,6 +5237,11 @@ string-length@^2.0.0:
     astral-regex "^1.0.0"
     strip-ansi "^4.0.0"
 
+string-snapshot-serializer@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/string-snapshot-serializer/-/string-snapshot-serializer-1.0.1.tgz#1a47c67bea3cbe037bb1841f9056b6f04a717b40"
+  integrity sha512-5D5ddsyq4SdzWjDzb/WRePJUnrFtaRmMg6mYDjJDppK0Ck7RSuYqHGKOprRw3UUU64GyN4CT3Wnw2bl9dIrWTg==
+
 string-width@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
