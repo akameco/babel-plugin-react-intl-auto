@@ -6,14 +6,14 @@ import type { State } from './types'
 // import blog from 'babel-log'
 
 const isImportLocalName = (
-  name: string,
+  name: ?string,
   allowedNames: $ReadOnlyArray<string>,
   { file }: State
 ) => {
   const isSearchedImportSpecifier = specifier =>
     specifier.isImportSpecifier() &&
     allowedNames.includes(specifier.node.imported.name) &&
-    specifier.node.local.name === name
+    (!name || specifier.node.local.name === name)
 
   let isImported = false
 
@@ -303,25 +303,93 @@ const visitJSXElement = (path: Object, state: State) => {
   }
 }
 
+// check if given path is related to intl.formatMessage call
+function isFormatMessageCall(path, state) {
+  const callee = path.get('callee')
+  const property = callee.get('property')
+  const object = callee.get('object')
+
+  return (
+    // injectIntl imported
+    // isImportedFromIntl(['injectIntl'], state) &&
+    isImportLocalName(null, ['injectIntl'], state) &&
+    callee.isMemberExpression() &&
+    Boolean(path.get('arguments.0')) &&
+    // intl object
+    object &&
+    t.isIdentifier(object) &&
+    object.node.name === 'intl' &&
+    // formatMessage property
+    property &&
+    t.isIdentifier(property) &&
+    property.node.name === 'formatMessage'
+  )
+}
+
+// add automatic ID to intl.formatMessage calls
+function addIdToFormatMessage(path, state) {
+  if (!isFormatMessageCall(path, state)) {
+    // skip path if this is not intl.formatMessage call
+    return
+  }
+
+  // intl.formatMessage first argument is the one which we would like to modify
+  const arg0 = path.get('arguments.0')
+
+  const properties = getProperties(arg0)
+
+  // at least defaultMessage property is required to do anything useful
+  if (!properties) {
+    return
+  }
+
+  // if "id" property is already added by a developer or by this script just skip this node
+  if (properties.find(arg => arg.get('key').node.name === 'id')) {
+    return
+  }
+
+  for (const prop of properties) {
+    if (prop.get('key').node.name === 'defaultMessage') {
+      // try to statically evaluate defaultMessage to generate hash
+      const evaluated = prop.get('value').evaluate()
+
+      if (!evaluated.confident || typeof evaluated.value !== 'string') {
+        throw prop
+          .get('value')
+          .buildCodeFrameError(
+            '[React Intl Auto] defaultMessage must be statically evaluate-able for extraction.'
+          )
+      }
+      prop.insertAfter(
+        objectProperty('id', getPrefix(state, createHash(evaluated.value)))
+      )
+    }
+  }
+}
+
+function addIdToFormatedMessage(path, state) {
+  if (!isDefineMessagesCall(path, state)) {
+    return
+  }
+
+  const properties = getProperties(path.get('arguments.0'))
+
+  if (!properties) {
+    return
+  }
+
+  const exportName = getExportName(path, state.opts.includeExportName || false)
+  replaceProperties(properties, state, exportName)
+}
+
 export default function() {
   return {
     name: 'react-intl-auto',
     visitor: {
       JSXElement: visitJSXElement,
       CallExpression(path: Object, state: State) {
-        if (!isDefineMessagesCall(path, state)) {
-          return
-        }
-
-        const properties = getProperties(path.get('arguments.0'))
-
-        if (properties) {
-          const exportName = getExportName(
-            path,
-            state.opts.includeExportName || false
-          )
-          replaceProperties(properties, state, exportName)
-        }
+        addIdToFormatMessage(path, state)
+        addIdToFormatedMessage(path, state)
       },
     },
   }
