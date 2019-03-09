@@ -20,5 +20,6 @@ export type State = {
     filebase?: boolean,
     includeExportName?: boolean | 'all',
     extractComments?: boolean,
+    useKey?: boolean,
   },
 }

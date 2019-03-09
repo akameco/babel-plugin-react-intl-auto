@@ -231,36 +231,55 @@ const getElementAttributePaths = (elementPath: Object): Object => {
     attrPath => attrPath.node.name && attrPath.node.name.name === 'id'
   )
 
-  return { id: idPath, defaultMessage: defaultMessagePath }
+  const keyPath = attributesPath.find(
+    attrPath => attrPath.node.name && attrPath.node.name.name === 'key'
+  )
+
+  return { id: idPath, defaultMessage: defaultMessagePath, key: keyPath }
 }
 
 const createHash = message => `${murmur.x86.hash32(message)}`
 
-const generateId = (defaultMessage: Object, state: State) => {
-  const messageValuePath = defaultMessage.get('value')
+const extractFromValuePath = valueObject => {
+  const valuePath = valueObject && valueObject.get('value')
+  if (valueObject && valuePath) {
+    if (valuePath.isStringLiteral()) {
+      // Use the message as is if it's a string
+      return valueObject.node.value.value
+    }
 
-  let message
-
-  // Use the message as is if it's a string
-  if (messageValuePath.isStringLiteral()) {
-    message = defaultMessage.node.value.value
-  } else {
     // Evaluate the message expression to see if it yields a string
-    const evaluated = messageValuePath.get('expression').evaluate()
-
+    const evaluated = valuePath.get('expression').evaluate()
     if (evaluated.confident && typeof evaluated.value === 'string') {
-      message = evaluated.value
-    } else {
-      throw messageValuePath.buildCodeFrameError(
-        '[React Intl Auto] Messages must be statically evaluate-able for extraction.'
-      )
+      return evaluated.value
     }
   }
 
-  // ID is comprised of the path to the file and a hash
-  // of the defaultMessage
-  const hash = createHash(message)
-  const prefix = getPrefix(state, hash)
+  return null
+}
+
+const generateId = (defaultMessage: Object, state: State, key: ?Object) => {
+  const keyValue = extractFromValuePath(key)
+
+  // ID = path to the file + key
+  let suffix = keyValue
+  if (!suffix && suffix !== 0) {
+    // ID = path to the file + hash of the defaultMessage
+    const messageValue = extractFromValuePath(defaultMessage)
+    if (messageValue) {
+      suffix = createHash(messageValue)
+    }
+  }
+
+  if (!suffix && suffix !== 0) {
+    throw defaultMessage
+      .get('value')
+      .buildCodeFrameError(
+        '[React Intl Auto] Messages must be statically evaluate-able for extraction.'
+      )
+  }
+
+  const prefix = getPrefix(state, suffix)
 
   // Insert an id attribute before the defaultMessage attribute
   defaultMessage.insertBefore(
@@ -276,11 +295,11 @@ const visitJSXElement = (path: Object, state: State) => {
   // import { FormattedMessage } from 'react-intl'
   if (isImportLocalName(element.node.name.name, REACT_COMPONENTS, state)) {
     // Get the attributes for the component
-    const { id, defaultMessage } = getElementAttributePaths(element)
+    const { id, defaultMessage, key } = getElementAttributePaths(element)
 
     // If valid message but missing ID, generate one
     if (!id && defaultMessage) {
-      generateId(defaultMessage, state)
+      generateId(defaultMessage, state, state.opts.useKey ? key : null)
     }
   }
 }

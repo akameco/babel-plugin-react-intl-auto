@@ -108,6 +108,15 @@ const props = {
 `,
 }
 
+const keyTest = {
+  title: 'using key',
+  code: `
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage key="foobar" defaultMessage="hello" />;
+`,
+}
+
 const tests = [
   defaultTest,
   multiUseTest,
@@ -119,10 +128,16 @@ const tests = [
   throwWhenNotAnalyzableTest,
   notTransformIfNotImportedTest,
   notTransformIfSpreadAttributeTest,
+  keyTest,
 ]
 
 cases([
   { title: 'default', tests },
+  {
+    title: 'useKey = true',
+    tests: [defaultTest, keyTest],
+    pluginOptions: { useKey: true },
+  },
   {
     title: 'removePrefix = "src"',
     tests: [defaultTest],

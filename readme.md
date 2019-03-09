@@ -259,6 +259,24 @@ export const test = defineMessages({
 })
 ```
 
+#### useKey
+
+Only works with `FormattedMessage` and `FormattedHTMLMessage`. Instead of
+generating an ID by hashing `defaultMessage`, it will use the `key` property if
+it exists.
+
+Type: `boolean` <br>
+Default: `false`
+##### Example
+
+```js
+<FormattedMessage key="foobar" defaultMessage="hello" />
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+<FormattedMessage id="path.to.file.foobar" key="foobar" defaultMessage="hello" />
+```
+
 ### Support variable
 
 ##### Example
