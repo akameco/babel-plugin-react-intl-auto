@@ -43,6 +43,19 @@ import { FormattedMessage } from 'react-intl';
 
 `;
 
+exports[`default using key: using key 1`] = `
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage key="foobar" defaultMessage="hello" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+<FormattedMessage key="foobar" id="src.__fixtures__.613153351" defaultMessage="hello" />;
+
+`;
+
 exports[`default with FormattedMessage imported as something else: with FormattedMessage imported as something else 1`] = `
 
 import { FormattedMessage as T } from 'react-intl';
@@ -242,5 +255,31 @@ import { FormattedMessage } from 'react-intl';
 
 import { FormattedMessage } from 'react-intl';
 <FormattedMessage id="613153351" defaultMessage="hello" />;
+
+`;
+
+exports[`useKey = true default: default 1`] = `
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage="hello" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+
+`;
+
+exports[`useKey = true using key: using key 1`] = `
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage key="foobar" defaultMessage="hello" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+<FormattedMessage key="foobar" id="src.__fixtures__.foobar" defaultMessage="hello" />;
 
 `;
