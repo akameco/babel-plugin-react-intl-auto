@@ -118,6 +118,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "shahyar",
+      "name": "Shahyar G",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/255846?v=4",
+      "profile": "http://shah.yar.gs",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "repoType": "github"
