@@ -83,7 +83,7 @@ const getMsg = () => 'hello';
 
 <FormattedMessage defaultMessage={getMsg()} />;
 `,
-  error: /\[React Intl Auto\] Messages must be statically evaluate-able for extraction/u,
+  error: /\[React Intl Auto\] defaultMessage must be statically evaluate-able for extraction/u,
   snapshot: false,
 }
 

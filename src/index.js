@@ -240,9 +240,12 @@ const getElementAttributePaths = (elementPath: Object): Object => {
 
 const createHash = message => `${murmur.x86.hash32(message)}`
 
-const extractFromValuePath = valueObject => {
-  const valuePath = valueObject && valueObject.get('value')
-  if (valueObject && valuePath) {
+const extractFromValuePath = (valueObject: ?Object) => {
+  if (!valueObject) {
+    return null
+  }
+  const valuePath = valueObject.get('value')
+  if (valuePath) {
     if (valuePath.isStringLiteral()) {
       // Use the message as is if it's a string
       return valueObject.node.value.value
@@ -253,30 +256,25 @@ const extractFromValuePath = valueObject => {
     if (evaluated.confident && typeof evaluated.value === 'string') {
       return evaluated.value
     }
+    throw valuePath.buildCodeFrameError(
+      `[React Intl Auto] ${
+        valueObject.get('name').node.name
+      } must be statically evaluate-able for extraction.`
+    )
   }
 
   return null
 }
 
 const generateId = (defaultMessage: Object, state: State, key: ?Object) => {
-  const keyValue = extractFromValuePath(key)
-
   // ID = path to the file + key
-  let suffix = keyValue
-  if (!suffix && suffix !== 0) {
+  let suffix = state.opts.useKey ? extractFromValuePath(key) : ''
+  if (!suffix) {
     // ID = path to the file + hash of the defaultMessage
     const messageValue = extractFromValuePath(defaultMessage)
     if (messageValue) {
       suffix = createHash(messageValue)
     }
-  }
-
-  if (!suffix && suffix !== 0) {
-    throw defaultMessage
-      .get('value')
-      .buildCodeFrameError(
-        '[React Intl Auto] Messages must be statically evaluate-able for extraction.'
-      )
   }
 
   const prefix = getPrefix(state, suffix)
