@@ -6,6 +6,7 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
+[![babel-plugin-react-intl-auto Dev Token](https://badge.devtoken.rocks/babel-plugin-react-intl-auto)](https://devtoken.rocks/package/babel-plugin-react-intl-auto)
 
 > i18n for the component age. Auto management react-intl ID.
 
