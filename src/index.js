@@ -119,9 +119,10 @@ const objectProperty = (key, value) => {
 const replaceProperties = (
   properties: $ReadOnlyArray<Object>,
   state: State,
-  exportName: string | null
+  exportName: string | null,
+  fixedPrefix: string | null
 ) => {
-  const prefix = getPrefix(state, exportName)
+  const prefix = fixedPrefix || getPrefix(state, exportName)
 
   for (const prop of properties) {
     const propValue = prop.get('value')
@@ -302,14 +303,31 @@ const visitJSXElement = (path: Object, state: State) => {
   }
 }
 
+const skipPath = new WeakSet()
+
 export default function() {
   return {
     name: 'react-intl-auto',
     visitor: {
       JSXElement: visitJSXElement,
       CallExpression(path: Object, state: State) {
-        if (!isDefineMessagesCall(path, state)) {
+        if (!isDefineMessagesCall(path, state) || skipPath.has(path)) {
           return
+        }
+
+        let fixedPrefix = null
+        if (
+          path.get('arguments').length > 1 &&
+          t.isStringLiteral(path.get('arguments.0'))
+        ) {
+          fixedPrefix = path.node.arguments[0].value
+          path.replaceWith(
+            t.callExpression(path.node.callee, [path.node.arguments[1]])
+          )
+          // there is a problem with skip https://github.com/babel/babel/issues/4098
+          // skipPath is workaround
+          skipPath.add(path)
+          path.skip()
         }
 
         const properties = getProperties(path.get('arguments.0'))
@@ -319,7 +337,7 @@ export default function() {
             path,
             state.opts.includeExportName || false
           )
-          replaceProperties(properties, state, exportName)
+          replaceProperties(properties, state, exportName, fixedPrefix)
         }
       },
     },

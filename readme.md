@@ -64,6 +64,38 @@ const MyComponent = () => <FormattedMessage defaultMessage="goodbye {name}" />
 
 See [examples](https://github.com/akameco/babel-plugin-react-intl-auto/tree/master/examples).
 
+### Use fixed prefix instead of file path
+
+#### Before
+
+```js
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: {
+    id: 'MainTexts.hello',
+    defaultMessage: 'hello {name}',
+  },
+  welcome: {
+    id: 'MainTexts.welcome',
+    defaultMessage: 'Welcome!',
+  },
+})
+```
+
+#### After
+
+With babel-plugin-react-intl-auto.
+
+```js
+import { defineMessages } from 'react-intl'
+
+export default defineMessages('MainTexts', {
+  hello: 'hello {name}',
+  welcome: 'Welcome!',
+})
+```
+
 ### With `extract-react-intl-messages`
 
 Example usage with [extract-react-intl-messages](https://github.com/akameco/extract-react-intl-messages).

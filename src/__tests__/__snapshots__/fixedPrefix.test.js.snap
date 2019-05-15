@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default ignore empty static prefix: ignore empty static prefix 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages('', {
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "src.__fixtures__.hello",
+    "defaultMessage": 'hello'
+  }
+});
+
+`;
+
+exports[`default multi export with the same prefix: multi export with the same prefix 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages('customStaticPrefix', {
+  hello: 'hello world extra'
+})
+
+export default defineMessages('customStaticPrefix', {
+  hello: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export const extra = defineMessages({
+  hello: {
+    "id": "customStaticPrefix.hello",
+    "defaultMessage": 'hello world extra'
+  }
+});
+export default defineMessages({
+  hello: {
+    "id": "customStaticPrefix.hello",
+    "defaultMessage": 'hello world'
+  }
+});
+
+`;
+
+exports[`default multi export: multi export 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages('customStaticPrefix', {
+  hello: 'hello world extra'
+})
+
+export default defineMessages('anotherCustomPrefix', {
+  hello: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export const extra = defineMessages({
+  hello: {
+    "id": "customStaticPrefix.hello",
+    "defaultMessage": 'hello world extra'
+  }
+});
+export default defineMessages({
+  hello: {
+    "id": "anotherCustomPrefix.hello",
+    "defaultMessage": 'hello world'
+  }
+});
+
+`;
+
+exports[`default use static prefix instead of path to file: use static prefix instead of path to file 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages('customStaticPrefix', {
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "customStaticPrefix.hello",
+    "defaultMessage": 'hello'
+  }
+});
+
+`;
