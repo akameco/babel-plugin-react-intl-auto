@@ -1,6 +1,7 @@
 {
   "extends": "precure/oss",
   "rules": {
-    "flowtype/require-compound-type-alias": "off"
+    "flowtype/require-compound-type-alias": "off",
+    "unicorn/prevent-abbreviations": "off"
   }
 }

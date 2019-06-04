@@ -21,7 +21,7 @@ const isImportLocalName = (
     ImportDeclaration: {
       exit(path) {
         isImported =
-          path.node.source.value.indexOf('react-intl') > -1 &&
+          path.node.source.value.includes('react-intl') &&
           path.get('specifiers').some(isSearchedImportSpecifier)
 
         if (isImported) {
