@@ -53,7 +53,7 @@
     "types.d.ts"
   ],
   "dependencies": {
-    "@babel/types": "^7.3.4",
+    "@babel/types": "^7.4.4",
     "murmurhash3js": "^3.0.1"
   },
   "devDependencies": {
