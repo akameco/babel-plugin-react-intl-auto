@@ -72,7 +72,7 @@
     "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-precure": "^4.16.1",
-    "flow-bin": "^0.79.1",
+    "flow-bin": "^0.100.0",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.1.7",

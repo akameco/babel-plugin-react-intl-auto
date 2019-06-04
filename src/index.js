@@ -43,7 +43,7 @@ const getPrefix = (
     file: {
       opts: { filename },
     },
-    opts: { removePrefix = '', filebase = false },
+    opts: { removePrefix, filebase = false },
   }: State,
   exportName: string | null
 ) => {
@@ -52,7 +52,8 @@ const getPrefix = (
   }
   const file = p.relative(process.cwd(), filename)
   const fomatted = filebase ? file.replace(/\..+$/u, '') : p.dirname(file)
-  removePrefix = removePrefix === false ? '' : removePrefix
+  removePrefix =
+    removePrefix === undefined || removePrefix === false ? '' : removePrefix
   const fixed =
     removePrefix instanceof RegExp
       ? dotPath(fomatted.replace(removePrefix, ''))

@@ -16,7 +16,7 @@ type File = {
 export type State = {
   file: File,
   opts: {
-    removePrefix?: string,
+    removePrefix?: boolean | string,
     filebase?: boolean,
     includeExportName?: boolean | 'all',
     extractComments?: boolean,
