@@ -1,4 +1,4 @@
-import { FormattedMessage } from 'react-intl'
+import { MessageDescriptor } from 'react-intl'
 
 declare module 'react-intl' {
   interface ExtractableMessage {
@@ -7,5 +7,5 @@ declare module 'react-intl' {
 
   export function defineMessages<T extends ExtractableMessage>(
     messages: T
-  ): { [K in keyof T]: FormattedMessage.MessageDescriptor }
+  ): { [K in keyof T]: MessageDescriptor }
 }
