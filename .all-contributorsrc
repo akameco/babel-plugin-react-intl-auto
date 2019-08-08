@@ -127,7 +127,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "remcohaszing",
+      "name": "Remco Haszing",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/779047?v=4",
+      "profile": "https://gitlab.com/remcohaszing",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "repoType": "github"
+  "repoType": "github",
+  "commitConvention": "none"
 }
