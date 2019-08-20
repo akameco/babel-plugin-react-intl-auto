@@ -127,14 +127,10 @@ Input:
 ```js
 import { injectIntl } from 'react-intl'
 
-const MyComponent = (({ intl }) => {
+const MyComponent = ({ intl }) => {
   const label = intl.formatMessage({ defaultMessage: 'Submit button' })
-  return (
-    <button aria-label={label}>
-      {label}
-    </button>
-  )
-))
+  return <button aria-label={label}>{label}</button>
+}
 
 injectIntl(MyComponent)
 ```
