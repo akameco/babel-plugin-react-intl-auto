@@ -136,6 +136,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jmarceli",
+      "name": "jmarceli",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4281333?v=4",
+      "profile": "https://github.com/jmarceli",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github",
