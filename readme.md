@@ -120,8 +120,6 @@ $ yarn add --dev @babel/plugin-transform-typescript
 }
 ```
 
-## Example
-
 ### with injectIntl
 
 Input:
