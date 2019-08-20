@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/akameco/babel-plugin-react-intl-auto/badge.svg?branch=master)](https://coveralls.io/github/akameco/babel-plugin-react-intl-auto?branch=master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
 [![babel-plugin-react-intl-auto Dev Token](https://badge.devtoken.rocks/babel-plugin-react-intl-auto)](https://devtoken.rocks/package/babel-plugin-react-intl-auto)
 
 > i18n for the component age. Auto management react-intl ID.
@@ -118,6 +118,46 @@ $ yarn add --dev @babel/plugin-transform-typescript
     ]
   ]
 }
+```
+
+## Example
+
+### with injectIntl
+
+Input:
+
+```js
+import { injectIntl } from 'react-intl'
+
+const MyComponent = (({ intl }) => {
+  const label = intl.formatMessage({ defaultMessage: 'Submit button' })
+  return (
+    <button aria-label={label}>
+      {label}
+    </button>
+  )
+))
+
+injectIntl(MyComponent)
+```
+
+↓ 　 ↓ 　 ↓
+
+Output:
+
+```js
+import { injectIntl } from 'react-intl'
+
+const MyComponent = ({ intl }) => {
+  const label = intl.formatMessage({ id="App.Components.Button.label", defaultMessage: 'Submit button' })
+  return (
+    <button aria-label={label}>
+      {label}
+    </button>
+  )
+}
+
+injectIntl(MyComponent)
 ```
 
 ### Options
@@ -381,6 +421,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/kuma-kuma"><img src="https://avatars0.githubusercontent.com/u/12218082?v=4" width="100px;" alt="Kouta Kumagai"/><br /><sub><b>Kouta Kumagai</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Tests">⚠️</a></td>
     <td align="center"><a href="http://shah.yar.gs"><img src="https://avatars0.githubusercontent.com/u/255846?v=4" width="100px;" alt="Shahyar G"/><br /><sub><b>Shahyar G</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=shahyar" title="Code">💻</a></td>
     <td align="center"><a href="https://gitlab.com/remcohaszing"><img src="https://avatars2.githubusercontent.com/u/779047?v=4" width="100px;" alt="Remco Haszing"/><br /><sub><b>Remco Haszing</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=remcohaszing" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jmarceli"><img src="https://avatars1.githubusercontent.com/u/4281333?v=4" width="100px;" alt="jmarceli"/><br /><sub><b>jmarceli</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

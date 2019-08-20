@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default multiple uses: multiple uses 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+intl.formatMessage({ defaultMessage: "hello" });
+intl.formatMessage({ defaultMessage: "some other message" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.__fixtures__.613153351"
+});
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.__fixtures__.613153351"
+});
+intl.formatMessage({
+  defaultMessage: "some other message",
+  "id": "src.__fixtures__.831373691"
+});
+
+`;
+
+exports[`default some supported use cases: some supported use cases 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+const Component2 = ({ intl }) => {
+  const label = intl.formatMessage({ defaultMessage: "hello" });
+  return (
+    <button aria-label={intl.formatMessage({ defaultMessage: "hello" })}>
+      {intl.formatMessage({ defaultMessage: "hello" })}
+    </button>
+  );
+};
+injectIntl(Components2);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+
+const Component2 = ({
+  intl
+}) => {
+  const label = intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "src.__fixtures__.613153351"
+  });
+  return <button aria-label={intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "src.__fixtures__.613153351"
+  })}>
+      {intl.formatMessage({
+      defaultMessage: "hello",
+      "id": "src.__fixtures__.613153351"
+    })}
+    </button>;
+};
+
+injectIntl(Components2);
+
+`;
+
+exports[`default with FormattedMessage imported as something else: with FormattedMessage imported as something else 1`] = `
+
+import { injectIntl as i18n } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "i18n" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl as i18n } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "i18n",
+  "id": "src.__fixtures__.94348014"
+});
+
+`;
+
+exports[`default with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.__fixtures__.613153351"
+});
+
+`;
+
+exports[`default with a value interpolated in the message: with a value interpolated in the message 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: \`template string 2\` });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: \`template string 2\`,
+  "id": "src.__fixtures__.1045198380"
+});
+
+`;
+
+exports[`default with a variable as the defaultMessage: with a variable as the defaultMessage 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+const message = "variable message";
+
+intl.formatMessage({ defaultMessage: message });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+const message = "variable message";
+intl.formatMessage({
+  defaultMessage: message,
+  "id": "src.__fixtures__.3082794952"
+});
+
+`;
+
+exports[`default with custom properties in formatMessage call: with custom properties in formatMessage call 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "custom prop", other: 123 });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "custom prop",
+  "id": "src.__fixtures__.2983810267",
+  other: 123
+});
+
+`;
+
+exports[`filebase = true with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.__fixtures__.messages.613153351"
+});
+
+`;
+
+exports[`removePrefix = "src" with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "__fixtures__.613153351"
+});
+
+`;
+
+exports[`removePrefix = "src.__fixtures__" with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "613153351"
+});
+
+`;
+
+exports[`removePrefix = "src/" -- with slash with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "__fixtures__.613153351"
+});
+
+`;
+
+exports[`removePrefix = /__fixtures__/ with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.613153351"
+});
+
+`;
+
+exports[`removePrefix = false with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.__fixtures__.613153351"
+});
+
+`;
