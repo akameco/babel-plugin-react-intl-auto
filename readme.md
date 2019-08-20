@@ -120,6 +120,46 @@ $ yarn add --dev @babel/plugin-transform-typescript
 }
 ```
 
+## Example
+
+### with injectIntl
+
+Input:
+
+```js
+import { injectIntl } from 'react-intl'
+
+const MyComponent = (({ intl }) => {
+  const label = intl.formatMessage({ defaultMessage: 'Submit button' })
+  return (
+    <button aria-label={label}>
+      {label}
+    </button>
+  )
+))
+
+injectIntl(MyComponent)
+```
+
+↓ 　 ↓ 　 ↓
+
+Output:
+
+```js
+import { injectIntl } from 'react-intl'
+
+const MyComponent = ({ intl }) => {
+  const label = intl.formatMessage({ id="App.Components.Button.label", defaultMessage: 'Submit button' })
+  return (
+    <button aria-label={label}>
+      {label}
+    </button>
+  )
+}
+
+injectIntl(MyComponent)
+```
+
 ### Options
 
 #### removePrefix
