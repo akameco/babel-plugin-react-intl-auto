@@ -173,7 +173,7 @@ const MyComponent = () => {
 Output:
 
 ```js
-import { injectIntl } from 'react-intl'
+import { useIntl } from 'react-intl'
 
 const MyComponent = () => {
   const intl = useIntl();
