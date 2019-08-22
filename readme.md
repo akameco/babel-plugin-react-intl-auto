@@ -154,6 +154,38 @@ const MyComponent = ({ intl }) => {
 injectIntl(MyComponent)
 ```
 
+### with useIntl
+
+Input:
+
+```js
+import { useIntl } from 'react-intl'
+
+const MyComponent = () => {
+  const intl = useIntl()
+  const label = intl.formatMessage({ defaultMessage: 'Submit button' })
+  return <button aria-label={label}>{label}</button>
+}
+```
+
+↓ 　 ↓ 　 ↓
+
+Output:
+
+```js
+import { useIntl } from 'react-intl'
+
+const MyComponent = () => {
+  const intl = useIntl();
+  const label = intl.formatMessage({ id="App.Components.Button.label", defaultMessage: 'Submit button' })
+  return (
+    <button aria-label={label}>
+      {label}
+    </button>
+  )
+}
+```
+
 ### Options
 
 #### removePrefix

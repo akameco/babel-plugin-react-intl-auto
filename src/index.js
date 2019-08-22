@@ -124,6 +124,8 @@ const replaceProperties = (
 ) => {
   const prefix = getPrefix(state, exportName)
 
+  // Apparently a bug in eslint
+  // eslint-disable-next-line no-unused-vars
   for (const prop of properties) {
     const propValue = prop.get('value')
 
@@ -310,9 +312,8 @@ function isFormatMessageCall(path, state) {
   const object = callee.get('object')
 
   return (
-    // injectIntl imported
-    // isImportedFromIntl(['injectIntl'], state) &&
-    isImportLocalName(null, ['injectIntl'], state) &&
+    // injectIntl or useIntl imported
+    isImportLocalName(null, ['injectIntl', 'useIntl'], state) &&
     callee.isMemberExpression() &&
     Boolean(path.get('arguments.0')) &&
     // intl object
@@ -348,6 +349,8 @@ function addIdToFormatMessage(path, state) {
     return
   }
 
+  // Apparently a bug in eslint
+  // eslint-disable-next-line no-unused-vars
   for (const prop of properties) {
     if (prop.get('key').node.name === 'defaultMessage') {
       // try to statically evaluate defaultMessage to generate hash
