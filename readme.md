@@ -143,12 +143,11 @@ Output:
 import { injectIntl } from 'react-intl'
 
 const MyComponent = ({ intl }) => {
-  const label = intl.formatMessage({ id="App.Components.Button.label", defaultMessage: 'Submit button' })
-  return (
-    <button aria-label={label}>
-      {label}
-    </button>
-  )
+  const label = intl.formatMessage({
+    id: 'App.Components.Button.label',
+    defaultMessage: 'Submit button',
+  })
+  return <button aria-label={label}>{label}</button>
 }
 
 injectIntl(MyComponent)
@@ -176,13 +175,12 @@ Output:
 import { useIntl } from 'react-intl'
 
 const MyComponent = () => {
-  const intl = useIntl();
-  const label = intl.formatMessage({ id="App.Components.Button.label", defaultMessage: 'Submit button' })
-  return (
-    <button aria-label={label}>
-      {label}
-    </button>
-  )
+  const intl = useIntl()
+  const label = intl.formatMessage({
+    id: 'App.Components.Button.label',
+    defaultMessage: 'Submit button',
+  })
+  return <button aria-label={label}>{label}</button>
 }
 ```
 
