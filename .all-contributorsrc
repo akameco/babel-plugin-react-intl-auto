@@ -146,6 +146,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "dominik-zeglen",
+      "name": "Dominik Żegleń",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6833443?v=4",
+      "profile": "https://github.com/dominik-zeglen",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github",
