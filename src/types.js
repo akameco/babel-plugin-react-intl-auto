@@ -21,5 +21,6 @@ export type State = {
     includeExportName?: boolean | 'all',
     extractComments?: boolean,
     useKey?: boolean,
+    moduleSourceName?: string,
   },
 }

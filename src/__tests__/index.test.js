@@ -227,6 +227,17 @@ export default defineMessages({
   },
 ]
 
+const moduleSourceNameTest = {
+  title: 'moduleSourceName',
+  code: `
+import { defineMessages } from 'gatsby-plugin-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+  `,
+}
+
 cases([
   { title: 'default', tests },
   {
@@ -297,6 +308,13 @@ cases([
       includeExportName: true,
     },
   },
+  {
+    title: 'moduleSourceNameTest',
+    tests: [defaultTest, moduleSourceNameTest],
+    pluginOptions: {
+      moduleSourceName: 'gatsby-plugin-intl',
+    },
+  },
 ])
 
 function cases(
@@ -312,6 +330,7 @@ function cases(
     babelOptions: { filename },
     tests: [],
   }
+  // eslint-disable-next-line no-unused-vars
   for (const testCase of testCases) {
     testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
     pluginTester({ ...defaultOpts, ...testCase })

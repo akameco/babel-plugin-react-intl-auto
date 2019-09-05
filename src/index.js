@@ -8,7 +8,7 @@ import type { State } from './types'
 const isImportLocalName = (
   name: ?string,
   allowedNames: $ReadOnlyArray<string>,
-  { file }: State
+  { file, opts: { moduleSourceName = 'react-intl' } }: State
 ) => {
   const isSearchedImportSpecifier = specifier =>
     specifier.isImportSpecifier() &&
@@ -21,7 +21,7 @@ const isImportLocalName = (
     ImportDeclaration: {
       exit(path) {
         isImported =
-          path.node.source.value.includes('react-intl') &&
+          path.node.source.value.includes(moduleSourceName) &&
           path.get('specifiers').some(isSearchedImportSpecifier)
 
         if (isImported) {
