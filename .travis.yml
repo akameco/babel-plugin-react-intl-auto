@@ -12,6 +12,7 @@ notifications:
   email: false
 
 script:
+  - yarn run fmt --check
   - yarn run test:ci
 
 branches:
