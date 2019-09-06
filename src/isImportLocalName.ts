@@ -1,4 +1,5 @@
 import { NodePath } from '@babel/core'
+import * as t from '@babel/types'
 import { State } from './types'
 
 export const isImportLocalName = (

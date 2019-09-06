@@ -1,53 +1,12 @@
 import p from 'path'
 import * as t from '@babel/types'
 import { NodePath, PluginObj } from '@babel/core'
-import murmur from 'murmurhash3js'
 import { State } from './types'
 import { isImportLocalName } from './isImportLocalName'
+import { visitJSXElement } from './visitors/jsx'
+import { createHash, dotPath } from './utils'
+import { getPrefix } from './getPrefix'
 // import blog from 'babel-log'
-
-const REG = new RegExp(`\\${p.sep}`, 'gu')
-
-const dotPath = (str: string) => str.replace(REG, '.')
-
-const getPrefix = (
-  {
-    file: {
-      opts: { filename },
-    },
-    opts: { removePrefix, filebase = false },
-  }: State,
-  exportName: string | null
-) => {
-  if (removePrefix === true) {
-    return exportName === null ? '' : exportName
-  }
-  const file = p.relative(process.cwd(), filename)
-  const fomatted = filebase ? file.replace(/\..+$/u, '') : p.dirname(file)
-  removePrefix =
-    removePrefix === undefined || removePrefix === false ? '' : removePrefix
-  const fixed =
-    removePrefix instanceof RegExp
-      ? dotPath(fomatted.replace(removePrefix, ''))
-      : dotPath(fomatted).replace(
-          new RegExp(
-            `^${removePrefix.replace(/\//gu, '')}\\${dotPath(p.sep)}?`,
-            'u'
-          ),
-
-          ''
-        )
-
-  if (exportName === null) {
-    return fixed
-  }
-
-  if (fixed === '') {
-    return exportName
-  }
-
-  return `${fixed}.${exportName}`
-}
 
 const getId = (path: NodePath, prefix: string) => {
   let name
@@ -198,111 +157,6 @@ function getProperties(path: NodePath) {
     return obj.path.get('init.properties')
   }
   return null
-}
-
-// Process react-intl components
-const REACT_COMPONENTS = ['FormattedMessage', 'FormattedHTMLMessage']
-
-const getElementAttributePaths = (
-  elementPath: NodePath<t.JSXOpeningElement>
-) => {
-  if (!elementPath) {
-    return {}
-  }
-
-  const attributesPath = elementPath.get('attributes') as NodePath<
-    t.JSXAttribute
-  >[]
-
-  const defaultMessagePath = attributesPath.find(
-    attrPath =>
-      attrPath.node.name && attrPath.node.name.name === 'defaultMessage'
-  )
-
-  const idPath = attributesPath.find(
-    attrPath => attrPath.node.name && attrPath.node.name.name === 'id'
-  )
-
-  const keyPath = attributesPath.find(
-    attrPath => attrPath.node.name && attrPath.node.name.name === 'key'
-  )
-
-  return { id: idPath, defaultMessage: defaultMessagePath, key: keyPath }
-}
-
-const createHash = (message: string) => `${murmur.x86.hash32(message)}`
-
-const extractFromValuePath = (valueObject: any) => {
-  if (!valueObject) {
-    return null
-  }
-  const valuePath = valueObject.get('value')
-  if (valuePath) {
-    if (valuePath.isStringLiteral()) {
-      // Use the message as is if it's a string
-      return valueObject.node.value.value
-    }
-
-    // Evaluate the message expression to see if it yields a string
-    const evaluated = valuePath.get('expression').evaluate()
-    if (evaluated.confident && typeof evaluated.value === 'string') {
-      return evaluated.value
-    }
-    throw valuePath.buildCodeFrameError(
-      `[React Intl Auto] ${
-        valueObject.get('name').node.name
-      } must be statically evaluate-able for extraction.`
-    )
-  }
-
-  return null
-}
-
-const generateId = (
-  defaultMessage: NodePath<t.Node>,
-  state: State,
-  key: NodePath | null | undefined
-) => {
-  // ID = path to the file + key
-  let suffix = key && state.opts.useKey ? extractFromValuePath(key) : ''
-  if (!suffix) {
-    // ID = path to the file + hash of the defaultMessage
-    const messageValue = extractFromValuePath(defaultMessage)
-    if (messageValue) {
-      suffix = createHash(messageValue)
-    }
-  }
-
-  const prefix = getPrefix(state, suffix)
-
-  // Insert an id attribute before the defaultMessage attribute
-  defaultMessage.insertBefore(
-    t.jsxAttribute(t.jsxIdentifier('id'), t.stringLiteral(prefix))
-  )
-}
-
-const visitJSXElement = (path: NodePath, state: State) => {
-  const jsxOpeningElement = path.get('openingElement') as NodePath<
-    t.JSXOpeningElement
-  >
-
-  // Is this a react-intl component? Handles both:
-  // import { FormattedMessage as T } from 'react-intl'
-  // import { FormattedMessage } from 'react-intl'
-  if (
-    t.isJSXIdentifier(jsxOpeningElement.node.name) &&
-    isImportLocalName(jsxOpeningElement.node.name.name, REACT_COMPONENTS, state)
-  ) {
-    // Get the attributes for the component
-    const { id, defaultMessage, key } = getElementAttributePaths(
-      jsxOpeningElement
-    )
-
-    // If valid message but missing ID, generate one
-    if (!id && defaultMessage) {
-      generateId(defaultMessage, state, state.opts.useKey ? key : null)
-    }
-  }
 }
 
 // check if given path is related to intl.formatMessage call
