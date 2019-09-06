@@ -1,7 +1,8 @@
 {
-  "extends": "precure/oss",
+  "extends": "precure/auto",
   "rules": {
-    "flowtype/require-compound-type-alias": "off",
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/prevent-abbreviations": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

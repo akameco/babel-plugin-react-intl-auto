@@ -1,9 +1,31 @@
-// @flow
 import path from 'path'
 import pluginTester from 'babel-plugin-tester'
 import plugin from '..'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
+
+function cases(
+  testCases: {
+    title: string
+    tests: { title: string; code: string }[]
+    pluginOptions?: any
+  }[]
+) {
+  const defaultOpts = {
+    title: '',
+    plugin,
+    snapshot: true,
+    babelOptions: { filename, parserOpts: { plugins: ['jsx'] } },
+    tests: [],
+
+    // Apparently a bug in eslint
+    // eslint-disable-next-line no-unused-vars
+  }
+  for (const testCase of testCases) {
+    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
+    pluginTester({ ...defaultOpts, ...testCase })
+  }
+}
 
 const defaultTest = {
   title: 'with useIntl hook imported',
@@ -136,16 +158,19 @@ cases([
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src' },
   },
+
   {
     title: 'removePrefix = "src/" -- with slash',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src/' },
   },
+
   {
     title: 'filebase = true',
     tests: [defaultTest],
     pluginOptions: { filebase: true },
   },
+
   // {
   //   title: 'includeExportName = true',
   //   tests: [defaultTest],
@@ -166,6 +191,7 @@ cases([
     tests: [defaultTest],
     pluginOptions: { removePrefix: false },
   },
+
   // {
   //   title: 'removePrefix = true, includeExportName = all',
   //   tests: [defaultTest],
@@ -181,30 +207,10 @@ cases([
     tests: [defaultTest],
     pluginOptions: { removePrefix: /[\\/]__fixtures__/u },
   },
+
   {
     title: 'removePrefix = "src.__fixtures__"',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src.__fixtures__' },
   },
 ])
-
-function cases(
-  testCases: Array<{
-    title: string,
-    tests: $ReadOnlyArray<{ title: string, code: string }>,
-  }>
-) {
-  const defaultOpts = {
-    title: '',
-    plugin,
-    snapshot: true,
-    babelOptions: { filename, parserOpts: { plugins: ['jsx'] } },
-    tests: [],
-  }
-  // Apparently a bug in eslint
-  // eslint-disable-next-line no-unused-vars
-  for (const testCase of testCases) {
-    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
-    pluginTester({ ...defaultOpts, ...testCase })
-  }
-}

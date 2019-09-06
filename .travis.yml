@@ -13,6 +13,7 @@ notifications:
 
 script:
   - yarn run fmt --check
+  - yarn run tsc --noEmit
   - yarn run test:ci
 
 branches:

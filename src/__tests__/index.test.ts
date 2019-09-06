@@ -1,9 +1,30 @@
-// @flow
 import path from 'path'
 import pluginTester from 'babel-plugin-tester'
 import plugin from '..'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
+
+function cases(
+  testCases: {
+    title: string
+    tests: { title: string; code: string }[]
+    pluginOptions?: any
+  }[]
+) {
+  const defaultOpts = {
+    title: '',
+    plugin,
+    snapshot: true,
+    babelOptions: { filename },
+    tests: [],
+
+    // eslint-disable-next-line no-unused-vars
+  }
+  for (const testCase of testCases) {
+    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
+    pluginTester({ ...defaultOpts, ...testCase })
+  }
+}
 
 const defaultTest = {
   title: 'default',
@@ -78,6 +99,7 @@ defineMessages({
 })
       `,
   },
+
   {
     title: 'string literal',
     code: `
@@ -88,6 +110,7 @@ defineMessages({
 })
       `,
   },
+
   {
     title: 'Object',
     code: `
@@ -108,6 +131,7 @@ defineMessages({
 })
       `,
   },
+
   {
     title: 'import as',
     code: `
@@ -119,6 +143,7 @@ m({
 
 `,
   },
+
   {
     title: 'with other func',
     code: `
@@ -133,6 +158,7 @@ hello({
 })
     `,
   },
+
   multiExportTest,
   {
     title: 'throw error when key is NumiricLiteral',
@@ -146,6 +172,7 @@ export default defineMessages({
     error: /requires Object key or string literal/u,
     snapshot: false,
   },
+
   {
     title: 'not transform if defineMessages is not imported',
     code: `
@@ -156,6 +183,7 @@ export default defineMessages({
 })
     `,
   },
+
   {
     title: 'not transform when defineMessages argumens is not object',
     code: `
@@ -164,6 +192,7 @@ import { defineMessages } from 'react-intl'
 export default defineMessages(1)
     `,
   },
+
   {
     title: 'when using the variable',
     code: `
@@ -174,6 +203,7 @@ const messages = {hello: 'hello'}
 export default defineMessages(messages)
     `,
   },
+
   {
     title: 'not transfrom when the variable can not be found',
     code: `
@@ -182,6 +212,7 @@ import { defineMessages } from 'react-intl'
 export default defineMessages(messages)
     `,
   },
+
   {
     title: 'not transform when defineMessages argumens is empty',
     code: `
@@ -190,6 +221,7 @@ import { defineMessages } from 'react-intl'
 export default defineMessages()
     `,
   },
+
   {
     title: 'not transform if callee is not identifier',
     code: `
@@ -202,6 +234,7 @@ export default m[0]({
 })
     `,
   },
+
   {
     title: 'with other specifier',
     code: `
@@ -212,6 +245,7 @@ export default defineMessages({
 })
     `,
   },
+
   leadingCommentTest,
   leadingCommentWithDescriptionTest,
   {
@@ -245,46 +279,55 @@ cases([
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src' },
   },
+
   {
     title: 'removePrefix = "src/" -- with slash',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src/' },
   },
+
   {
     title: 'filebase = true',
     tests: [defaultTest],
     pluginOptions: { filebase: true },
   },
+
   {
     title: 'includeExportName = true',
     tests: [defaultTest, multiExportTest],
     pluginOptions: { includeExportName: true },
   },
+
   {
     title: 'includeExportName = all',
     tests: [defaultTest, multiExportTest],
     pluginOptions: { includeExportName: 'all' },
   },
+
   {
     title: 'removePrefix = true, includeExportName = true',
     tests: [defaultTest, multiExportTest],
     pluginOptions: { removePrefix: true, includeExportName: true },
   },
+
   {
     title: 'removePrefix = false',
     tests: [defaultTest, multiExportTest],
     pluginOptions: { removePrefix: false },
   },
+
   {
     title: 'removePrefix = true, includeExportName = all',
     tests: [defaultTest, multiExportTest],
     pluginOptions: { removePrefix: true, includeExportName: 'all' },
   },
+
   {
     title: 'extractComments = false',
     tests: [defaultTest, leadingCommentTest, leadingCommentWithDescriptionTest],
     pluginOptions: { extractComments: false },
   },
+
   {
     title: 'removePrefix = /__fixtures__/',
     tests: [defaultTest],
@@ -293,6 +336,7 @@ cases([
       includeExportName: true,
     },
   },
+
   {
     title: 'removePrefix = "src.__fixtures__"',
     tests: [defaultTest],
@@ -300,6 +344,7 @@ cases([
       removePrefix: 'src.__fixtures__',
     },
   },
+
   {
     title: 'removePrefix = "src.__fixtures__", includeExportName = true',
     tests: [defaultTest, multiExportTest],
@@ -308,6 +353,7 @@ cases([
       includeExportName: true,
     },
   },
+
   {
     title: 'moduleSourceNameTest',
     tests: [defaultTest, moduleSourceNameTest],
@@ -316,23 +362,3 @@ cases([
     },
   },
 ])
-
-function cases(
-  testCases: Array<{
-    title: string,
-    tests: $ReadOnlyArray<{ title: string, code: string }>,
-  }>
-) {
-  const defaultOpts = {
-    title: '',
-    plugin,
-    snapshot: true,
-    babelOptions: { filename },
-    tests: [],
-  }
-  // eslint-disable-next-line no-unused-vars
-  for (const testCase of testCases) {
-    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
-    pluginTester({ ...defaultOpts, ...testCase })
-  }
-}

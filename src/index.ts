@@ -1,35 +1,39 @@
-// @flow
 import p from 'path'
 import * as t from '@babel/types'
+import { NodePath, PluginObj } from '@babel/core'
 import murmur from 'murmurhash3js'
-import type { State } from './types'
+import { State } from './types'
 // import blog from 'babel-log'
 
 const isImportLocalName = (
-  name: ?string,
-  allowedNames: $ReadOnlyArray<string>,
+  name: string | null | undefined,
+  allowedNames: string[],
   { file, opts: { moduleSourceName = 'react-intl' } }: State
 ) => {
-  const isSearchedImportSpecifier = specifier =>
+  const isSearchedImportSpecifier = (specifier: NodePath<t.ModuleSpecifier>) =>
     specifier.isImportSpecifier() &&
     allowedNames.includes(specifier.node.imported.name) &&
     (!name || specifier.node.local.name === name)
 
   let isImported = false
 
-  file.path.traverse({
-    ImportDeclaration: {
-      exit(path) {
-        isImported =
-          path.node.source.value.includes(moduleSourceName) &&
-          path.get('specifiers').some(isSearchedImportSpecifier)
+  if (file && file.path) {
+    file.path.traverse({
+      ImportDeclaration: {
+        exit(path) {
+          isImported =
+            path.node.source.value.includes(moduleSourceName) &&
+            path
+              .get('specifiers')
+              .some(specifier => isSearchedImportSpecifier(specifier))
 
-        if (isImported) {
-          path.stop()
-        }
+          if (isImported) {
+            path.stop()
+          }
+        },
       },
-    },
-  })
+    })
+  }
 
   return isImported
 }
@@ -62,6 +66,7 @@ const getPrefix = (
             `^${removePrefix.replace(/\//gu, '')}\\${dotPath(p.sep)}?`,
             'u'
           ),
+
           ''
         )
 
@@ -76,7 +81,7 @@ const getPrefix = (
   return `${fixed}.${exportName}`
 }
 
-const getId = (path, prefix) => {
+const getId = (path: NodePath, prefix: string) => {
   let name
 
   if (path.isStringLiteral()) {
@@ -92,9 +97,13 @@ const getId = (path, prefix) => {
   return dotPath(p.join(prefix, name))
 }
 
-const isLiteral = node => t.isStringLiteral(node) || t.isTemplateLiteral(node)
+const isLiteral = (node: NodePath) =>
+  t.isStringLiteral(node) || t.isTemplateLiteral(node)
 
-const isDefineMessagesCall = (path: Object, state: State): boolean => {
+const isDefineMessagesCall = (
+  path: NodePath<t.CallExpression>,
+  state: State
+): boolean => {
   const callee = path.get('callee')
 
   return (
@@ -104,21 +113,21 @@ const isDefineMessagesCall = (path: Object, state: State): boolean => {
   )
 }
 
-const getLeadingComment = prop => {
+const getLeadingComment = (prop: NodePath) => {
   const commentNodes = prop.node.leadingComments
   return commentNodes
     ? commentNodes.map(node => node.value.trim()).join('\n')
     : null
 }
 
-const objectProperty = (key, value) => {
+const objectProperty = (key: string, value: string) => {
   const valueNode = typeof value === 'string' ? t.stringLiteral(value) : value
   return t.objectProperty(t.stringLiteral(key), valueNode)
 }
 
 // eslint-disable-next-line max-lines-per-function
 const replaceProperties = (
-  properties: $ReadOnlyArray<Object>,
+  properties: NodePath<t.CallExpression>[],
   state: State,
   exportName: string | null
 ) => {
@@ -127,18 +136,22 @@ const replaceProperties = (
   // Apparently a bug in eslint
   // eslint-disable-next-line no-unused-vars
   for (const prop of properties) {
-    const propValue = prop.get('value')
+    const propValue = prop.get('value') as any
 
-    const messageDescriptorProperties: Array<Object> = []
+    const messageDescriptorProperties: object[] = []
 
     // { defaultMessage: 'hello', description: 'this is hello' }
     if (propValue.isObjectExpression()) {
-      const objProps = propValue.get('properties')
+      const objProps = propValue.get('properties') as NodePath<
+        t.ObjectProperty
+      >[]
 
       // { id: 'already has id', defaultMessage: 'hello' }
-      const isNotHaveId = objProps.every(v => v.get('key').node.name !== 'id')
+      const isNotHaveId = objProps.every(
+        (v: any) => v.get('key').node.name !== 'id'
+      )
       if (isNotHaveId) {
-        const id = getId(prop.get('key'), prefix)
+        const id = getId(prop.get('key') as any, prefix)
 
         messageDescriptorProperties.push(objectProperty('id', id))
       }
@@ -146,14 +159,14 @@ const replaceProperties = (
       messageDescriptorProperties.push(...objProps.map(v => v.node))
     } else if (isLiteral(propValue)) {
       // 'hello' or `hello ${user}`
-      const id = getId(prop.get('key'), prefix)
+      const id = getId(prop.get('key') as any, prefix)
 
       messageDescriptorProperties.push(
         objectProperty('id', id),
         objectProperty('defaultMessage', propValue.node)
       )
     } else {
-      const evaluated = prop.get('value').evaluate()
+      const evaluated = (prop.get('value') as any).evaluate()
       if (evaluated.confident && typeof evaluated.value === 'string') {
         const id = dotPath(p.join(prefix, evaluated.value))
 
@@ -168,7 +181,7 @@ const replaceProperties = (
 
     if (extractComments) {
       const hasDescription = messageDescriptorProperties.find(
-        v => v.key.name === 'description'
+        (v: any) => v.key.name === 'description'
       )
 
       if (!hasDescription) {
@@ -181,17 +194,21 @@ const replaceProperties = (
         }
       }
     }
-
-    propValue.replaceWith(t.objectExpression(messageDescriptorProperties))
+    propValue.replaceWith(
+      t.objectExpression(messageDescriptorProperties as any)
+    )
   }
 }
 
-const getExportName = (path, includeExportName): string | null => {
+const getExportName = (
+  path: NodePath,
+  includeExportName: boolean | 'all' | undefined
+): string | null => {
   const namedExport = path.findParent(v => v.isExportNamedDeclaration())
   const defaultExport = path.findParent(v => v.isExportDefaultDeclaration())
 
   if (includeExportName && namedExport) {
-    return namedExport.get('declaration.declarations.0.id.name').node
+    return (namedExport.get('declaration.declarations.0.id.name') as any).node
   }
 
   if (includeExportName === 'all' && defaultExport) {
@@ -201,7 +218,7 @@ const getExportName = (path, includeExportName): string | null => {
   return null
 }
 
-function getProperties(path): $ReadOnlyArray<Object> | null {
+function getProperties(path: NodePath) {
   if (path.isObjectExpression()) {
     return path.get('properties')
   } else if (path.isIdentifier()) {
@@ -218,12 +235,16 @@ function getProperties(path): $ReadOnlyArray<Object> | null {
 // Process react-intl components
 const REACT_COMPONENTS = ['FormattedMessage', 'FormattedHTMLMessage']
 
-const getElementAttributePaths = (elementPath: Object): Object => {
+const getElementAttributePaths = (
+  elementPath: NodePath<t.JSXOpeningElement>
+) => {
   if (!elementPath) {
     return {}
   }
 
-  const attributesPath = elementPath.get('attributes')
+  const attributesPath = elementPath.get('attributes') as NodePath<
+    t.JSXAttribute
+  >[]
 
   const defaultMessagePath = attributesPath.find(
     attrPath =>
@@ -241,9 +262,9 @@ const getElementAttributePaths = (elementPath: Object): Object => {
   return { id: idPath, defaultMessage: defaultMessagePath, key: keyPath }
 }
 
-const createHash = message => `${murmur.x86.hash32(message)}`
+const createHash = (message: string) => `${murmur.x86.hash32(message)}`
 
-const extractFromValuePath = (valueObject: ?Object) => {
+const extractFromValuePath = (valueObject: any) => {
   if (!valueObject) {
     return null
   }
@@ -269,9 +290,13 @@ const extractFromValuePath = (valueObject: ?Object) => {
   return null
 }
 
-const generateId = (defaultMessage: Object, state: State, key: ?Object) => {
+const generateId = (
+  defaultMessage: NodePath<t.Node>,
+  state: State,
+  key: NodePath | null | undefined
+) => {
   // ID = path to the file + key
-  let suffix = state.opts.useKey ? extractFromValuePath(key) : ''
+  let suffix = key && state.opts.useKey ? extractFromValuePath(key) : ''
   if (!suffix) {
     // ID = path to the file + hash of the defaultMessage
     const messageValue = extractFromValuePath(defaultMessage)
@@ -284,19 +309,26 @@ const generateId = (defaultMessage: Object, state: State, key: ?Object) => {
 
   // Insert an id attribute before the defaultMessage attribute
   defaultMessage.insertBefore(
-    t.jSXAttribute(t.jSXIdentifier('id'), t.stringLiteral(prefix))
+    t.jsxAttribute(t.jsxIdentifier('id'), t.stringLiteral(prefix))
   )
 }
 
-const visitJSXElement = (path: Object, state: State) => {
-  const element = path.get('openingElement')
+const visitJSXElement = (path: NodePath, state: State) => {
+  const jsxOpeningElement = path.get('openingElement') as NodePath<
+    t.JSXOpeningElement
+  >
 
   // Is this a react-intl component? Handles both:
   // import { FormattedMessage as T } from 'react-intl'
   // import { FormattedMessage } from 'react-intl'
-  if (isImportLocalName(element.node.name.name, REACT_COMPONENTS, state)) {
+  if (
+    t.isJSXIdentifier(jsxOpeningElement.node.name) &&
+    isImportLocalName(jsxOpeningElement.node.name.name, REACT_COMPONENTS, state)
+  ) {
     // Get the attributes for the component
-    const { id, defaultMessage, key } = getElementAttributePaths(element)
+    const { id, defaultMessage, key } = getElementAttributePaths(
+      jsxOpeningElement
+    )
 
     // If valid message but missing ID, generate one
     if (!id && defaultMessage) {
@@ -306,10 +338,10 @@ const visitJSXElement = (path: Object, state: State) => {
 }
 
 // check if given path is related to intl.formatMessage call
-function isFormatMessageCall(path, state) {
+function isFormatMessageCall(path: NodePath<t.CallExpression>, state: State) {
   const callee = path.get('callee')
   const property = callee.get('property')
-  const object = callee.get('object')
+  const objectPath = callee.get('object')
 
   return (
     // injectIntl or useIntl imported
@@ -317,27 +349,28 @@ function isFormatMessageCall(path, state) {
     callee.isMemberExpression() &&
     Boolean(path.get('arguments.0')) &&
     // intl object
-    object &&
-    t.isIdentifier(object) &&
-    object.node.name === 'intl' &&
+    objectPath &&
+    t.isIdentifier(objectPath) &&
+    (objectPath as any).node.name === 'intl' &&
     // formatMessage property
     property &&
     t.isIdentifier(property) &&
-    property.node.name === 'formatMessage'
+    (property as any).node.name === 'formatMessage'
   )
 }
 
 // add automatic ID to intl.formatMessage calls
-function addIdToFormatMessage(path, state) {
+function addIdToFormatMessage(path: NodePath<t.CallExpression>, state: State) {
   if (!isFormatMessageCall(path, state)) {
     // skip path if this is not intl.formatMessage call
     return
   }
 
   // intl.formatMessage first argument is the one which we would like to modify
-  const arg0 = path.get('arguments.0')
+  const arg0 = path.get('arguments.0') as NodePath<t.ObjectExpression>
 
-  const properties = getProperties(arg0)
+  const properties = getProperties(arg0) as any
+  // blog(properties)
 
   // at least defaultMessage property is required to do anything useful
   if (!properties) {
@@ -345,7 +378,7 @@ function addIdToFormatMessage(path, state) {
   }
 
   // if "id" property is already added by a developer or by this script just skip this node
-  if (properties.find(arg => arg.get('key').node.name === 'id')) {
+  if (properties.find((arg: any) => arg.get('key').node.name === 'id')) {
     return
   }
 
@@ -370,19 +403,24 @@ function addIdToFormatMessage(path, state) {
   }
 }
 
-function addIdToFormatedMessage(path, state) {
+function addIdToFormatedMessage(
+  path: NodePath<t.CallExpression>,
+  state: State
+) {
   if (!isDefineMessagesCall(path, state)) {
     return
   }
 
-  const properties = getProperties(path.get('arguments.0'))
+  const properties = getProperties(path.get('arguments.0') as NodePath<
+    t.ObjectExpression
+  >)
 
   if (!properties) {
     return
   }
 
   const exportName = getExportName(path, state.opts.includeExportName || false)
-  replaceProperties(properties, state, exportName)
+  replaceProperties(properties as any, state, exportName)
 }
 
 export default function() {
@@ -390,10 +428,10 @@ export default function() {
     name: 'react-intl-auto',
     visitor: {
       JSXElement: visitJSXElement,
-      CallExpression(path: Object, state: State) {
+      CallExpression(path, state: State) {
         addIdToFormatMessage(path, state)
         addIdToFormatedMessage(path, state)
       },
     },
-  }
+  } as PluginObj
 }

@@ -1,0 +1,7 @@
+{
+  "extends": "@akameco/tsconfig",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

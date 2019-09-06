@@ -1,9 +1,29 @@
-// @flow
 import path from 'path'
 import pluginTester from 'babel-plugin-tester'
 import plugin from '..'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
+
+function cases(
+  testCases: {
+    title: string
+    tests: { title: string; code: string }[]
+    pluginOptions?: any
+  }[]
+) {
+  const defaultOpts = {
+    title: '',
+    plugin,
+    snapshot: true,
+    babelOptions: { filename, parserOpts: { plugins: ['jsx'] } },
+    tests: [],
+  }
+
+  for (const testCase of testCases) {
+    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
+    pluginTester({ ...defaultOpts, ...testCase })
+  }
+}
 
 const defaultTest = {
   title: 'default',
@@ -138,78 +158,70 @@ cases([
     tests: [defaultTest, keyTest],
     pluginOptions: { useKey: true },
   },
+
   {
     title: 'removePrefix = "src"',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src' },
   },
+
   {
     title: 'removePrefix = "src/" -- with slash',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src/' },
   },
+
   {
     title: 'filebase = true',
     tests: [defaultTest],
     pluginOptions: { filebase: true },
   },
+
   {
     title: 'includeExportName = true',
     tests: [defaultTest],
     pluginOptions: { includeExportName: true },
   },
+
   {
     title: 'includeExportName = all',
     tests: [defaultTest],
     pluginOptions: { includeExportName: 'all' },
   },
+
   {
     title: 'removePrefix = true, includeExportName = true',
     tests: [defaultTest],
     pluginOptions: { removePrefix: true, includeExportName: true },
   },
+
   {
     title: 'removePrefix = false',
     tests: [defaultTest],
     pluginOptions: { removePrefix: false },
   },
+
   {
     title: 'removePrefix = true, includeExportName = all',
     tests: [defaultTest],
     pluginOptions: { removePrefix: true, includeExportName: 'all' },
   },
+
   {
     title: 'extractComments = false',
     tests: [defaultTest],
     pluginOptions: { extractComments: false },
   },
+
   {
     title: 'removePrefix = /__fixtures__/',
     tests: [defaultTest],
     pluginOptions: { removePrefix: /[\\/]__fixtures__/u },
   },
+
   {
     title: 'removePrefix = "src.__fixtures__"',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src.__fixtures__' },
   },
 ])
-
-function cases(
-  testCases: Array<{
-    title: string,
-    tests: $ReadOnlyArray<{ title: string, code: string }>,
-  }>
-) {
-  const defaultOpts = {
-    title: '',
-    plugin,
-    snapshot: true,
-    babelOptions: { filename, parserOpts: { plugins: ['jsx'] } },
-    tests: [],
-  }
-  for (const testCase of testCases) {
-    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
-    pluginTester({ ...defaultOpts, ...testCase })
-  }
-}
