@@ -13,19 +13,18 @@
   },
   "scripts": {
     "add-contributor": "all-contributors add",
-    "build": "babel src -d lib --ignore __tests__,__fixtures__",
+    "build": "babel src -d lib --ignore __tests__,__fixtures__ --extensions .ts",
     "prepack": "yarn build",
-    "flow": "flow",
-    "fmt": "prettier --write '**/*.{js,json,ts,md}'",
-    "lint": "eslint src --ext js",
+    "fmt": "prettier --write '**/*.{ts,js,json,ts,md}'",
+    "lint": "eslint src --ext ts",
     "add:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --ci --runInBand",
-    "test:ci": "yarn flow && yarn lint && yarn test:coverage"
+    "test:ci": "yarn lint && yarn test:coverage"
   },
   "lint-staged": {
-    "*.{js}": [
+    "*.{js,ts}": [
       "prettier --write",
       "eslint",
       "git add"
@@ -53,15 +52,21 @@
     "types.d.ts"
   ],
   "dependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/traverse": "^7.5.5",
     "@babel/types": "^7.5.5",
     "murmurhash3js": "^3.0.1"
   },
   "devDependencies": {
+    "@akameco/tsconfig": "^0.3.0",
     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@babel/register": "^7.5.5",
+    "@types/babel__core": "^7.1.3",
+    "@types/babel__traverse": "^7.0.7",
+    "@types/jest": "^24.0.18",
+    "@types/murmurhash3js": "^3.0.2",
     "all-contributors-cli": "^6.9.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
@@ -71,17 +76,18 @@
     "coveralls": "^3.0.6",
     "eslint": "^6.3.0",
     "eslint-config-precure": "^5.0.2",
-    "flow-bin": "^0.107.0",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
     "prettier": "^1.17.1",
     "react-intl": "^3.2.0",
-    "string-snapshot-serializer": "^1.0.1"
+    "string-snapshot-serializer": "^1.0.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn flow && lint-staged"
+      "pre-commit": "lint-staged"
     }
   }
 }

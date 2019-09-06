@@ -1,4 +1,3 @@
-flow-typed/*
-flow-typed/npm/*
 lib
 examples
+jest.config.js
