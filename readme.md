@@ -274,6 +274,8 @@ Default: `react-intl`
 
 if set, enables to use custom module as a source for _defineMessages_ etc.
 
+https://github.com/akameco/babel-plugin-react-intl-auto/issues/74#issuecomment-528562743
+
 #### includeExportName
 
 Type: `boolean | 'all'` <br>
