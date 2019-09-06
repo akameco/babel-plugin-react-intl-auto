@@ -1,6 +1,6 @@
 import { relative, dirname, sep } from 'path'
-import { State } from './types'
-import { dotPath } from './utils'
+import { State } from '../types'
+import { dotPath } from '.'
 
 export const getPrefix = (
   {

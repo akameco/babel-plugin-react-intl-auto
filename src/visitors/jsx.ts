@@ -2,8 +2,8 @@ import { NodePath } from '@babel/core'
 import * as t from '@babel/types'
 import { State } from '../types'
 import { createHash } from '../utils'
-import { isImportLocalName } from '../isImportLocalName'
-import { getPrefix } from '../getPrefix'
+import { isImportLocalName } from '../utils/isImportLocalName'
+import { getPrefix } from '../utils/getPrefix'
 // import blog from 'babel-log'
 
 // Process react-intl components
