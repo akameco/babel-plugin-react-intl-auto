@@ -1,30 +1,7 @@
 import path from 'path'
-import pluginTester from 'babel-plugin-tester'
-import plugin from '..'
+import { cases } from '../testUtils'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
-
-function cases(
-  testCases: {
-    title: string
-    tests: { title: string; code: string }[]
-    pluginOptions?: any
-  }[]
-) {
-  const defaultOpts = {
-    title: '',
-    plugin,
-    snapshot: true,
-    babelOptions: { filename },
-    tests: [],
-
-    // eslint-disable-next-line no-unused-vars
-  }
-  for (const testCase of testCases) {
-    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
-    pluginTester({ ...defaultOpts, ...testCase })
-  }
-}
 
 const defaultTest = {
   title: 'default',
@@ -272,7 +249,7 @@ export default defineMessages({
   `,
 }
 
-cases([
+cases(filename, [
   { title: 'default', tests },
   {
     title: 'removePrefix = "src"',

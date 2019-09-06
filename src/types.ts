@@ -23,14 +23,16 @@ type BabelTransformationFile = {
   inputMap: object | null
 }
 
+export type Opts = {
+  removePrefix?: boolean | string | RegExp
+  filebase?: boolean
+  includeExportName?: boolean | 'all'
+  extractComments?: boolean
+  useKey?: boolean
+  moduleSourceName?: string
+}
+
 export type State = {
   file: BabelTransformationFile
-  opts: {
-    removePrefix?: boolean | string | RegExp
-    filebase?: boolean
-    includeExportName?: boolean | 'all'
-    extractComments?: boolean
-    useKey?: boolean
-    moduleSourceName?: string
-  }
+  opts: Opts
 }

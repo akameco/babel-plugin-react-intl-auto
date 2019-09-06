@@ -27,12 +27,12 @@
     "test:ci": "yarn lint && yarn test:coverage"
   },
   "lint-staged": {
-    "*.{js,ts}": [
+    "*.{ts}": [
       "prettier --write",
       "eslint",
       "git add"
     ],
-    "*.{json,md}": [
+    "*.{js,json,md}": [
       "prettier --write",
       "git add"
     ]
@@ -85,7 +85,6 @@
     "prettier": "^1.17.1",
     "react-intl": "^3.2.0",
     "string-snapshot-serializer": "^1.0.1",
-    "ts-jest": "^24.0.2",
     "typescript": "^3.6.2"
   },
   "husky": {
