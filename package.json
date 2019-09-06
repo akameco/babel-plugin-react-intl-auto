@@ -11,6 +11,9 @@
     "email": "akameco.t@gmail.com",
     "url": "https://akameco.github.io"
   },
+  "engines": {
+    "node": ">=8"
+  },
   "scripts": {
     "add-contributor": "all-contributors add",
     "build": "babel src -d lib --ignore __tests__,__fixtures__ --extensions .ts",
