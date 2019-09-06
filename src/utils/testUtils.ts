@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import pluginTester from 'babel-plugin-tester'
-import { Opts } from './types'
-import plugin from '.'
+import { Opts } from '../types'
+import plugin from '..'
 
 export function cases(
   filename: string,
