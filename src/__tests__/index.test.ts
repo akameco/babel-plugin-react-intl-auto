@@ -227,7 +227,6 @@ export default defineMessages({
   leadingCommentWithDescriptionTest,
   {
     title: 'eval string',
-    // only: true,
     code: `
 import { defineMessages } from 'react-intl'
 

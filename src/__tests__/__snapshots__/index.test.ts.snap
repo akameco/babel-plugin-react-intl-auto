@@ -73,7 +73,7 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   hello: {
     "id": "src.__fixtures__.helloworld",
-    "defaultMessage": 'hello' + 'world'
+    "defaultMessage": "helloworld"
   }
 });
 
