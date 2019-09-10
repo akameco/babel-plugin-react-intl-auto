@@ -1,5 +1,5 @@
 import path from 'path'
-import { cases } from '../utils/testUtils'
+import { cases, Test } from '../utils/testUtils'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')
 
@@ -114,7 +114,7 @@ intl.formatMessage({
 `,
 }
 
-const tests = [
+const tests: Test[] = [
   defaultTest,
   multiUseTest,
   withValueInMessageTest,
@@ -125,6 +125,47 @@ const tests = [
   throwWhenNotAnalyzableTest,
   notTransformIfNotImportedTest,
   notTransformIfIdIsProvided,
+  {
+    title: 'with stringLiteral',
+    code: `
+import { useIntl } from 'react-intl';
+
+const intl = useIntl();
+intl.formatMessage("string literal");
+    `,
+  },
+  {
+    title: 'with stringLiteral more use case',
+    code: `
+import { useIntl } from 'react-intl';
+
+function App() {
+  const intl = useIntl();
+  const label = intl.formatMessage("hello");
+  return (
+    <button aria-label={intl.formatMessage("submit")}>
+      {label}
+    </button>
+  );
+};
+    `,
+  },
+  {
+    title: 'with stringLiteral arrow function',
+    code: `
+import { useIntl } from 'react-intl';
+
+const App = () => {
+  const intl = useIntl();
+  const label = intl.formatMessage("hello");
+  return (
+    <button aria-label={intl.formatMessage("submit")}>
+      {label}
+    </button>
+  );
+};
+    `,
+  },
 ]
 
 cases(filename, [

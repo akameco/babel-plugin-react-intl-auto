@@ -131,6 +131,94 @@ intl.formatMessage({
 
 `;
 
+exports[`default with stringLiteral arrow function: with stringLiteral arrow function 1`] = `
+
+import { useIntl } from 'react-intl';
+
+const App = () => {
+  const intl = useIntl();
+  const label = intl.formatMessage("hello");
+  return (
+    <button aria-label={intl.formatMessage("submit")}>
+      {label}
+    </button>
+  );
+};
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+
+const App = () => {
+  const intl = useIntl();
+  const label = intl.formatMessage({
+    "id": "src.__fixtures__.App.hello",
+    "defaultMessage": "hello"
+  });
+  return <button aria-label={intl.formatMessage({
+    "id": "src.__fixtures__.App.submit",
+    "defaultMessage": "submit"
+  })}>
+      {label}
+    </button>;
+};
+
+`;
+
+exports[`default with stringLiteral more use case: with stringLiteral more use case 1`] = `
+
+import { useIntl } from 'react-intl';
+
+function App() {
+  const intl = useIntl();
+  const label = intl.formatMessage("hello");
+  return (
+    <button aria-label={intl.formatMessage("submit")}>
+      {label}
+    </button>
+  );
+};
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+
+function App() {
+  const intl = useIntl();
+  const label = intl.formatMessage({
+    "id": "src.__fixtures__.App.hello",
+    "defaultMessage": "hello"
+  });
+  return <button aria-label={intl.formatMessage({
+    "id": "src.__fixtures__.App.submit",
+    "defaultMessage": "submit"
+  })}>
+      {label}
+    </button>;
+}
+
+;
+
+`;
+
+exports[`default with stringLiteral: with stringLiteral 1`] = `
+
+import { useIntl } from 'react-intl';
+
+const intl = useIntl();
+intl.formatMessage("string literal");
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+const intl = useIntl();
+intl.formatMessage({
+  "id": "src.__fixtures__.string literal",
+  "defaultMessage": "string literal"
+});
+
+`;
+
 exports[`default with useIntl hook imported: with useIntl hook imported 1`] = `
 
 import { useIntl } from 'react-intl';

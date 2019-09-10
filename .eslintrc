@@ -3,6 +3,8 @@
   "rules": {
     "unicorn/prevent-abbreviations": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/exports-last": "off",
+    "max-lines-per-function": "off"
   }
 }

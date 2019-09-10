@@ -3,14 +3,19 @@ import pluginTester from 'babel-plugin-tester'
 import { Opts } from '../types'
 import plugin from '..'
 
-export function cases(
-  filename: string,
-  testCases: {
-    title: string
-    tests: { title: string; code: string }[]
-    pluginOptions?: Opts
-  }[]
-) {
+export type Test = {
+  title: string
+  code: string
+  only?: boolean
+}
+
+export type TestCase = {
+  title: string
+  tests: Test[]
+  pluginOptions?: Opts
+}
+
+export function cases(filename: string, testCases: TestCase[]) {
   const defaultOpts = {
     title: '',
     plugin,
