@@ -895,3 +895,153 @@ export default defineMessages({
 });
 
 `;
+
+exports[`separator = "" default: default 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "src__fixtures__hello",
+    "defaultMessage": 'hello'
+  }
+});
+
+`;
+
+exports[`separator = "" multi export: multi export 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello world extra'
+})
+
+export default defineMessages({
+  hello: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export const extra = defineMessages({
+  hello: {
+    "id": "src__fixtures__hello",
+    "defaultMessage": 'hello world extra'
+  }
+});
+export default defineMessages({
+  hello: {
+    "id": "src__fixtures__hello",
+    "defaultMessage": 'hello world'
+  }
+});
+
+`;
+
+exports[`separator = "_" default: default 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "src___fixtures___hello",
+    "defaultMessage": 'hello'
+  }
+});
+
+`;
+
+exports[`separator = "_" multi export: multi export 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello world extra'
+})
+
+export default defineMessages({
+  hello: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export const extra = defineMessages({
+  hello: {
+    "id": "src___fixtures___hello",
+    "defaultMessage": 'hello world extra'
+  }
+});
+export default defineMessages({
+  hello: {
+    "id": "src___fixtures___hello",
+    "defaultMessage": 'hello world'
+  }
+});
+
+`;
+
+exports[`separator = "foo" default: default 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "srcfoo__fixtures__foohello",
+    "defaultMessage": 'hello'
+  }
+});
+
+`;
+
+exports[`separator = "foo" multi export: multi export 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export const extra = defineMessages({
+  hello: 'hello world extra'
+})
+
+export default defineMessages({
+  hello: 'hello world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export const extra = defineMessages({
+  hello: {
+    "id": "srcfoo__fixtures__foohello",
+    "defaultMessage": 'hello world extra'
+  }
+});
+export default defineMessages({
+  hello: {
+    "id": "srcfoo__fixtures__foohello",
+    "defaultMessage": 'hello world'
+  }
+});
+
+`;

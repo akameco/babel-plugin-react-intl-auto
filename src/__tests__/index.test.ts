@@ -337,4 +337,29 @@ cases(filename, [
       moduleSourceName: 'gatsby-plugin-intl',
     },
   },
+
+  {
+    title: 'separator = ""',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: {
+      separator: '',
+    },
+  },
+
+  {
+    title: 'separator = "_"',
+    // tests: [defaultTest, multiExportTest],
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: {
+      separator: '_',
+    },
+  },
+
+  {
+    title: 'separator = "foo"',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: {
+      separator: 'foo',
+    },
+  },
 ])

@@ -30,6 +30,7 @@ export type Opts = {
   extractComments?: boolean
   useKey?: boolean
   moduleSourceName?: string
+  separator?: string
 }
 
 export type State = {

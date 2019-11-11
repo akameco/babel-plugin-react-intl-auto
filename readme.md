@@ -352,6 +352,32 @@ Default: `false`
 <FormattedMessage id="path.to.file.foobar" key="foobar" defaultMessage="hello" />
 ```
 
+#### separator
+
+Allows you to specify a custom separator
+
+Type: `string` <br>
+Default: `.`
+
+##### Example
+
+when `separator` is `"_"`
+
+```js
+export const test = defineMessages({
+  hello: 'hello {name}',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  hello: {
+    id: 'path_to_file_test_hello',
+    defaultMessage: 'hello {name}',
+  },
+})
+```
+
 ### Support variable
 
 ##### Example
@@ -459,6 +485,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
   <tr>
     <td align="center"><a href="https://github.com/dominik-zeglen"><img src="https://avatars3.githubusercontent.com/u/6833443?v=4" width="100px;" alt="Dominik Żegleń"/><br /><sub><b>Dominik Żegleń</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/Filson14"><img src="https://avatars1.githubusercontent.com/u/4540538?v=4" width="100px;" alt="Filip "Filson" Pasternak"/><br /><sub><b>Filip "Filson" Pasternak</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Filson14" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ericmasiello"><img src="https://avatars3.githubusercontent.com/u/3525886?v=4" width="100px;" alt="Eric Masiello"/><br /><sub><b>Eric Masiello</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
