@@ -7,7 +7,7 @@ import { isImportLocalName } from '../utils/isImportLocalName'
 import { getPrefix } from '../utils/getPrefix'
 // import blog from 'babel-log'
 
-const getId = (path: NodePath, prefix: string) => {
+const getId = (path: NodePath, prefix: string, separator?: string) => {
   let name
 
   if (path.isStringLiteral()) {
@@ -20,7 +20,7 @@ const getId = (path: NodePath, prefix: string) => {
     throw new Error(`requires Object key or string literal`)
   }
 
-  return dotPath(join(prefix, name))
+  return dotPath(join(prefix, name), separator)
 }
 
 const getLeadingComment = (prop: NodePath) => {
@@ -37,6 +37,9 @@ const replaceProperties = (
   exportName: string | null
 ) => {
   const prefix = getPrefix(state, exportName)
+  const {
+    opts: { separator },
+  } = state
 
   for (const prop of properties) {
     const objectValuePath = prop.get('value')
@@ -60,7 +63,7 @@ const replaceProperties = (
       })
 
       if (isNotHaveId) {
-        const id = getId(objectKeyPath, prefix)
+        const id = getId(objectKeyPath, prefix, separator)
 
         messageDescriptorProperties.push(objectProperty('id', id))
       }
@@ -71,7 +74,7 @@ const replaceProperties = (
       objectValuePath.isTemplateLiteral()
     ) {
       // 'hello' or `hello ${user}`
-      const id = getId(objectKeyPath, prefix)
+      const id = getId(objectKeyPath, prefix, separator)
 
       messageDescriptorProperties.push(
         objectProperty('id', id),
@@ -80,7 +83,7 @@ const replaceProperties = (
     } else {
       const evaluated = prop.get('value').evaluate()
       if (evaluated.confident && typeof evaluated.value === 'string') {
-        const id = dotPath(join(prefix, evaluated.value))
+        const id = dotPath(join(prefix, evaluated.value), separator)
 
         messageDescriptorProperties.push(
           objectProperty('id', id),

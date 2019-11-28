@@ -12,7 +12,8 @@ const isObjectProperties = (
 
 export const createHash = (message: string) => `${murmur.x86.hash32(message)}`
 
-export const dotPath = (str: string) => str.replace(REG, '.')
+export const dotPath = (str: string, separator: string | undefined = '.') =>
+  str.replace(REG, separator)
 
 export const objectProperty = (
   key: string,

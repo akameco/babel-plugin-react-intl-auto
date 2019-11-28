@@ -165,6 +165,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ericmasiello",
+      "name": "Eric Masiello",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3525886?v=4",
+      "profile": "https://github.com/ericmasiello",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "repoType": "github",
