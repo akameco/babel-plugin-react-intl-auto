@@ -16,6 +16,7 @@ export function cases(
     plugin,
     snapshot: true,
     babelOptions: { filename, parserOpts: { plugins: ['jsx'] } },
+    formatResult: (r: any) => r,
     tests: [],
   }
 
