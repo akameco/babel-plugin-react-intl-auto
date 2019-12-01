@@ -7,7 +7,11 @@ export const isImportLocalName = (
   allowedNames: string[],
   { file, opts: { moduleSourceName = 'react-intl' } }: State
 ) => {
-  const isSearchedImportSpecifier = (specifier: NodePath<t.ModuleSpecifier>) =>
+  const isSearchedImportSpecifier = (
+    specifier: NodePath<
+      t.ImportDefaultSpecifier | t.ImportNamespaceSpecifier | t.ImportSpecifier
+    >
+  ) =>
     specifier.isImportSpecifier() &&
     allowedNames.includes(specifier.node.imported.name) &&
     (!name || specifier.node.local.name === name)
@@ -18,11 +22,14 @@ export const isImportLocalName = (
     file.path.traverse({
       ImportDeclaration: {
         exit(path) {
+          const specifiers = path.get('specifiers') as NodePath<
+            | t.ImportDefaultSpecifier
+            | t.ImportNamespaceSpecifier
+            | t.ImportSpecifier
+          >[]
           isImported =
             path.node.source.value.includes(moduleSourceName) &&
-            path
-              .get('specifiers')
-              .some(specifier => isSearchedImportSpecifier(specifier))
+            specifiers.some(specifier => isSearchedImportSpecifier(specifier))
 
           if (isImported) {
             path.stop()
