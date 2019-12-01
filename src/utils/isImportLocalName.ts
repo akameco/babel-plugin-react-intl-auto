@@ -22,11 +22,7 @@ export const isImportLocalName = (
     file.path.traverse({
       ImportDeclaration: {
         exit(path) {
-          const specifiers = path.get('specifiers') as NodePath<
-            | t.ImportDefaultSpecifier
-            | t.ImportNamespaceSpecifier
-            | t.ImportSpecifier
-          >[]
+          const specifiers = path.get('specifiers')
           isImported =
             path.node.source.value.includes(moduleSourceName) &&
             specifiers.some(specifier => isSearchedImportSpecifier(specifier))
