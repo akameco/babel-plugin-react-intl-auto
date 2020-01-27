@@ -50,6 +50,7 @@ function isFormatMessageCall(path: NodePath<t.CallExpression>, state: State) {
 }
 
 // add automatic ID to intl.formatMessage calls
+// eslint-disable-next-line max-lines-per-function
 export function addIdToFormatMessage(
   path: NodePath<t.CallExpression>,
   state: State

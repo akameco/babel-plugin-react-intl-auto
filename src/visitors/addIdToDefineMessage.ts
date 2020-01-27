@@ -35,7 +35,7 @@ const getLeadingComment = (prop: NodePath) => {
     : null
 }
 
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function,max-statements
 const replaceProperties = (
   properties: NodePath<t.ObjectProperty>[],
   state: State,
