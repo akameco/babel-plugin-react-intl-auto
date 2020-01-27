@@ -25,6 +25,10 @@ const getElementAttributePaths = (
       attrPath.node.name && attrPath.node.name.name === 'defaultMessage'
   )
 
+  const descriptionPath = attributesPath.find(
+    attrPath => attrPath.node.name && attrPath.node.name.name === 'description'
+  )
+
   const idPath = attributesPath.find(
     attrPath => attrPath.node.name && attrPath.node.name.name === 'id'
   )
@@ -33,7 +37,12 @@ const getElementAttributePaths = (
     attrPath => attrPath.node.name && attrPath.node.name.name === 'key'
   )
 
-  return { id: idPath, defaultMessage: defaultMessagePath, key: keyPath }
+  return {
+    id: idPath,
+    defaultMessage: defaultMessagePath,
+    description: descriptionPath,
+    key: keyPath,
+  }
 }
 
 /**
@@ -98,15 +107,21 @@ const extractFromValuePath = (jsxAttributePath: NodePath<t.JSXAttribute>) => {
 const generateId = (
   defaultMessage: NodePath<t.JSXAttribute>,
   state: State,
-  key: NodePath<t.JSXAttribute> | undefined
+  key: NodePath<t.JSXAttribute> | undefined,
+  description: NodePath<t.JSXAttribute> | undefined
 ) => {
   // ID = path to the file + key
   let suffix = key && state.opts.useKey ? extractFromValuePath(key) : ''
   if (!suffix) {
     // ID = path to the file + hash of the defaultMessage
     const messageValue = extractFromValuePath(defaultMessage)
+    // ID = path to the file + hash of the defaultMessage + description
+    const descriptionValue =
+      description && state.opts.includeDescription
+        ? extractFromValuePath(description)
+        : ''
     if (messageValue) {
-      suffix = createHash(messageValue)
+      suffix = createHash([messageValue, descriptionValue].join(''))
     }
   }
 
@@ -131,13 +146,18 @@ export const visitJSXElement = (path: NodePath, state: State) => {
     isImportLocalName(jsxOpeningElement.node.name.name, REACT_COMPONENTS, state)
   ) {
     // Get the attributes for the component
-    const { id, defaultMessage, key } = getElementAttributePaths(
+    const { id, defaultMessage, key, description } = getElementAttributePaths(
       jsxOpeningElement
     )
 
     // If valid message but missing ID, generate one
     if (!id && defaultMessage) {
-      generateId(defaultMessage, state, state.opts.useKey ? key : undefined)
+      generateId(
+        defaultMessage,
+        state,
+        state.opts.useKey ? key : undefined,
+        description
+      )
     }
   }
 }

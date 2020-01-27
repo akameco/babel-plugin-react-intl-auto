@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -23,8 +23,8 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
-<FormattedHTMLMessage id="src.__fixtures__.205247277" defaultMessage="<span>hello</span>" />;
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedHTMLMessage id="src.__fixtures__.2073708487" defaultMessage="<span>hello</span>" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -38,8 +38,8 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
-<FormattedMessage id="src.__fixtures__.1418522856" defaultMessage="another" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.3885521902" defaultMessage="another" />;
 
 `;
 
@@ -52,7 +52,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage key="foobar" id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage key="foobar" id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -65,7 +65,7 @@ import { FormattedMessage as T } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage as T } from 'react-intl';
-<T id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<T id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -81,7 +81,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { FormattedMessage } from 'react-intl';
 <div>
-  <FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />
+  <FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />
 </div>;
 
 `;
@@ -95,7 +95,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.3540954520" defaultMessage={\`hello world 2\`} />;
+<FormattedMessage id="src.__fixtures__.1190636703" defaultMessage={\`hello world 2\`} />;
 
 `;
 
@@ -111,7 +111,7 @@ const message = "variable message";
 
 import { FormattedMessage } from 'react-intl';
 const message = "variable message";
-<FormattedMessage id="src.__fixtures__.3082794952" defaultMessage={message} />;
+<FormattedMessage id="src.__fixtures__.1407092463" defaultMessage={message} />;
 
 `;
 
@@ -124,7 +124,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -137,7 +137,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.messages.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.messages.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -150,7 +150,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -163,7 +163,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -176,7 +176,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -189,7 +189,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="613153351" defaultMessage="hello" />;
+<FormattedMessage id="4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -202,7 +202,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -215,7 +215,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -228,7 +228,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -241,7 +241,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="613153351" defaultMessage="hello" />;
+<FormattedMessage id="4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -254,7 +254,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="613153351" defaultMessage="hello" />;
+<FormattedMessage id="4091689770" defaultMessage="hello" />;
 
 `;
 
@@ -267,7 +267,7 @@ import { FormattedMessage } from 'react-intl';
       ↓ ↓ ↓ ↓ ↓ ↓
 
 import { FormattedMessage } from 'react-intl';
-<FormattedMessage id="src.__fixtures__.613153351" defaultMessage="hello" />;
+<FormattedMessage id="src.__fixtures__.4091689770" defaultMessage="hello" />;
 
 `;
 

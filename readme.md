@@ -399,6 +399,59 @@ const messages = {
 export default defineMessages(messages);
 ```
 
+### Include Description
+
+Instead of generating an ID by hashing `defaultMessage`, it will use the combination of `defaultMessage` and `description` properties if
+it exists.
+
+Type: `boolean` <br>
+Default: `false`
+
+##### Example
+
+```js
+export const test = defineMessages({
+  hello: {
+    defaultMessage: 'hello {name}',
+    description: 'Message used to greet the user'
+  },
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  hello: {
+    id: 'path.to.file.test.123123123',
+    defaultMessage: 'hello {name}',
+    description: 'Message used to greet the user',
+  },
+})
+```
+
+```js
+<FormattedMessage defaultMessage="hello" description="Message used to greet the user"/>
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+<FormattedMessage id="path.to.file.123123123" defaultMessage="hello" description="Message used to greet the user"/>
+```
+
+```js
+const intl = useIntl()
+const label = intl.formatMessage({ defaultMessage: 'Submit button', description: 'A submit button' })
+return <button aria-label={label}>{label}</button>
+
+↓ 　 ↓ 　 ↓
+
+const intl = useIntl()
+const label = intl.formatMessage({
+id: 'App.Components.Button.123123123',
+defaultMessage: 'Submit button',
+description: 'A submit button'
+})
+return <button aria-label={label}>{label}</button>
+```
+
 ## TypeScript
 
 TypeScript support is bundled with this package. Be sure to include our type

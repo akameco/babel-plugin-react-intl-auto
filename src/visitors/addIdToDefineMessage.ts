@@ -2,7 +2,12 @@ import { join } from 'path'
 import { NodePath } from '@babel/core'
 import * as t from '@babel/types'
 import { State } from '../types'
-import { dotPath, objectProperty, getObjectProperties } from '../utils'
+import {
+  dotPath,
+  objectProperty,
+  getObjectProperties,
+  createHash,
+} from '../utils'
 import { isImportLocalName } from '../utils/isImportLocalName'
 import { getPrefix } from '../utils/getPrefix'
 // import blog from 'babel-log'
@@ -38,7 +43,7 @@ const replaceProperties = (
 ) => {
   const prefix = getPrefix(state, exportName)
   const {
-    opts: { separator },
+    opts: { separator, includeDescription },
   } = state
 
   for (const prop of properties) {
@@ -62,10 +67,44 @@ const replaceProperties = (
         return !Array.isArray(keyPath) && keyPath.node.name !== 'id'
       })
 
-      if (isNotHaveId) {
-        const id = getId(objectKeyPath, prefix, separator)
+      const isNotHaveDescription = objProps.every(v => {
+        const keyPath = v.get('key')
+        return !Array.isArray(keyPath) && keyPath.node.name !== 'description'
+      })
 
-        messageDescriptorProperties.push(objectProperty('id', id))
+      if (isNotHaveId) {
+        if (isNotHaveDescription || !includeDescription) {
+          const id = getId(objectKeyPath, prefix, separator)
+          messageDescriptorProperties.push(objectProperty('id', id))
+        } else {
+          const keyPathDefaultMessage = objProps.find(v => {
+            const keyPath = v.get('key')
+            return (
+              !Array.isArray(keyPath) && keyPath.node.name === 'defaultMessage'
+            )
+          })
+          const keyPathDescription = objProps.find(v => {
+            const keyPath = v.get('key')
+            return (
+              !Array.isArray(keyPath) && keyPath.node.name === 'description'
+            )
+          })
+          const id = dotPath(
+            join(
+              prefix,
+              createHash(
+                [
+                  keyPathDefaultMessage
+                    ? keyPathDefaultMessage.node.value.value
+                    : '',
+                  keyPathDescription ? keyPathDescription.node.value.value : '',
+                ].join('')
+              )
+            ),
+            separator
+          )
+          messageDescriptorProperties.push(objectProperty('id', id))
+        }
       }
 
       messageDescriptorProperties.push(...objProps.map(v => v.node))

@@ -31,6 +31,7 @@ export type Opts = {
   useKey?: boolean
   moduleSourceName?: string
   separator?: string
+  includeDescription?: boolean
 }
 
 export type State = {

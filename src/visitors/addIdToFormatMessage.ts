@@ -80,6 +80,26 @@ export function addIdToFormatMessage(
     return
   }
 
+  let description = ''
+  if (state.opts.includeDescription) {
+    for (const prop of properties) {
+      const keyPath = prop.get('key')
+      if (!Array.isArray(keyPath) && keyPath.node.name === 'description') {
+        // try to statically evaluate description to generate hash
+        const evaluated = prop.get('value').evaluate()
+
+        if (!evaluated.confident || typeof evaluated.value !== 'string') {
+          throw prop
+            .get('value')
+            .buildCodeFrameError(
+              '[React Intl Auto] description must be statically evaluate-able for extraction.'
+            )
+        }
+        description = evaluated.value
+      }
+    }
+  }
+
   for (const prop of properties) {
     const keyPath = prop.get('key')
     if (!Array.isArray(keyPath) && keyPath.node.name === 'defaultMessage') {
@@ -94,7 +114,10 @@ export function addIdToFormatMessage(
           )
       }
       prop.insertAfter(
-        objectProperty('id', getPrefix(state, createHash(evaluated.value)))
+        objectProperty(
+          'id',
+          getPrefix(state, createHash([evaluated.value, description].join('')))
+        )
       )
     }
   }
