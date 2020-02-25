@@ -362,4 +362,20 @@ cases(filename, [
       separator: 'foo',
     },
   },
+
+  {
+    title: 'relativeTo = "../"',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: {
+      relativeTo: '..',
+    },
+  },
+
+  {
+    title: 'relativeTo = ""',
+    tests: [defaultTest, multiExportTest],
+    pluginOptions: {
+      relativeTo: '',
+    },
+  },
 ])
