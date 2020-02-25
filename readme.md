@@ -378,6 +378,70 @@ export const test = defineMessages({
 })
 ```
 
+#### relativeTo
+
+Allows you to specify the directory that is used when determining a file's prefix.
+
+This option is useful for monorepo setups.
+
+Type: `string` <br>
+Default: `process.cwd()`
+
+##### Example
+
+Folder structure with two sibling packages. `packageB` contains babel config and depends on `packageA`.
+
+```bash
+|- packageA
+| |
+|  -- componentA
+|
+|- packageB
+| |
+|  -- componentB
+| |
+|  -- .babelrc
+```
+
+Set `relativeTo` to parent directory in `packageB` babel config
+
+```js
+{
+  "plugins": [
+    [
+      "react-intl-auto",
+      {
+        "relativeTo": "..",
+        // ...
+      },
+    ],
+  ]
+}
+```
+
+Run babel in packageB
+
+```bash
+cd packageB && babel
+```
+
+Messages in `componentA` are prefixed relative to the project root
+
+```js
+export const test = defineMessages({
+  hello: 'hello {name}',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  hello: {
+    id: 'packageA.componentA.hello',
+    defaultMessage: 'hello {name}',
+  },
+})
+```
+
 ### Support variable
 
 ##### Example
