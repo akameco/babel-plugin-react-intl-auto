@@ -33,14 +33,14 @@ export const getPrefix = (
     file: {
       opts: { filename },
     },
-    opts: { removePrefix, filebase = false, separator },
+    opts: { removePrefix, filebase = false, separator, relativeTo },
   }: State,
   exportName: string | null
 ) => {
   if (removePrefix === true) {
     return exportName === null ? '' : exportName
   }
-  const file = relative(process.cwd(), filename)
+  const file = relative(relativeTo || process.cwd(), filename)
   const fomatted = filebase ? file.replace(/\..+$/u, '') : dirname(file)
   removePrefix =
     removePrefix === undefined || removePrefix === false ? '' : removePrefix
