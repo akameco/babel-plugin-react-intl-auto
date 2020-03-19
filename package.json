@@ -79,7 +79,7 @@
     "coveralls": "3.0.9",
     "eslint": "6.8.0",
     "eslint-config-precure": "5.2.0",
-    "husky": "3.1.0",
+    "husky": "4.2.3",
     "jest": "25.1.0",
     "lint-staged": "9.5.0",
     "prettier": "1.19.1",
