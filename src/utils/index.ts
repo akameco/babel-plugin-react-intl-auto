@@ -34,6 +34,10 @@ export function getObjectProperties(path: NodePath) {
     if (!binding) {
       return null
     }
+    const init = binding.path.get('init') as NodePath
+    if (!init.type) {
+      return null
+    }
     const properties = binding.path.get('init.properties')
     if (Array.isArray(properties) && isObjectProperties(properties)) {
       return properties

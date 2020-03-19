@@ -43,6 +43,16 @@ intl.formatMessage({ defaultMessage: message });
 `,
 }
 
+const withVariableMessageDescriptor = {
+  title: 'with a variable as the defaultMessage',
+  code: `
+import { injectIntl } from 'react-intl';
+import { message } from './messages';
+
+intl.formatMessage(message);
+`,
+}
+
 const withCustomProperties = {
   title: 'with custom properties in formatMessage call',
   code: `
@@ -119,6 +129,7 @@ const tests = [
   multiUseTest,
   withValueInMessageTest,
   withVariableMessageTest,
+  withVariableMessageDescriptor,
   withCustomProperties,
   someSupportedUseCases,
   importAsTest,
