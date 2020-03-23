@@ -473,6 +473,11 @@ you can also be empowered by [extract-react-intl-messages](https://github.com/ak
 
 ```json
 {
+  "compilerOptions": {
+    // ...
+    "jsx": "preserve"
+    // ...
+  },
   "include": ["node_modules/babel-plugin-react-intl-auto/**/*.d.ts"]
 }
 ```
