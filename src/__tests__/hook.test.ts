@@ -124,6 +124,18 @@ intl.formatMessage({
 `,
 }
 
+const injectIntlWithProps = {
+  title: 'with injectIntl',
+  code: `
+import { injectIntl } from 'react-intl';
+function App({ intl }) {
+  return <div>{intl.formatMessage({ defaultMessage: 'hello' })}</div>
+}
+
+export default injectIntl(App)
+  `,
+}
+
 const tests = [
   defaultTest,
   multiUseTest,
@@ -136,6 +148,7 @@ const tests = [
   throwWhenNotAnalyzableTest,
   notTransformIfNotImportedTest,
   notTransformIfIdIsProvided,
+  injectIntlWithProps,
 ]
 
 cases(filename, [
