@@ -378,6 +378,70 @@ export const test = defineMessages({
 })
 ```
 
+#### relativeTo
+
+Allows you to specify the directory that is used when determining a file's prefix.
+
+This option is useful for monorepo setups.
+
+Type: `string` <br>
+Default: `process.cwd()`
+
+##### Example
+
+Folder structure with two sibling packages. `packageB` contains babel config and depends on `packageA`.
+
+```bash
+|- packageA
+| |
+|  -- componentA
+|
+|- packageB
+| |
+|  -- componentB
+| |
+|  -- .babelrc
+```
+
+Set `relativeTo` to parent directory in `packageB` babel config
+
+```js
+{
+  "plugins": [
+    [
+      "react-intl-auto",
+      {
+        "relativeTo": "..",
+        // ...
+      },
+    ],
+  ]
+}
+```
+
+Run babel in packageB
+
+```bash
+cd packageB && babel
+```
+
+Messages in `componentA` are prefixed relative to the project root
+
+```js
+export const test = defineMessages({
+  hello: 'hello {name}',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  hello: {
+    id: 'packageA.componentA.hello',
+    defaultMessage: 'hello {name}',
+  },
+})
+```
+
 ### Support variable
 
 ##### Example
@@ -483,9 +547,10 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/jmarceli"><img src="https://avatars1.githubusercontent.com/u/4281333?v=4" width="100px;" alt=""/><br /><sub><b>jmarceli</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Tests">⚠️</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/dominik-zeglen"><img src="https://avatars3.githubusercontent.com/u/6833443?v=4" width="100px;" alt=""/><br /><sub><b>Dominik Żegleń</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/Filson14"><img src="https://avatars1.githubusercontent.com/u/4540538?v=4" width="100px;" alt=""/><br /><sub><b>Filip "Filson" Pasternak</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Filson14" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/ericmasiello"><img src="https://avatars3.githubusercontent.com/u/3525886?v=4" width="100px;" alt=""/><br /><sub><b>Eric Masiello</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/dominik-zeglen"><img src="https://avatars3.githubusercontent.com/u/6833443?v=4" width="100px;" alt="Dominik Żegleń"/><br /><sub><b>Dominik Żegleń</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/Filson14"><img src="https://avatars1.githubusercontent.com/u/4540538?v=4" width="100px;" alt="Filip "Filson" Pasternak"/><br /><sub><b>Filip "Filson" Pasternak</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Filson14" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ericmasiello"><img src="https://avatars3.githubusercontent.com/u/3525886?v=4" width="100px;" alt="Eric Masiello"/><br /><sub><b>Eric Masiello</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/pooleparty"><img src="https://avatars3.githubusercontent.com/u/5461259?v=4" width="100px;" alt="Josh Poole"/><br /><sub><b>Josh Poole</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=pooleparty" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=pooleparty" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
