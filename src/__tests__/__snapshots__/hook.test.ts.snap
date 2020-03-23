@@ -146,6 +146,32 @@ intl.formatMessage({
 
 `;
 
+exports[`default with injectIntl: with injectIntl 1`] = `
+
+import { injectIntl } from 'react-intl';
+function App({ intl }) {
+  return <div>{intl.formatMessage({ defaultMessage: 'hello' })}</div>
+}
+
+export default injectIntl(App)
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+
+function App({
+  intl
+}) {
+  return <div>{intl.formatMessage({
+      defaultMessage: 'hello',
+      "id": "src.__fixtures__.613153351"
+    })}</div>;
+}
+
+export default injectIntl(App);
+
+`;
+
 exports[`default with useIntl hook imported: with useIntl hook imported 1`] = `
 
 import { useIntl } from 'react-intl';
