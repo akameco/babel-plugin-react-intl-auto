@@ -8,7 +8,7 @@ const REG = new RegExp(`\\${sep}`, 'gu')
 const isObjectProperties = (
   properties: NodePath[]
 ): properties is NodePath<t.ObjectProperty>[] =>
-  properties.every(p => p.isObjectProperty())
+  properties.every((p) => p.isObjectProperty())
 
 export const createHash = (message: string) => `${murmur.x86.hash32(message)}`
 
