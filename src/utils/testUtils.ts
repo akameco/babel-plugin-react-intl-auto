@@ -21,7 +21,7 @@ export function cases(
   }
 
   for (const testCase of testCases) {
-    testCase.tests = testCase.tests.map(t => ({ ...t, title: t.title }))
+    testCase.tests = testCase.tests.map((t) => ({ ...t, title: t.title }))
     pluginTester({ ...defaultOpts, ...testCase })
   }
 }

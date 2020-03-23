@@ -72,7 +72,7 @@ export function addIdToFormatMessage(
 
   // if "id" property is already added by a developer or by this script just skip this node
   if (
-    properties.find(arg => {
+    properties.find((arg) => {
       const keyPath = arg.get('key')
       return !Array.isArray(keyPath) && keyPath.node.name === 'id'
     })
