@@ -114,6 +114,21 @@ intl.formatMessage({
 
 `;
 
+exports[`default with a variable as the defaultMessage: with a variable as the defaultMessage 2`] = `
+
+import { useIntl } from 'react-intl';
+import { message } from './messages'
+
+intl.formatMessage(messages);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+import { message } from './messages';
+intl.formatMessage(messages);
+
+`;
+
 exports[`default with custom properties in formatMessage call: with custom properties in formatMessage call 1`] = `
 
 import { useIntl } from 'react-intl';
