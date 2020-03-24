@@ -334,7 +334,7 @@ export const test = defineMessages({
 
 #### useKey
 
-Only works with `FormattedMessage` and `FormattedHTMLMessage`. Instead of
+Only works with `intl.formatMessage`, `FormattedMessage` and `FormattedHTMLMessage`. Instead of
 generating an ID by hashing `defaultMessage`, it will use the `key` property if
 it exists.
 
@@ -342,6 +342,21 @@ Type: `boolean` <br>
 Default: `false`
 
 ##### Example
+
+```js
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello',
+  "id": "path.to.file.foobar"
+});
+```
 
 ```js
 <FormattedMessage key="foobar" defaultMessage="hello" />
