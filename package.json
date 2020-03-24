@@ -15,7 +15,6 @@
     "node": ">=10"
   },
   "scripts": {
-    "add-contributor": "all-contributors add",
     "build": "babel src -d lib --ignore __tests__,__fixtures__ --extensions .ts",
     "prepack": "yarn build",
     "fmt": "prettier --write .",
