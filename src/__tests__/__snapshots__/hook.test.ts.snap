@@ -188,6 +188,25 @@ intl.formatMessage({
 
 `;
 
+exports[`default withKeyFlag: withKeyFlag 1`] = `
+
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello',
+  "id": "src.__fixtures__.613153351"
+});
+
+`;
+
 exports[`filebase = true with useIntl hook imported: with useIntl hook imported 1`] = `
 
 import { useIntl } from 'react-intl';
@@ -280,6 +299,41 @@ import { useIntl } from 'react-intl';
 intl.formatMessage({
   defaultMessage: "hello",
   "id": "src.__fixtures__.613153351"
+});
+
+`;
+
+exports[`useKey = true with useIntl hook imported: with useIntl hook imported 1`] = `
+
+import { useIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  defaultMessage: "hello",
+  "id": "src.__fixtures__.613153351"
+});
+
+`;
+
+exports[`useKey = true withKeyFlag: withKeyFlag 1`] = `
+
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello',
+  "id": "src.__fixtures__.foobar"
 });
 
 `;
