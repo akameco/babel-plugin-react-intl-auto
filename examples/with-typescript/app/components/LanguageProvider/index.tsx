@@ -17,7 +17,9 @@ const messages: {
   ja: jaMessages,
 }
 
-export default class LanguageProvider extends React.Component<{ locale?: string }> {
+export default class LanguageProvider extends React.Component<{
+  locale?: string
+}> {
   state: { locale: string } = { locale: 'en' }
 
   render() {

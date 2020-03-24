@@ -18,7 +18,7 @@
     "add-contributor": "all-contributors add",
     "build": "babel src -d lib --ignore __tests__,__fixtures__ --extensions .ts",
     "prepack": "yarn build",
-    "fmt": "prettier --write '**/*.{ts,js,json,ts,md}'",
+    "fmt": "prettier --write .",
     "lint": "eslint src --ext ts",
     "add:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "jest",
