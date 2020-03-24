@@ -1,6 +1,6 @@
 # babel-plugin-react-intl-auto
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/akameco/babel-plugin-react-intl-auto/Node CI)
+[![test](https://github.com/akameco/babel-plugin-react-intl-auto/workflows/test/badge.svg)](https://github.com/akameco/babel-plugin-react-intl-auto/actions?query=workflow%3Atest)
 [![Coverage Status](https://coveralls.io/repos/github/akameco/babel-plugin-react-intl-auto/badge.svg?branch=master)](https://coveralls.io/github/akameco/babel-plugin-react-intl-auto?branch=master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
