@@ -49,6 +49,31 @@ function isFormatMessageCall(path: NodePath<t.CallExpression>, state: State) {
   return Boolean(path.get('arguments.0')) && isIntl && isFormatMessage
 }
 
+function findProperty(
+  properties: NodePath<t.ObjectProperty>[],
+  name: string
+): NodePath<t.ObjectProperty> | undefined {
+  return properties.find((arg) => {
+    const keyPath = arg.get('key')
+    return !Array.isArray(keyPath) && keyPath.node.name === name
+  })
+}
+
+function extractKeyValue(
+  properties: NodePath<t.ObjectProperty>[]
+): string | null {
+  const prop = findProperty(properties, 'key')
+  if (prop) {
+    const keyPath = prop.get('key')
+    if (!Array.isArray(keyPath) && keyPath.node.name === 'key') {
+      const valuePath = prop.get('value')
+      const value = valuePath.evaluate().value
+      return value
+    }
+  }
+  return null
+}
+
 // add automatic ID to intl.formatMessage calls
 export function addIdToFormatMessage(
   path: NodePath<t.CallExpression>,
@@ -71,31 +96,30 @@ export function addIdToFormatMessage(
   }
 
   // if "id" property is already added by a developer or by this script just skip this node
-  if (
-    properties.find((arg) => {
-      const keyPath = arg.get('key')
-      return !Array.isArray(keyPath) && keyPath.node.name === 'id'
-    })
-  ) {
+  if (findProperty(properties, 'id')) {
     return
   }
 
-  for (const prop of properties) {
-    const keyPath = prop.get('key')
-    if (!Array.isArray(keyPath) && keyPath.node.name === 'defaultMessage') {
-      // try to statically evaluate defaultMessage to generate hash
-      const evaluated = prop.get('value').evaluate()
+  const keyValue = extractKeyValue(properties)
 
-      if (!evaluated.confident || typeof evaluated.value !== 'string') {
-        throw prop
-          .get('value')
-          .buildCodeFrameError(
-            '[React Intl Auto] defaultMessage must be statically evaluate-able for extraction.'
-          )
-      }
-      prop.insertAfter(
-        objectProperty('id', getPrefix(state, createHash(evaluated.value)))
-      )
+  const defaultMessageProp = findProperty(properties, 'defaultMessage')
+  if (defaultMessageProp) {
+    // try to statically evaluate defaultMessage to generate hash
+    const evaluated = defaultMessageProp.get('value').evaluate()
+
+    if (!evaluated.confident || typeof evaluated.value !== 'string') {
+      throw defaultMessageProp
+        .get('value')
+        .buildCodeFrameError(
+          '[React Intl Auto] defaultMessage must be statically evaluate-able for extraction.'
+        )
     }
+
+    const id = getPrefix(
+      state,
+      state.opts.useKey && keyValue ? keyValue : createHash(evaluated.value)
+    )
+
+    defaultMessageProp.insertAfter(objectProperty('id', id))
   }
 }

@@ -136,6 +136,17 @@ export default injectIntl(App)
   `,
 }
 
+const withKeyFlag = {
+  title: 'withKeyFlag',
+  code: `
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello'
+});
+  `,
+}
+
 const tests = [
   defaultTest,
   multiUseTest,
@@ -149,6 +160,7 @@ const tests = [
   notTransformIfNotImportedTest,
   notTransformIfIdIsProvided,
   injectIntlWithProps,
+  withKeyFlag,
 ]
 
 cases(filename, [
@@ -212,5 +224,10 @@ cases(filename, [
     title: 'removePrefix = "src.__fixtures__"',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src.__fixtures__' },
+  },
+  {
+    title: 'useKey = true',
+    tests: [defaultTest, withKeyFlag],
+    pluginOptions: { useKey: true },
   },
 ])
