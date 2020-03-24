@@ -9,7 +9,7 @@
 
 > i18n for the component age. Auto management react-intl ID.
 
-[React Intl](https://github.com/yahoo/react-intl) is awesome. But, Global ID management is difficult and confusing.
+[React Intl](https://github.com/formatjs/react-intl) is awesome. But, Global ID management is difficult and confusing.
 
 Many projects, like [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), give the ID to the name of the component as a prefix.
 But it is redundant and troublesome.
