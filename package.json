@@ -12,7 +12,7 @@
     "url": "https://akameco.github.io"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "add-contributor": "all-contributors add",
@@ -53,9 +53,9 @@
     "types.d.ts"
   ],
   "dependencies": {
-    "@babel/core": "^7.8.7",
-    "@babel/traverse": "^7.8.6",
-    "@babel/types": "^7.8.7",
+    "@babel/core": "^7.9.0",
+    "@babel/traverse": "^7.9.0",
+    "@babel/types": "^7.9.0",
     "murmurhash3js": "^3.0.1"
   },
   "devDependencies": {
@@ -73,15 +73,15 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "25.1.0",
     "babel-log": "2.0.0",
-    "babel-plugin-tester": "8.0.1",
+    "babel-plugin-tester": "9.0.0",
     "coveralls": "3.0.11",
     "eslint": "6.8.0",
     "eslint-config-precure": "5.3.1",
     "husky": "4.2.3",
     "jest": "25.1.0",
     "lint-staged": "10.0.8",
-    "prettier": "2.0.1",
-    "react-intl": "3.12.1",
+    "prettier": "2.0.2",
+    "react-intl": "4.2.2",
     "string-snapshot-serializer": "1.0.1",
     "typescript": "3.8.3"
   },
