@@ -189,7 +189,7 @@ const MyComponent = () => {
 
 remove prefix.
 
-Type: `string | boolean` <br>
+Type: `string | boolean` | `regexp` <br>
 Default: `''`
 
 if `removePrefix` is `true`, no file path prefix is included in the id.
