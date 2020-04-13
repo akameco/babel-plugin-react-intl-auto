@@ -55,6 +55,10 @@ export function addIdToFormatMessage(
   path: NodePath<t.CallExpression>,
   state: State
 ) {
+  if (state.file.opts.filename.includes('node_modules')){
+    return
+  }
+
   if (!isFormatMessageCall(path, state)) {
     // skip path if this is not intl.formatMessage call
     return

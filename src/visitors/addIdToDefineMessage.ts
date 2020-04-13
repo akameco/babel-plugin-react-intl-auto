@@ -193,6 +193,10 @@ export function addIdToDefineMessage(
   path: NodePath<t.CallExpression>,
   state: State
 ) {
+  if (state.file.opts.filename.includes('node_modules')){
+    return
+  }
+
   if (!isDefineMessagesCall(path, state)) {
     return
   }
