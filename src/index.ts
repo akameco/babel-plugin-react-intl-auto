@@ -4,7 +4,7 @@ import { visitJSXElement } from './visitors/jsx'
 import { addIdToDefineMessage } from './visitors/addIdToDefineMessage'
 import { addIdToFormatMessage } from './visitors/addIdToFormatMessage'
 
-export default function() {
+export default function () {
   return {
     name: 'react-intl-auto',
     visitor: {

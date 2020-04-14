@@ -8,7 +8,7 @@ const REG = new RegExp(`\\${sep}`, 'gu')
 const isObjectProperties = (
   properties: NodePath[]
 ): properties is NodePath<t.ObjectProperty>[] =>
-  properties.every(p => p.isObjectProperty())
+  properties.every((p) => p.isObjectProperty())
 
 export const createHash = (message: string) => `${murmur.x86.hash32(message)}`
 
@@ -32,6 +32,10 @@ export function getObjectProperties(path: NodePath) {
   } else if (path.isIdentifier()) {
     const binding = path.scope.getBinding(path.node.name)
     if (!binding) {
+      return null
+    }
+    const init = binding.path.get('init')
+    if (!Array.isArray(init) && !init.type) {
       return null
     }
     const properties = binding.path.get('init.properties')

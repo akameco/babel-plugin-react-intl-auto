@@ -21,7 +21,7 @@ const getElementAttributePaths = (
   >[]
 
   const defaultMessagePath = attributesPath.find(
-    attrPath =>
+    (attrPath) =>
       attrPath.node.name && attrPath.node.name.name === 'defaultMessage'
   )
 
@@ -30,11 +30,11 @@ const getElementAttributePaths = (
   )
 
   const idPath = attributesPath.find(
-    attrPath => attrPath.node.name && attrPath.node.name.name === 'id'
+    (attrPath) => attrPath.node.name && attrPath.node.name.name === 'id'
   )
 
   const keyPath = attributesPath.find(
-    attrPath => attrPath.node.name && attrPath.node.name.name === 'key'
+    (attrPath) => attrPath.node.name && attrPath.node.name.name === 'key'
   )
 
   return {

@@ -43,6 +43,16 @@ intl.formatMessage({ defaultMessage: message });
 `,
 }
 
+const withVariableMessageDescriptor = {
+  title: 'with a variable as the defaultMessage',
+  code: `
+import { useIntl } from 'react-intl';
+import { message } from './messages'
+
+intl.formatMessage(messages);
+`,
+}
+
 const withCustomProperties = {
   title: 'with custom properties in formatMessage call',
   code: `
@@ -114,17 +124,43 @@ intl.formatMessage({
 `,
 }
 
+const injectIntlWithProps = {
+  title: 'with injectIntl',
+  code: `
+import { injectIntl } from 'react-intl';
+function App({ intl }) {
+  return <div>{intl.formatMessage({ defaultMessage: 'hello' })}</div>
+}
+
+export default injectIntl(App)
+  `,
+}
+
+const withKeyFlag = {
+  title: 'withKeyFlag',
+  code: `
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello'
+});
+  `,
+}
+
 const tests = [
   defaultTest,
   multiUseTest,
   withValueInMessageTest,
   withVariableMessageTest,
+  withVariableMessageDescriptor,
   withCustomProperties,
   someSupportedUseCases,
   importAsTest,
   throwWhenNotAnalyzableTest,
   notTransformIfNotImportedTest,
   notTransformIfIdIsProvided,
+  injectIntlWithProps,
+  withKeyFlag,
 ]
 
 cases(filename, [
@@ -188,5 +224,10 @@ cases(filename, [
     title: 'removePrefix = "src.__fixtures__"',
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src.__fixtures__' },
+  },
+  {
+    title: 'useKey = true',
+    tests: [defaultTest, withKeyFlag],
+    pluginOptions: { useKey: true },
   },
 ])

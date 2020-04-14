@@ -1,14 +1,8 @@
 import * as React from 'react'
-import { addLocaleData, IntlProvider } from 'react-intl'
-
-import * as enLocaleData from 'react-intl/locale-data/en'
-import * as jaLocaleData from 'react-intl/locale-data/ja'
+import { IntlProvider } from 'react-intl'
 
 import enMessages from '../../translations/en.json'
 import jaMessages from '../../translations/ja.json'
-
-addLocaleData(enLocaleData)
-addLocaleData(jaLocaleData)
 
 const messages: {
   [key: string]: {}
@@ -17,19 +11,20 @@ const messages: {
   ja: jaMessages,
 }
 
-export default class LanguageProvider extends React.Component<{ locale?: string }> {
-  state: { locale: string } = { locale: 'en' }
+export default function LanguageProvider({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const [locale, setLocale] = React.useState('en')
 
-  render() {
-    const { locale } = this.state
-    return (
-      <div>
-        <IntlProvider locale={locale} messages={messages[locale]}>
-          {this.props.children}
-        </IntlProvider>
-        <a onClick={() => this.setState({ locale: 'en' })}>English</a>/
-        <a onClick={() => this.setState({ locale: 'ja' })}>日本語</a>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <IntlProvider locale={locale} messages={messages[locale]}>
+        {children}
+      </IntlProvider>
+      <a onClick={() => setLocale('en')}>English</a>/
+      <a onClick={() => setLocale('ja')}>日本語</a>
+    </div>
+  )
 }

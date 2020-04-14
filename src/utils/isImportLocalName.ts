@@ -25,7 +25,7 @@ export const isImportLocalName = (
           const specifiers = path.get('specifiers')
           isImported =
             path.node.source.value.includes(moduleSourceName) &&
-            specifiers.some(specifier => isSearchedImportSpecifier(specifier))
+            specifiers.some((specifier) => isSearchedImportSpecifier(specifier))
 
           if (isImported) {
             path.stop()

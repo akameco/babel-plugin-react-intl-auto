@@ -31,7 +31,7 @@ const getId = (path: NodePath, prefix: string, separator?: string) => {
 const getLeadingComment = (prop: NodePath) => {
   const commentNodes = prop.node.leadingComments
   return commentNodes
-    ? commentNodes.map(node => node.value.trim()).join('\n')
+    ? commentNodes.map((node) => node.value.trim()).join('\n')
     : null
 }
 
@@ -62,7 +62,7 @@ const replaceProperties = (
       >[]
 
       // { id: 'already has id', defaultMessage: 'hello' }
-      const isNotHaveId = objProps.every(v => {
+      const isNotHaveId = objProps.every((v) => {
         const keyPath = v.get('key')
         return !Array.isArray(keyPath) && keyPath.node.name !== 'id'
       })
@@ -107,7 +107,7 @@ const replaceProperties = (
         }
       }
 
-      messageDescriptorProperties.push(...objProps.map(v => v.node))
+      messageDescriptorProperties.push(...objProps.map((v) => v.node))
     } else if (
       objectValuePath.isStringLiteral() ||
       objectValuePath.isTemplateLiteral()
@@ -135,7 +135,7 @@ const replaceProperties = (
 
     if (extractComments) {
       const hasDescription = messageDescriptorProperties.find(
-        v => v.key.name === 'description'
+        (v) => v.key.name === 'description'
       )
 
       if (!hasDescription) {
@@ -156,8 +156,8 @@ const getExportName = (
   path: NodePath<t.CallExpression>,
   includeExportName: boolean | 'all' | undefined
 ): string | null => {
-  const namedExport = path.findParent(v => v.isExportNamedDeclaration())
-  const defaultExport = path.findParent(v => v.isExportDefaultDeclaration())
+  const namedExport = path.findParent((v) => v.isExportNamedDeclaration())
+  const defaultExport = path.findParent((v) => v.isExportDefaultDeclaration())
 
   if (includeExportName && namedExport) {
     const idPath = namedExport.get('declaration.declarations.0.id') as NodePath<

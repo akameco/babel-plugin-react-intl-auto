@@ -1,7 +1,6 @@
 # babel-plugin-react-intl-auto
 
-[![Build Status](https://travis-ci.org/akameco/babel-plugin-react-intl-auto.svg?branch=master)](https://travis-ci.org/akameco/babel-plugin-react-intl-auto)
-[![Build status](https://ci.appveyor.com/api/projects/status/5smedgke2ia9fpa0/branch/master?svg=true)](https://ci.appveyor.com/project/akameco/babel-plugin-react-intl-auto/branch/master)
+[![test](https://github.com/akameco/babel-plugin-react-intl-auto/workflows/test/badge.svg)](https://github.com/akameco/babel-plugin-react-intl-auto/actions?query=workflow%3Atest)
 [![Coverage Status](https://coveralls.io/repos/github/akameco/babel-plugin-react-intl-auto/badge.svg?branch=master)](https://coveralls.io/github/akameco/babel-plugin-react-intl-auto?branch=master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
@@ -10,7 +9,7 @@
 
 > i18n for the component age. Auto management react-intl ID.
 
-[React Intl](https://github.com/yahoo/react-intl) is awesome. But, Global ID management is difficult and confusing.
+[React Intl](https://github.com/formatjs/react-intl) is awesome. But, Global ID management is difficult and confusing.
 
 Many projects, like [react-boilerplate](https://github.com/react-boilerplate/react-boilerplate), give the ID to the name of the component as a prefix.
 But it is redundant and troublesome.
@@ -190,7 +189,7 @@ const MyComponent = () => {
 
 remove prefix.
 
-Type: `string | boolean` <br>
+Type: `string | boolean` | `regexp` <br>
 Default: `''`
 
 if `removePrefix` is `true`, no file path prefix is included in the id.
@@ -335,7 +334,7 @@ export const test = defineMessages({
 
 #### useKey
 
-Only works with `FormattedMessage` and `FormattedHTMLMessage`. Instead of
+Only works with `intl.formatMessage`, `FormattedMessage` and `FormattedHTMLMessage`. Instead of
 generating an ID by hashing `defaultMessage`, it will use the `key` property if
 it exists.
 
@@ -343,6 +342,21 @@ Type: `boolean` <br>
 Default: `false`
 
 ##### Example
+
+```js
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello'
+});
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+intl.formatMessage({
+  key: 'foobar',
+  defaultMessage: 'hello',
+  "id": "path.to.file.foobar"
+});
+```
 
 ```js
 <FormattedMessage key="foobar" defaultMessage="hello" />
@@ -373,6 +387,70 @@ export const test = defineMessages({
 export const test = defineMessages({
   hello: {
     id: 'path_to_file_test_hello',
+    defaultMessage: 'hello {name}',
+  },
+})
+```
+
+#### relativeTo
+
+Allows you to specify the directory that is used when determining a file's prefix.
+
+This option is useful for monorepo setups.
+
+Type: `string` <br>
+Default: `process.cwd()`
+
+##### Example
+
+Folder structure with two sibling packages. `packageB` contains babel config and depends on `packageA`.
+
+```bash
+|- packageA
+| |
+|  -- componentA
+|
+|- packageB
+| |
+|  -- componentB
+| |
+|  -- .babelrc
+```
+
+Set `relativeTo` to parent directory in `packageB` babel config
+
+```js
+{
+  "plugins": [
+    [
+      "react-intl-auto",
+      {
+        "relativeTo": "..",
+        // ...
+      },
+    ],
+  ]
+}
+```
+
+Run babel in packageB
+
+```bash
+cd packageB && babel
+```
+
+Messages in `componentA` are prefixed relative to the project root
+
+```js
+export const test = defineMessages({
+  hello: 'hello {name}',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  hello: {
+    id: 'packageA.componentA.hello',
     defaultMessage: 'hello {name}',
   },
 })
@@ -462,6 +540,11 @@ you can also be empowered by [extract-react-intl-messages](https://github.com/ak
 
 ```json
 {
+  "compilerOptions": {
+    // ...
+    "jsx": "preserve"
+    // ...
+  },
   "include": ["node_modules/babel-plugin-react-intl-auto/**/*.d.ts"]
 }
 ```
@@ -518,27 +601,28 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="http://akameco.github.io"><img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;" alt="akameco"/><br /><sub><b>akameco</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco" title="Tests">⚠️</a> <a href="#review-akameco" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://alxandr.me"><img src="https://avatars0.githubusercontent.com/u/112334?v=4" width="100px;" alt="Aleksander Heintz"/><br /><sub><b>Aleksander Heintz</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/mehcode"><img src="https://avatars1.githubusercontent.com/u/753919?v=4" width="100px;" alt="Ryan Leckey"/><br /><sub><b>Ryan Leckey</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mehcode" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/adam-26"><img src="https://avatars1.githubusercontent.com/u/2652619?v=4" width="100px;" alt="Adam"/><br /><sub><b>Adam</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://ephys.github.io"><img src="https://avatars0.githubusercontent.com/u/1280915?v=4" width="100px;" alt="Guylian Cox"/><br /><sub><b>Guylian Cox</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys" title="Tests">⚠️</a></td>
-    <td align="center"><a href="http://carlgrundberg.github.io/"><img src="https://avatars1.githubusercontent.com/u/928407?v=4" width="100px;" alt="Carl Grundberg"/><br /><sub><b>Carl Grundberg</b></sub></a><br /><a href="#example-carlgrundberg" title="Examples">💡</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=carlgrundberg" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://bradbarrow.com"><img src="https://avatars3.githubusercontent.com/u/1264276?v=4" width="100px;" alt="bradbarrow"/><br /><sub><b>bradbarrow</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://akameco.github.io"><img src="https://avatars2.githubusercontent.com/u/4002137?v=4" width="100px;" alt=""/><br /><sub><b>akameco</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco" title="Tests">⚠️</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/pulls?q=is%3Apr+reviewed-by%3Aakameco" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=akameco" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://alxandr.me"><img src="https://avatars0.githubusercontent.com/u/112334?v=4" width="100px;" alt=""/><br /><sub><b>Aleksander Heintz</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Alxandr" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/mehcode"><img src="https://avatars1.githubusercontent.com/u/753919?v=4" width="100px;" alt=""/><br /><sub><b>Ryan Leckey</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mehcode" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/adam-26"><img src="https://avatars1.githubusercontent.com/u/2652619?v=4" width="100px;" alt=""/><br /><sub><b>Adam</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=adam-26" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://ephys.github.io"><img src="https://avatars0.githubusercontent.com/u/1280915?v=4" width="100px;" alt=""/><br /><sub><b>Guylian Cox</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Ephys" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://carlgrundberg.github.io/"><img src="https://avatars1.githubusercontent.com/u/928407?v=4" width="100px;" alt=""/><br /><sub><b>Carl Grundberg</b></sub></a><br /><a href="#example-carlgrundberg" title="Examples">💡</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=carlgrundberg" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://bradbarrow.com"><img src="https://avatars3.githubusercontent.com/u/1264276?v=4" width="100px;" alt=""/><br /><sub><b>bradbarrow</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=bradbarrow" title="Tests">⚠️</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/mgtitimoli"><img src="https://avatars2.githubusercontent.com/u/4404683?v=4" width="100px;" alt="Mauro Gabriel Titimoli"/><br /><sub><b>Mauro Gabriel Titimoli</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mgtitimoli" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mgtitimoli" title="Tests">⚠️</a></td>
-    <td align="center"><a href="https://github.com/stanislav-ermakov"><img src="https://avatars2.githubusercontent.com/u/15980086?v=4" width="100px;" alt="Stanislav Ermakov"/><br /><sub><b>Stanislav Ermakov</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=stanislav-ermakov" title="Code">💻</a></td>
-    <td align="center"><a href="https://chitoku.jp/"><img src="https://avatars1.githubusercontent.com/u/6535425?v=4" width="100px;" alt="Chitoku"/><br /><sub><b>Chitoku</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=chitoku-k" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/kuma-kuma"><img src="https://avatars0.githubusercontent.com/u/12218082?v=4" width="100px;" alt="Kouta Kumagai"/><br /><sub><b>Kouta Kumagai</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Tests">⚠️</a></td>
-    <td align="center"><a href="http://shah.yar.gs"><img src="https://avatars0.githubusercontent.com/u/255846?v=4" width="100px;" alt="Shahyar G"/><br /><sub><b>Shahyar G</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=shahyar" title="Code">💻</a></td>
-    <td align="center"><a href="https://gitlab.com/remcohaszing"><img src="https://avatars2.githubusercontent.com/u/779047?v=4" width="100px;" alt="Remco Haszing"/><br /><sub><b>Remco Haszing</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=remcohaszing" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/jmarceli"><img src="https://avatars1.githubusercontent.com/u/4281333?v=4" width="100px;" alt="jmarceli"/><br /><sub><b>jmarceli</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/mgtitimoli"><img src="https://avatars2.githubusercontent.com/u/4404683?v=4" width="100px;" alt=""/><br /><sub><b>Mauro Gabriel Titimoli</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mgtitimoli" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=mgtitimoli" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/stanislav-ermakov"><img src="https://avatars2.githubusercontent.com/u/15980086?v=4" width="100px;" alt=""/><br /><sub><b>Stanislav Ermakov</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=stanislav-ermakov" title="Code">💻</a></td>
+    <td align="center"><a href="https://chitoku.jp/"><img src="https://avatars1.githubusercontent.com/u/6535425?v=4" width="100px;" alt=""/><br /><sub><b>Chitoku</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=chitoku-k" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/kuma-kuma"><img src="https://avatars0.githubusercontent.com/u/12218082?v=4" width="100px;" alt=""/><br /><sub><b>Kouta Kumagai</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Documentation">📖</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=kuma-kuma" title="Tests">⚠️</a></td>
+    <td align="center"><a href="http://shah.yar.gs"><img src="https://avatars0.githubusercontent.com/u/255846?v=4" width="100px;" alt=""/><br /><sub><b>Shahyar G</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=shahyar" title="Code">💻</a></td>
+    <td align="center"><a href="https://gitlab.com/remcohaszing"><img src="https://avatars2.githubusercontent.com/u/779047?v=4" width="100px;" alt=""/><br /><sub><b>Remco Haszing</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=remcohaszing" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/jmarceli"><img src="https://avatars1.githubusercontent.com/u/4281333?v=4" width="100px;" alt=""/><br /><sub><b>jmarceli</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=jmarceli" title="Tests">⚠️</a></td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/dominik-zeglen"><img src="https://avatars3.githubusercontent.com/u/6833443?v=4" width="100px;" alt="Dominik Żegleń"/><br /><sub><b>Dominik Żegleń</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=dominik-zeglen" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/Filson14"><img src="https://avatars1.githubusercontent.com/u/4540538?v=4" width="100px;" alt="Filip "Filson" Pasternak"/><br /><sub><b>Filip "Filson" Pasternak</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=Filson14" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ericmasiello"><img src="https://avatars3.githubusercontent.com/u/3525886?v=4" width="100px;" alt="Eric Masiello"/><br /><sub><b>Eric Masiello</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=ericmasiello" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/pooleparty"><img src="https://avatars3.githubusercontent.com/u/5461259?v=4" width="100px;" alt="Josh Poole"/><br /><sub><b>Josh Poole</b></sub></a><br /><a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=pooleparty" title="Code">💻</a> <a href="https://github.com/akameco/babel-plugin-react-intl-auto/commits?author=pooleparty" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

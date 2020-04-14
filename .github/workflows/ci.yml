@@ -1,0 +1,20 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, windows-latest]
+        node-version: [12.x, 13.x]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: yarn install
+      - run: yarn run fmt --check
+      - run: yarn run tsc --noEmit
+      - run: yarn run test:ci
