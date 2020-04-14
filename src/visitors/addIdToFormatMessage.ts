@@ -109,8 +109,6 @@ export function addIdToFormatMessage(
   let description = ''
   if (state.opts.includeDescription) {
 
-    const keyValue = extractKeyValue(properties)
-
     const descriptionProp = findProperty(properties, 'description')
     if (descriptionProp) {
       // try to statically evaluate description to generate hash
