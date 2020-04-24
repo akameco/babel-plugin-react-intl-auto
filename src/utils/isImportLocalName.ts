@@ -1,5 +1,3 @@
-import { NodePath } from '@babel/core'
-import * as t from '@babel/types'
 import { State } from '../types'
 
 export const isImportLocalName = (
@@ -7,15 +5,6 @@ export const isImportLocalName = (
   allowedNames: string[],
   { file, opts: { moduleSourceName = 'react-intl' } }: State
 ) => {
-  const isSearchedImportSpecifier = (
-    specifier: NodePath<
-      t.ImportDefaultSpecifier | t.ImportNamespaceSpecifier | t.ImportSpecifier
-    >
-  ) =>
-    specifier.isImportSpecifier() &&
-    allowedNames.includes(specifier.node.imported.name) &&
-    (!name || specifier.node.local.name === name)
-
   let isImported = false
 
   if (file && file.path) {
@@ -25,7 +14,13 @@ export const isImportLocalName = (
           const specifiers = path.get('specifiers')
           isImported =
             path.node.source.value.includes(moduleSourceName) &&
-            specifiers.some((specifier) => isSearchedImportSpecifier(specifier))
+            specifiers.some((specifier) => {
+              return (
+                specifier.isImportSpecifier() &&
+                allowedNames.includes(specifier.node.imported.name) &&
+                (!name || specifier.node.local.name === name)
+              )
+            })
 
           if (isImported) {
             path.stop()
