@@ -74,7 +74,7 @@
     "babel-log": "2.0.0",
     "babel-plugin-tester": "9.0.1",
     "coveralls": "3.1.0",
-    "eslint": "6.8.0",
+    "eslint": "7.0.0",
     "eslint-config-precure": "5.4.0",
     "husky": "4.2.5",
     "jest": "25.5.4",
