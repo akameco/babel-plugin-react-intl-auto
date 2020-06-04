@@ -139,5 +139,10 @@ export const visitJSXElement = (path: NodePath, state: State) => {
     if (!id && defaultMessage) {
       generateId(defaultMessage, state, state.opts.useKey ? key : undefined)
     }
+
+    // Remove defaultMessage prop if configured
+    if (defaultMessage && state.opts.removeDefaultMessage) {
+      defaultMessage.remove()
+    }
   }
 }

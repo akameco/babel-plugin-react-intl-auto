@@ -223,6 +223,21 @@ intl.formatMessage({
 
 `;
 
+exports[`removeDefaultMessage = true with useIntl hook imported: with useIntl hook imported 1`] = `
+
+import { useIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { useIntl } from 'react-intl';
+intl.formatMessage({
+  "id": "src.__fixtures__.613153351"
+});
+
+`;
+
 exports[`removePrefix = "src" with useIntl hook imported: with useIntl hook imported 1`] = `
 
 import { useIntl } from 'react-intl';

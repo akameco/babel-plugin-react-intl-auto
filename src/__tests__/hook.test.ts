@@ -230,4 +230,9 @@ cases(filename, [
     tests: [defaultTest, withKeyFlag],
     pluginOptions: { useKey: true },
   },
+  {
+    title: 'removeDefaultMessage = true',
+    tests: [defaultTest],
+    pluginOptions: { removeDefaultMessage: true },
+  },
 ])

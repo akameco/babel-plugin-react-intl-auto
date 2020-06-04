@@ -259,6 +259,45 @@ export default defineMessages({
 });
 ```
 
+#### removeDefaultMessage
+
+Removes `defaultMessage` property from generated message descriptor.
+
+Type: `boolean` <br>
+Default: `false`
+
+If `removeDefaultMessage` is `true`, then `defaultMessage` field will be removed
+even from definitions with its own `id`.
+
+##### Example
+
+```js
+export const test = defineMessages({
+  key: 'value',
+  preserveId: {
+    id: 'this is id',
+    defaultMessage: 'id',
+  },
+  onlyDefaultMessage: {
+    defaultMessage: 'world',
+  },
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+export const test = defineMessages({
+  key: {
+    id: 'path.to.file.test.value'
+  },
+  preserveId: {
+    id: 'this is id'
+  },
+  onlyDefaultMessage: {
+    id: "path.to.file.test.onlyDefaultMessage"
+  },
+})
+```
+
 #### filebase
 
 Type: `boolean` <br>
