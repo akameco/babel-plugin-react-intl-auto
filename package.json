@@ -63,8 +63,8 @@
     "@babel/preset-env": "7.10.2",
     "@babel/preset-typescript": "7.10.1",
     "@babel/register": "7.10.1",
-    "@types/babel__core": "7.1.7",
-    "@types/babel__traverse": "7.0.11",
+    "@types/babel__core": "7.1.8",
+    "@types/babel__traverse": "7.0.12",
     "@types/jest": "25.2.3",
     "@types/murmurhash3js": "3.0.2",
     "@types/node": "13.13.5",
@@ -74,15 +74,15 @@
     "babel-log": "2.0.0",
     "babel-plugin-tester": "9.2.0",
     "coveralls": "3.1.0",
-    "eslint": "7.1.0",
+    "eslint": "7.2.0",
     "eslint-config-precure": "5.4.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lint-staged": "10.2.7",
+    "lint-staged": "10.2.9",
     "prettier": "2.0.5",
-    "react-intl": "4.6.3",
+    "react-intl": "4.6.9",
     "string-snapshot-serializer": "1.0.1",
-    "typescript": "3.9.3"
+    "typescript": "3.9.5"
   },
   "husky": {
     "hooks": {
