@@ -78,7 +78,7 @@
     "eslint-config-precure": "5.4.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lint-staged": "10.2.9",
+    "lint-staged": "10.2.10",
     "prettier": "2.0.5",
     "react-intl": "4.6.9",
     "string-snapshot-serializer": "1.0.1",
