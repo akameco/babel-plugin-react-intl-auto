@@ -59,10 +59,10 @@
   },
   "devDependencies": {
     "@akameco/tsconfig": "0.4.0",
-    "@babel/cli": "7.13.10",
+    "@babel/cli": "7.13.14",
     "@babel/preset-env": "7.13.12",
     "@babel/preset-typescript": "7.13.0",
-    "@babel/register": "7.13.8",
+    "@babel/register": "7.13.14",
     "@types/babel__core": "7.1.14",
     "@types/babel__traverse": "7.11.1",
     "@types/jest": "26.0.22",
