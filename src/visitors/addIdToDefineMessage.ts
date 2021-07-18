@@ -30,7 +30,7 @@ const getLeadingComment = (prop: NodePath) => {
     : null
 }
 
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function,max-statements
 const replaceProperties = (
   properties: NodePath<t.ObjectProperty>[],
   state: State,
@@ -52,7 +52,7 @@ const replaceProperties = (
 
     // { defaultMessage: 'hello', description: 'this is hello' }
     if (objectValuePath.isObjectExpression()) {
-      const objProps = objectValuePath.get('properties') as NodePath<
+      let objProps = objectValuePath.get('properties') as NodePath<
         t.ObjectProperty
       >[]
 
@@ -68,6 +68,15 @@ const replaceProperties = (
         messageDescriptorProperties.push(objectProperty('id', id))
       }
 
+      if (state.opts.removeDefaultMessage) {
+        objProps = objProps.filter((v) => {
+          const keyPath = v.get('key')
+          return (
+            !Array.isArray(keyPath) && keyPath.node.name !== 'defaultMessage'
+          )
+        })
+      }
+
       messageDescriptorProperties.push(...objProps.map((v) => v.node))
     } else if (
       objectValuePath.isStringLiteral() ||
@@ -75,20 +84,22 @@ const replaceProperties = (
     ) {
       // 'hello' or `hello ${user}`
       const id = getId(objectKeyPath, prefix, separator)
-
-      messageDescriptorProperties.push(
-        objectProperty('id', id),
-        objectProperty('defaultMessage', objectValuePath.node)
-      )
+      messageDescriptorProperties.push(objectProperty('id', id))
+      if (!state.opts.removeDefaultMessage) {
+        messageDescriptorProperties.push(
+          objectProperty('defaultMessage', objectValuePath.node)
+        )
+      }
     } else {
       const evaluated = prop.get('value').evaluate()
       if (evaluated.confident && typeof evaluated.value === 'string') {
         const id = dotPath(join(prefix, evaluated.value), separator)
-
-        messageDescriptorProperties.push(
-          objectProperty('id', id),
-          objectProperty('defaultMessage', evaluated.value)
-        )
+        messageDescriptorProperties.push(objectProperty('id', id))
+        if (!state.opts.removeDefaultMessage) {
+          messageDescriptorProperties.push(
+            objectProperty('defaultMessage', evaluated.value)
+          )
+        }
       }
     }
 

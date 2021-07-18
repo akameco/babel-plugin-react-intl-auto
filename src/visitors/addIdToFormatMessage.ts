@@ -75,6 +75,7 @@ function extractKeyValue(
 }
 
 // add automatic ID to intl.formatMessage calls
+// eslint-disable-next-line max-lines-per-function
 export function addIdToFormatMessage(
   path: NodePath<t.CallExpression>,
   state: State
@@ -121,5 +122,10 @@ export function addIdToFormatMessage(
     )
 
     defaultMessageProp.insertAfter(objectProperty('id', id))
+
+    // Remove defaultMessage prop if configured
+    if (state.opts.removeDefaultMessage) {
+      defaultMessageProp.remove()
+    }
   }
 }

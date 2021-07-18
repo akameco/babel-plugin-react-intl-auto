@@ -167,6 +167,19 @@ import { FormattedMessage } from 'react-intl';
 
 `;
 
+exports[`removeDefaultMessage = true default: default 1`] = `
+
+import { FormattedMessage } from 'react-intl';
+
+<FormattedMessage defaultMessage="hello" />;
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { FormattedMessage } from 'react-intl';
+<FormattedMessage id="src.__fixtures__.613153351" />;
+
+`;
+
 exports[`removePrefix = "src" default: default 1`] = `
 
 import { FormattedMessage } from 'react-intl';
