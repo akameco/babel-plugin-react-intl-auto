@@ -200,4 +200,10 @@ cases(filename, [
     tests: [defaultTest],
     pluginOptions: { removePrefix: 'src.__fixtures__' },
   },
+
+  {
+    title: 'removeDefaultMessage = true',
+    tests: [defaultTest],
+    pluginOptions: { removeDefaultMessage: true },
+  },
 ])

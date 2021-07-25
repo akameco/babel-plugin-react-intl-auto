@@ -181,6 +181,21 @@ intl.formatMessage({
 
 `;
 
+exports[`removeDefaultMessage = true with Injection API HOC imported: with Injection API HOC imported 1`] = `
+
+import { injectIntl } from 'react-intl';
+
+intl.formatMessage({ defaultMessage: "hello" });
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { injectIntl } from 'react-intl';
+intl.formatMessage({
+  "id": "src.__fixtures__.613153351"
+});
+
+`;
+
 exports[`removePrefix = "src" with Injection API HOC imported: with Injection API HOC imported 1`] = `
 
 import { injectIntl } from 'react-intl';

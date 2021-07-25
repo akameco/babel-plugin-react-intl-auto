@@ -14,6 +14,27 @@ export default defineMessages({
 `,
 }
 
+const objectTest = {
+  title: 'Object',
+  code: `
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
+  },
+  world: {
+    defaultMessage: 'world',
+  },
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
+  },
+})
+`,
+}
+
 const multiExportTest = {
   title: 'multi export',
   code: `
@@ -64,6 +85,17 @@ export default defineMessages({
 `,
 }
 
+const evalStringTest = {
+  title: 'eval string',
+  code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello' + 'world',
+})
+`,
+}
+
 const tests = [
   defaultTest,
   {
@@ -88,27 +120,7 @@ defineMessages({
       `,
   },
 
-  {
-    title: 'Object',
-    code: `
-import { defineMessages } from 'react-intl'
-
-defineMessages({
-  new: {
-    id: 'this is id',
-    defaultMessage: 'id',
-  },
-  world: {
-    defaultMessage: 'world',
-  },
-  headerTitle: {
-    defaultMessage: 'Welcome to dashboard {name}!',
-    description: 'Message to greet the user.',
-  },
-})
-      `,
-  },
-
+  objectTest,
   {
     title: 'import as',
     code: `
@@ -225,16 +237,7 @@ export default defineMessages({
 
   leadingCommentTest,
   leadingCommentWithDescriptionTest,
-  {
-    title: 'eval string',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-  hello: 'hello' + 'world',
-})
-    `,
-  },
+  evalStringTest,
 ]
 
 const moduleSourceNameTest = {
@@ -376,6 +379,14 @@ cases(filename, [
     tests: [defaultTest, multiExportTest],
     pluginOptions: {
       relativeTo: '',
+    },
+  },
+
+  {
+    title: 'removeDefaultMessage = true',
+    tests: [defaultTest, objectTest, evalStringTest],
+    pluginOptions: {
+      removeDefaultMessage: true,
     },
   },
 ])

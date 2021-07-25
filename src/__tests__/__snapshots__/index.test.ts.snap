@@ -716,6 +716,80 @@ export default defineMessages({
 
 `;
 
+exports[`removeDefaultMessage = true Object: Object 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+defineMessages({
+  new: {
+    id: 'this is id',
+    defaultMessage: 'id',
+  },
+  world: {
+    defaultMessage: 'world',
+  },
+  headerTitle: {
+    defaultMessage: 'Welcome to dashboard {name}!',
+    description: 'Message to greet the user.',
+  },
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+defineMessages({
+  new: {
+    id: 'this is id'
+  },
+  world: {
+    "id": "src.__fixtures__.world"
+  },
+  headerTitle: {
+    "id": "src.__fixtures__.headerTitle",
+    description: 'Message to greet the user.'
+  }
+});
+
+`;
+
+exports[`removeDefaultMessage = true default: default 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "src.__fixtures__.hello"
+  }
+});
+
+`;
+
+exports[`removeDefaultMessage = true eval string: eval string 1`] = `
+
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello' + 'world',
+})
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: {
+    "id": "src.__fixtures__.helloworld"
+  }
+});
+
+`;
+
 exports[`removePrefix = "src" default: default 1`] = `
 
 import { defineMessages } from 'react-intl'
