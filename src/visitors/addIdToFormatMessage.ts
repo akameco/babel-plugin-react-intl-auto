@@ -75,10 +75,15 @@ function extractKeyValue(
 }
 
 // add automatic ID to intl.formatMessage calls
+// eslint-disable-next-line max-lines-per-function
 export function addIdToFormatMessage(
   path: NodePath<t.CallExpression>,
   state: State
 ) {
+  if (state.file.opts.filename.includes('node_modules')){
+    return
+  }
+
   if (!isFormatMessageCall(path, state)) {
     // skip path if this is not intl.formatMessage call
     return
@@ -100,6 +105,27 @@ export function addIdToFormatMessage(
     return
   }
 
+  // get the description property to be included in the hashed id
+  let description = ''
+  if (state.opts.includeDescription) {
+
+    const descriptionProp = findProperty(properties, 'description')
+    if (descriptionProp) {
+      // try to statically evaluate description to generate hash
+      const evaluated = descriptionProp.get('value').evaluate()
+
+      if (!evaluated.confident || typeof evaluated.value !== 'string') {
+        throw descriptionProp
+          .get('value')
+          .buildCodeFrameError(
+            '[React Intl Auto] description must be statically evaluate-able for extraction.'
+          )
+      }
+      description = evaluated.value
+    }
+  }
+
+  // get the defaultMessage property to create the hashed id
   const keyValue = extractKeyValue(properties)
 
   const defaultMessageProp = findProperty(properties, 'defaultMessage')
@@ -117,7 +143,7 @@ export function addIdToFormatMessage(
 
     const id = getPrefix(
       state,
-      state.opts.useKey && keyValue ? keyValue : createHash(evaluated.value)
+      state.opts.useKey && keyValue ? keyValue : createHash([evaluated.value, description].join(''))
     )
 
     defaultMessageProp.insertAfter(objectProperty('id', id))
