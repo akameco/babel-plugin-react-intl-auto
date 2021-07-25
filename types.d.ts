@@ -8,4 +8,8 @@ declare module 'react-intl' {
   export function defineMessages<T extends ExtractableMessage>(
     messages: T
   ): { [K in keyof T]: MessageDescriptor }
+
+  export interface MessageDescriptor {
+    key?: string
+  }
 }
