@@ -1,11 +1,12 @@
 # babel-plugin-react-intl-auto
 
+> ⚠️ **DEPRECATED** - This plugin is deprecated. React Intl has evolved into [FormatJS](https://formatjs.io/) which now includes automatic ID generation out of the box. For new projects, we recommend using FormatJS directly.
+
 [![test](https://github.com/akameco/babel-plugin-react-intl-auto/workflows/test/badge.svg)](https://github.com/akameco/babel-plugin-react-intl-auto/actions?query=workflow%3Atest)
 [![Coverage Status](https://coveralls.io/repos/github/akameco/babel-plugin-react-intl-auto/badge.svg?branch=master)](https://coveralls.io/github/akameco/babel-plugin-react-intl-auto?branch=master)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![All Contributors](https://img.shields.io/badge/all_contributors-16-orange.svg?style=flat-square)](#contributors-)
-[![babel-plugin-react-intl-auto Dev Token](https://badge.devtoken.rocks/babel-plugin-react-intl-auto)](https://devtoken.rocks/package/babel-plugin-react-intl-auto)
 
 > i18n for the component age. Auto management react-intl ID.
 
